@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp363uweqtobb"]
+
+[ext_resource type="PackedScene" uid="uid://dwsdil3d5cix8" path="res://Prefabs/DemoPrefab.tscn" id="1_3dogw"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="DemoPrefabInstance" parent="." instance=ExtResource("1_3dogw")]
+position = Vector2(300, 238)
