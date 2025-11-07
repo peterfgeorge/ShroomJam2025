@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://8hb8wknlgpae"]
+
+[ext_resource type="Script" uid="uid://dorkchcuu80vx" path="res://Scripts/MiniGame - Frogger/Frogger_Spawner.cs" id="1_8q6fm"]
+[ext_resource type="PackedScene" uid="uid://b4uibp443006g" path="res://Prefabs/MiniGame - Frogger/Frogger_Obstacle.tscn" id="2_kaqs1"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_8q6fm")
+ObstaclePrefab = ExtResource("2_kaqs1")

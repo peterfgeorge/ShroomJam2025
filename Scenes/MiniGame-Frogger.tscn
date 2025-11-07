@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bps4wq720swg4"]
+
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="1_4mkol"]
+[ext_resource type="Script" uid="uid://chyy3rhlldsof" path="res://Scripts/MiniGame - Frogger/PlayerController_Frogger.cs" id="1_kxaxn"]
+[ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omxhy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxaxn"]
+size = Vector2(1163, 43)
+
+[node name="MiniGameFrogger" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(567, 727)
+script = ExtResource("1_kxaxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_omxhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_4mkol")
+
+[node name="Spawner" parent="." instance=ExtResource("3_kxaxn")]
+position = Vector2(66, 69)
+rotation = 1.5707964
+
+[node name="Spawner2" parent="." instance=ExtResource("3_kxaxn")]
+position = Vector2(66, 360)
+rotation = 1.5707964
+
+[node name="Spawner3" parent="." instance=ExtResource("3_kxaxn")]
+position = Vector2(1079, 225)
+rotation = -1.5707964
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(160, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kxaxn")
