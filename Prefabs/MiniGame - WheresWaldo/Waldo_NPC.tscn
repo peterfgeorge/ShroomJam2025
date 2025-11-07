@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7oaoyxu8x1ox"]
+
+[ext_resource type="Script" uid="uid://boltdfe711d5b" path="res://Prefabs/MiniGame - WheresWaldo/WaldoNpc.cs" id="1_81fwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77hvy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_81fwi"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_81fwi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_77hvy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_81fwi")
