@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://nlkb0hfogq8q"]
+
+[ext_resource type="Script" uid="uid://c8pg5kv8ly3h5" path="res://Scripts/JetpackJoyride/ObstacleSpawner.cs" id="1_beai7"]
+[ext_resource type="PackedScene" uid="uid://cjmxxfoyv0eix" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Obstacle.tscn" id="2_ty3t0"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_beai7")
+obstaclePrefab = ExtResource("2_ty3t0")

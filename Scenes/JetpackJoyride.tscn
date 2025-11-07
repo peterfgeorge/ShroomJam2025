@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnir1kjtup5tv"]
+
+[ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_is1c3"]
+[ext_resource type="PackedScene" uid="uid://nlkb0hfogq8q" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_ObstacleSpawner.tscn" id="3_nyuii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
+size = Vector2(25, 24)
+
+[node name="JetpackJoyride" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(30, 87)
+script = ExtResource("1_2opvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_is1c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0.5000038, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_is1c3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Spawner" parent="." instance=ExtResource("3_nyuii")]
