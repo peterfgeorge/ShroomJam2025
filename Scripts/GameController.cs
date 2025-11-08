@@ -76,9 +76,8 @@ public partial class GameController : Node
 
     public void StartGameTimer()
     {
-        GD.Print("START");
         Game_Timer = GetTree().CreateTimer(Game_TimeLimit);
-        Game_Timer.Timeout += GameTimerTimeoutHandler;        
+        Game_Timer.Timeout += GameTimerTimeoutHandler;
     }
     void GameTimerTimeoutHandler()
     {
@@ -86,9 +85,8 @@ public partial class GameController : Node
     }
     public double StopGameTimer()
     {
-        GD.Print("STOP");
         double time = Game_Timer.TimeLeft;
-        Game_Timer = null;
+        Game_Timer.Timeout -= GameTimerTimeoutHandler;
         return time;
     }
 }

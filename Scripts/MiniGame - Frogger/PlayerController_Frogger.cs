@@ -21,8 +21,6 @@ public partial class PlayerController_Frogger : Area2D
     // Collision Event Handler
     public void Collision(Area2D s)
     {
-        GD.Print(s);
-        
         // Win Game
         if (((Node) s).IsInGroup("Frogger_VictoryCollision"))
         {

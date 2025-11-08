@@ -18,6 +18,7 @@ public partial class Frogger_Spawner : Node2D
             Node2D obstacle = ObstaclePrefab.Instantiate<Node2D>();
             AddChild(obstacle);
             obstacle.Hide();
+            ((Area2D) obstacle).Monitorable = false;
 
             ObstaclePool[i] = obstacle;
         }
@@ -36,6 +37,7 @@ public partial class Frogger_Spawner : Node2D
         // Reset and make visible
         target.Position = Vector2.Zero;
         target.Show();
+        ((Area2D) target).Monitorable = true;
 
         // Wait for spawn delay plus random offset
         await ToSignal(GetTree().CreateTimer(SpawnDelay + GD.Randf()), "timeout");
