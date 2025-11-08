@@ -60,6 +60,7 @@ public partial class GameController : Node {
         }
 
         // Load Scene
+        StopGameTimer();
         StartGameTimer();
         CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
     }
