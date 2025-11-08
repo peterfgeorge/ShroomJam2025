@@ -1,25 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=5 format=3 uid="uid://bps4wq720swg4"]
 
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
+[ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
 [ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
 
-[node name="MiniGameFrogger" type="Node2D"]
+[node name="MiniGameFrogger" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ywige")
+stretch_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("1_kxaxn")]
-position = Vector2(567, 727)
+position = Vector2(166, 168)
 
 [node name="Spawner" parent="." instance=ExtResource("3_kxaxn")]
-position = Vector2(-29, 30)
+position = Vector2(-17, 42)
 rotation = 1.5707964
 
 [node name="Spawner2" parent="." instance=ExtResource("3_kxaxn")]
-position = Vector2(-28, 88)
+position = Vector2(-17, 93)
 rotation = 1.5707964
 
 [node name="Spawner3" parent="." instance=ExtResource("3_kxaxn")]
-position = Vector2(339, 58)
+position = Vector2(331, 67)
 rotation = -1.5707964
 
 [node name="Finish" parent="." instance=ExtResource("3_ywige")]
-position = Vector2(160, 0)
+position = Vector2(160, 14)
