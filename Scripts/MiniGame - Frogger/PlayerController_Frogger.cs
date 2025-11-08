@@ -15,7 +15,7 @@ public partial class PlayerController_Frogger : Area2D
     // Game Score Calculation
     public int CalculateScore()
     {
-        return (int)Math.Floor(GameController.Instance.StopGameTimer());
+        return (int)Math.Floor(GameController.Instance.GetGameTimer());
     }
 
     // Collision Event Handler
@@ -32,6 +32,8 @@ public partial class PlayerController_Frogger : Area2D
         {
             GameController.Instance.FailGame(CalculateScore());
         }
+
+        GameController.Instance.StopGameTimer();
     }
     // Timeout Event Handler
     public void Timeout()

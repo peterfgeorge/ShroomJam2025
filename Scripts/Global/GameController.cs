@@ -47,6 +47,7 @@ public partial class GameController : Node {
     public void PassGame(int minigame_score) {
         Game_Score += minigame_score;
 
+        StopGameTimer();
         LoadNextMiniGame();
     }
 
@@ -69,7 +70,6 @@ public partial class GameController : Node {
         GD.Print($"LoadNextMiniGame - Next Scene Index = {SceneIndex}");
 
         // Load Scene
-        StopGameTimer();
         StartGameTimer();
         CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
     }
@@ -115,11 +115,11 @@ public partial class GameController : Node {
 
         return Game_Timer.TimeLeft;
     }
-    public double StopGameTimer() {
-        if (Game_Timer == null)
-            return 0;
-
-        Game_Timer.Timeout -= GameTimerTimeoutHandler;
-        return Game_Timer.TimeLeft;
+    public void StopGameTimer() {
+        if (Game_Timer != null)
+        {
+            Game_Timer.Timeout -= GameTimerTimeoutHandler;
+            Game_Timer = null;
+        }
     }
 }
