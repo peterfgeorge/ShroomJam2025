@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://druweqcx830bw" path="res://Art/title.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "scoreLabel", "logo", "credits", "title")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "scoreLabel", "logo", "credits", "title", "buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ scoreLabel = NodePath("Title/HBoxContainer/HighScore")
 logo = NodePath("LogoIntro")
 credits = NodePath("Credits")
 title = NodePath("Title")
+buttons = NodePath("Title/Buttons")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -146,5 +147,5 @@ layout_mode = 2
 stream = ExtResource("3_8saeu")
 
 [connection signal="pressed" from="Title/Buttons/Button" to="." method="Menu_StartGame"]
-[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_StartGame"]
 [connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_QuitGame"]
+[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_StartGame"]
