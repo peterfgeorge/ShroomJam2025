@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tt5f1")
 player = NodePath("AudioStreamPlayer")
-scoreLabel = NodePath("Title/HighScore")
+scoreLabel = NodePath("Title/HBoxContainer/HighScore")
 logo = NodePath("LogoIntro")
 credits = NodePath("Credits")
 title = NodePath("Title")
@@ -129,16 +129,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Quit"
 
-[node name="HighScore" type="Label" parent="Title"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Title"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 148.0
-offset_right = 47.0
-offset_bottom = 171.0
+offset_top = 143.0
+offset_right = 92.0
+offset_bottom = 183.0
+
+[node name="HighScoreLabel" type="Label" parent="Title/HBoxContainer"]
+layout_mode = 2
+text = "High Score:"
+
+[node name="HighScore" type="Label" parent="Title/HBoxContainer"]
+layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8saeu")
 
 [connection signal="pressed" from="Title/Buttons/Button" to="." method="Menu_StartGame"]
-[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_QuitGame"]
 [connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_QuitGame"]
