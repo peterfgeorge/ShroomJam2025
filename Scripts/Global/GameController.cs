@@ -85,8 +85,10 @@ public partial class GameController : Node
     }
     public double StopGameTimer()
     {
-        double time = Game_Timer.TimeLeft;
+        if (Game_Timer == null)
+            return 0;
+
         Game_Timer.Timeout -= GameTimerTimeoutHandler;
-        return time;
+        return Game_Timer.TimeLeft;
     }
 }
