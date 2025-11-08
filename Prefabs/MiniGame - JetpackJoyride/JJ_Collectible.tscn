@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4spkn2ketaiv"]
+
+[ext_resource type="Script" uid="uid://bu1qpqg13hfb7" path="res://Scripts/JetpackJoyride/JJCollectible.cs" id="1_ypoi3"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_pqueg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxaxn"]
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("1_ypoi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kxaxn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_pqueg")

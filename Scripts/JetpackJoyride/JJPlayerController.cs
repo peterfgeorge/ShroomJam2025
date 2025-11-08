@@ -7,17 +7,21 @@ public partial class JJPlayerController : CharacterBody2D {
 
     public static int currentScore = 0;
 
+    public bool enabled = false;
+
     public override void _Ready() {
         GameController.Instance.GameTimerTimeout += Timeout;
     }
 
     public override void _PhysicsProcess(double delta) {
-        float input = Input.GetAxis("Down", "Up");
+        if (enabled) {
+            float input = Input.GetAxis("Down", "Up");
 
-        Velocity += Vector2.Up * thrust * input * (float)delta;
-        HandleGravity(delta);
+            Velocity += Vector2.Up * thrust * input * (float)delta;
+            HandleGravity(delta);
 
-        MoveAndSlide();
+            MoveAndSlide();
+        }
     }
 
 
@@ -26,6 +30,7 @@ public partial class JJPlayerController : CharacterBody2D {
     }
 
     private void Timeout() {
+        GD.Print("timeout");
         GameController.Instance.PassGame(currentScore);
     }
 }
