@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnir1kjtup5tv"]
+[gd_scene load_steps=8 format=3 uid="uid://dnir1kjtup5tv"]
 
 [ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
 [ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_is1c3"]
+[ext_resource type="Script" uid="uid://dd1rew1r018c8" path="res://Scripts/JetpackJoyride/DeathArea.cs" id="3_fdkdc"]
 [ext_resource type="PackedScene" uid="uid://nlkb0hfogq8q" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_ObstacleSpawner.tscn" id="3_nyuii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
 size = Vector2(25, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyuii"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yovv4"]
+size = Vector2(320, 20)
 
 [node name="JetpackJoyride" type="Node2D"]
 
@@ -22,6 +29,15 @@ position = Vector2(0.5000038, 1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_is1c3")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DeathArea" type="Area2D" parent="."]
+script = ExtResource("3_fdkdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(160, -8)
+shape = SubResource("RectangleShape2D_nyuii")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(160, 190)
+shape = SubResource("RectangleShape2D_yovv4")
 
 [node name="Spawner" parent="." instance=ExtResource("3_nyuii")]

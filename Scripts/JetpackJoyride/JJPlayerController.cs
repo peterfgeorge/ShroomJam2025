@@ -5,6 +5,12 @@ public partial class JJPlayerController : CharacterBody2D {
     [Export] private float thrust = 800f;
     [Export] private float gravity = 400f;
 
+    public static int currentScore = 0;
+
+    public override void _Ready() {
+        GameController.Instance.GameTimerTimeout += Timeout;
+    }
+
     public override void _PhysicsProcess(double delta) {
         float input = Input.GetAxis("Down", "Up");
 
@@ -17,5 +23,9 @@ public partial class JJPlayerController : CharacterBody2D {
 
     private void HandleGravity(double delta) {
         Velocity += new Vector2(0f, gravity * (float)delta);
+    }
+
+    private void Timeout() {
+        GameController.Instance.PassGame(currentScore);
     }
 }
