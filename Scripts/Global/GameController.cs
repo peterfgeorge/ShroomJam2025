@@ -52,7 +52,9 @@ public partial class GameController : Node {
 
     // Game State - Failure. End current run
     public void FailGame(int minigame_score) {
-        // TODO: Collect Score, show to player / leaderboard
+        Game_Score += minigame_score;
+        SaveData.Instance.SetHighValue("TOTAL_SCORE", Game_Score);
+
         GD.Print("GameState - FailGame");
 
         CallDeferred("GameOverScene");

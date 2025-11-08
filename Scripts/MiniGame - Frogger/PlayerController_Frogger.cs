@@ -32,7 +32,7 @@ public partial class PlayerController_Frogger : Area2D
         // Fail Game
         else
         {
-            GameController.Instance.FailGame(CalculateScore());
+            GameController.Instance.FailGame(0);
         }
 
         GameController.Instance.StopGameTimer();

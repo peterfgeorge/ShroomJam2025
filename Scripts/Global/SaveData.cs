@@ -30,8 +30,25 @@ public partial class SaveData : Node
     public void SetValue(String name, int value)
     {
         data[name] = value;
+        Save();
     }
 
+    public void SetHighValue(String name, int value)
+    {
+        if (value > data[name])
+            data[name] = value;
+        Save();
+    }
+
+    public void ResetScores()
+    {
+        foreach (String name in Enum.GetNames(typeof(SaveDataID)))
+        {
+            data[name] = 0;
+        }
+        Save();
+    }
+    
     public void Load()
     {
         // Check for Save File
