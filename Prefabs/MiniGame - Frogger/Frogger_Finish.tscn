@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dso70nvwh6184"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxaxn"]
+size = Vector2(320, 10)
+
+[node name="Finish" type="Area2D" groups=["Frogger_VictoryCollision"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kxaxn")

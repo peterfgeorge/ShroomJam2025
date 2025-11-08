@@ -10,5 +10,11 @@ offset_right = 56.0
 offset_bottom = 31.0
 text = "START"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 138.0
+offset_top = 17.0
+offset_right = 178.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="Menu_StartGame"]
