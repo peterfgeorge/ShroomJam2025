@@ -2,15 +2,15 @@ using Godot;
 using System;
 using Godot.Collections;
 
-public partial class GameController : Node
-{
+public partial class GameController : Node {
     public static GameController Instance { get; private set; }
 
     [Signal] public delegate void GameTimerTimeoutEventHandler();
 
     // Scene References
     public static readonly Array<String> MiniGamePaths = [
-        "Scenes/MiniGame-Frogger.tscn"
+        "Scenes/MiniGame-Frogger.tscn",
+        "Scenes/JetpackJoyride.tscn",
     ];
 
     // Game State
@@ -19,15 +19,13 @@ public partial class GameController : Node
     public float Game_TimeLimit = 20;
     public SceneTreeTimer Game_Timer;
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         // Initialize Singleton
         Instance = this;
     }
 
     // Game State - Init. Begin new run
-    public void StartGame()
-    {
+    public void StartGame() {
         // Reset Game State
         SceneIndex = 0;
         Game_Score = 0;
@@ -40,51 +38,43 @@ public partial class GameController : Node
     }
 
     // Game State - Progression
-    public void PassGame(int minigame_score)
-    {
+    public void PassGame(int minigame_score) {
         Game_Score += minigame_score;
 
         LoadNextMiniGame();
     }
 
     // Game State - Failure. End current run
-    public void FailGame(int minigame_score)
-    {
+    public void FailGame(int minigame_score) {
         // TODO: Collect Score, show to player / leaderboard
 
         CallDeferred("ChangeScene", "Scenes/MainMenu.tscn");
     }
 
-    public void LoadNextMiniGame()
-    {
+    public void LoadNextMiniGame() {
         // Next Round
-        if (++SceneIndex >= MiniGamePaths.Count)
-        {
+        if (++SceneIndex >= MiniGamePaths.Count) {
             SceneIndex = 0;
 
             // TODO: Update Game Timer
         }
-        
+
         // Load Scene
         StartGameTimer();
         CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
     }
-    void ChangeScene(String path)
-    {
+    void ChangeScene(String path) {
         GetTree().ChangeSceneToFile(path);
     }
 
-    public void StartGameTimer()
-    {
+    public void StartGameTimer() {
         Game_Timer = GetTree().CreateTimer(Game_TimeLimit);
         Game_Timer.Timeout += GameTimerTimeoutHandler;
     }
-    void GameTimerTimeoutHandler()
-    {
+    void GameTimerTimeoutHandler() {
         EmitSignal(SignalName.GameTimerTimeout);
     }
-    public double StopGameTimer()
-    {
+    public double StopGameTimer() {
         double time = Game_Timer.TimeLeft;
         Game_Timer.Timeout -= GameTimerTimeoutHandler;
         return time;
