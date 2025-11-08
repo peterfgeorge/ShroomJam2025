@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=6 format=3 uid="uid://bps4wq720swg4"]
 
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
 [ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
 [ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
+[ext_resource type="AudioStream" uid="uid://cl18y0wu1d8nt" path="res://Audio/Music/steamboat.mp3" id="5_lkfas"]
 
 [node name="MiniGameFrogger" type="Control"]
 layout_mode = 3
@@ -40,3 +41,8 @@ rotation = -1.5707964
 
 [node name="Finish" parent="." instance=ExtResource("3_ywige")]
 position = Vector2(160, 14)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lkfas")
+autoplay = true
+parameters/looping = true
