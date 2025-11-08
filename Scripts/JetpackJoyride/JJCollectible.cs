@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class JJCollectible : Area2D {
-    [Export] int value = 50;
+    [Export] int value = 1;
     [Export] int speed = 200;
 
     public override void _Ready() {

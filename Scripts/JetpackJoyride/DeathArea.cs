@@ -8,6 +8,6 @@ public partial class DeathArea : Area2D {
 
     private void OnCharacterCollision(Node2D body) {
         BodyEntered -= OnCharacterCollision;
-        GameController.Instance.FailGame(JJPlayerController.currentScore);
+        GameController.Instance.FailGame(JJPlayerController.currentScore + (int)(GameController.Instance.Game_TimeLimit - GameController.Instance.GetGameTimer()));
     }
 }
