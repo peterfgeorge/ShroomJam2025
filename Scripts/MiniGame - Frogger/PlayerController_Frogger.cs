@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerController_Frogger : Area2D
 {
-    [Export] int speed  {get; set;} = 200;
+    [Export] int speed  {get; set;} = 20;
     [Export] float movement_delay {get; set;} = 0.25f;
     [Export] bool buffer {get; set;} = true;
     [Export] bool ready {get; set;} = true;
@@ -12,10 +12,34 @@ public partial class PlayerController_Frogger : Area2D
     
     Vector2 inputDirection;
 
+    // Game Score Calculation
+    public int CalculateScore()
+    {
+        return (int)Math.Floor(GameController.Instance.StopGameTimer());
+    }
+
     // Collision Event Handler
     public void Collision(Area2D s)
     {
-        GD.Print("Collision");
+        GD.Print(s);
+        
+        // Win Game
+        if (((Node) s).IsInGroup("Frogger_VictoryCollision"))
+        {
+             GameController.Instance.PassGame(CalculateScore());
+        }
+
+        // Fail Game
+        else
+        {
+            GameController.Instance.FailGame(CalculateScore());
+        }
+    }
+    // Timeout Event Handler
+    public void Timeout()
+    {
+        GD.Print("TIMEOUT");
+        GameController.Instance.FailGame(0);
     }
 
     public override void _Ready()
@@ -27,6 +51,9 @@ public partial class PlayerController_Frogger : Area2D
 
         // Bind Collision Event Handler
         AreaEntered += Collision;
+
+        // Bind Timeout Event Handler
+        GameController.Instance.GameTimerTimeout += Timeout;
     }
 
     // Async Timer to restore input buffer and movement flags

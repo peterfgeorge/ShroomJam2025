@@ -4,7 +4,7 @@ using System;
 public partial class Frogger_Spawner : Node2D
 {
     [Export] public PackedScene ObstaclePrefab { get; set; }
-    [Export] float SpawnDelay {get; set;} = 2f;
+    [Export] float SpawnDelay {get; set;} = 1f;
 
     Node2D[] ObstaclePool;
     int poolIndex = 0;

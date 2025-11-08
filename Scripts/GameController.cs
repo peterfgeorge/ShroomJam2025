@@ -1,0 +1,94 @@
+using Godot;
+using System;
+using Godot.Collections;
+
+public partial class GameController : Node
+{
+    public static GameController Instance { get; private set; }
+
+    [Signal] public delegate void GameTimerTimeoutEventHandler();
+
+    // Scene References
+    public static readonly Array<String> MiniGamePaths = [
+        "Scenes/MiniGame-Frogger.tscn"
+    ];
+
+    // Game State
+    public int SceneIndex = 0;
+    public int Game_Score = 0;
+    public float Game_TimeLimit = 20;
+    public SceneTreeTimer Game_Timer;
+
+    public override void _Ready()
+    {
+        // Initialize Singleton
+        Instance = this;
+    }
+
+    // Game State - Init. Begin new run
+    public void StartGame()
+    {
+        // Reset Game State
+        SceneIndex = 0;
+        Game_Score = 0;
+
+        // Create Game Permutation
+        MiniGamePaths.Shuffle();
+
+        // Load First Game
+        LoadNextMiniGame();
+    }
+
+    // Game State - Progression
+    public void PassGame(int minigame_score)
+    {
+        Game_Score += minigame_score;
+
+        LoadNextMiniGame();
+    }
+
+    // Game State - Failure. End current run
+    public void FailGame(int minigame_score)
+    {
+        // TODO: Collect Score, show to player / leaderboard
+
+        CallDeferred("ChangeScene", "Scenes/MainMenu.tscn");
+    }
+
+    public void LoadNextMiniGame()
+    {
+        // Next Round
+        if (++SceneIndex >= MiniGamePaths.Count)
+        {
+            SceneIndex = 0;
+
+            // TODO: Update Game Timer
+        }
+        
+        // Load Scene
+        StartGameTimer();
+        CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
+    }
+    void ChangeScene(String path)
+    {
+        GetTree().ChangeSceneToFile(path);
+    }
+
+    public void StartGameTimer()
+    {
+        GD.Print("START");
+        Game_Timer = GetTree().CreateTimer(Game_TimeLimit);
+        Game_Timer.Timeout += GameTimerTimeoutHandler;        
+    }
+    void GameTimerTimeoutHandler()
+    {
+        EmitSignal(SignalName.GameTimerTimeout);
+    }
+    public double StopGameTimer()
+    {
+        GD.Print("STOP");
+        double time = Game_Timer.TimeLeft;
+        Game_Timer = null;
+        return time;
+    }
+}
