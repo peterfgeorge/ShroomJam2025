@@ -15,10 +15,15 @@ run/main_scene="uid://bndexae5c8h5q"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 SaveData="*res://Scripts/Global/SaveData.cs"
 GameController="*res://Scripts/Global/GameController.cs"
+FadeController="*res://Scripts/FadeController.cs"
 
 [display]
 
@@ -29,6 +34,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="ShroomJam2025"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/crt/plugin.cfg")
 
 [input]
 

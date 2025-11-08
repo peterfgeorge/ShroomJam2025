@@ -18,6 +18,7 @@ public partial class GameController : Node {
     public int Game_Score = 0;
     public float Game_TimeLimit = 20;
     public SceneTreeTimer Game_Timer;
+    public bool gameStarted = false;
 
     public override void _Ready() {
         // Initialize Singleton
@@ -26,6 +27,7 @@ public partial class GameController : Node {
 
     // Game State - Init. Begin new run
     public void StartGame() {
+        gameStarted = true;
         // Reset Game State
         SceneIndex = 0;
         Game_Score = 0;
@@ -64,7 +66,9 @@ public partial class GameController : Node {
         StartGameTimer();
         CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
     }
-    void ChangeScene(String path) {
+    async void ChangeScene(String path) {
+        GetTree().ChangeSceneToFile("res://Scenes/noise.tscn");
+        await ToSignal(GetTree().CreateTimer(1f), "timeout");
         GetTree().ChangeSceneToFile(path);
     }
 
@@ -75,8 +79,7 @@ public partial class GameController : Node {
     void GameTimerTimeoutHandler() {
         EmitSignal(SignalName.GameTimerTimeout);
     }
-    public double StopGameTimer()
-    {
+    public double StopGameTimer() {
         if (Game_Timer == null)
             return 0;
 
