@@ -21,6 +21,8 @@ public partial class PlayerController_Frogger : Area2D
     // Collision Event Handler
     public void Collision(Area2D s)
     {
+        GameController.Instance.GameTimerTimeout -= Timeout;
+
         // Win Game
         if (((Node) s).IsInGroup("Frogger_VictoryCollision"))
         {
@@ -38,6 +40,9 @@ public partial class PlayerController_Frogger : Area2D
     // Timeout Event Handler
     public void Timeout()
     {
+        GameController.Instance.GameTimerTimeout -= Timeout;
+        
+        GD.Print("Frogger Timeout");
         GameController.Instance.FailGame(0);
     }
 

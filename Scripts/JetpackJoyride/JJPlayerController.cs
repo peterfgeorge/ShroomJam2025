@@ -30,7 +30,6 @@ public partial class JJPlayerController : CharacterBody2D {
     }
 
     private void Timeout() {
-        GD.Print("timeout");
         GameController.Instance.PassGame(currentScore);
     }
 }

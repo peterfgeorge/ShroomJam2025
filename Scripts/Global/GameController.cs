@@ -39,43 +39,46 @@ public partial class GameController : Node {
         MiniGamePaths.Shuffle();
 
         // Load First Game
-        StartGameTimer();
-        CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
+        LoadNextMiniGame();
     }
 
     // Game State - Progression
     public void PassGame(int minigame_score) {
+        GD.Print("GameState - PassGame");
         Game_Score += minigame_score;
 
-        StopGameTimer();
         LoadNextMiniGame();
     }
 
     // Game State - Failure. End current run
     public void FailGame(int minigame_score) {
         // TODO: Collect Score, show to player / leaderboard
+        GD.Print("GameState - FailGame");
 
-        StopGameTimer();
-        CallDeferred("ChangeScene", "Scenes/MainMenu.tscn");
+        CallDeferred("GameOverScene");
     }
-
+    
     public void LoadNextMiniGame() {
         // Next Round
-        if (++SceneIndex >= MiniGamePaths.Count) {
+        if (SceneIndex >= MiniGamePaths.Count) {
             SceneIndex = 0;
 
             // TODO: Update Game Timer
         }
 
-        GD.Print($"LoadNextMiniGame - Next Scene Index = {SceneIndex}");
-
-        // Load Scene
-        StartGameTimer();
-        CallDeferred("ChangeScene", MiniGamePaths[SceneIndex]);
-    }
-    async void ChangeScene(String path) {
+        // Remove Timer
+        StopGameTimer();
         RemoveTimerOverlay();
 
+        GD.Print($"LoadNextMiniGame - Next Scene: {MiniGamePaths[SceneIndex]}");
+
+        // Load Scene
+        CallDeferred("ChangeGameScene", MiniGamePaths[SceneIndex]);
+
+        SceneIndex++;
+    }
+    async void ChangeGameScene(String path) {
+        GD.Print("Change Scene");
         // Transition Scene
         GetTree().ChangeSceneToFile("res://Scenes/noise.tscn");
         await ToSignal(GetTree().CreateTimer(1f), "timeout");
@@ -83,8 +86,22 @@ public partial class GameController : Node {
         // Set Scene
         GetTree().ChangeSceneToFile(path);
 
-        // Over Game Timer
+        // Game Timer
+        StartGameTimer();
         InjectTimerOverlay();
+    }
+    async void GameOverScene()
+    {
+        // Remove Timer
+        StopGameTimer();
+        RemoveTimerOverlay();
+
+        // Transition Scene
+        GetTree().ChangeSceneToFile("res://Scenes/noise.tscn");
+        await ToSignal(GetTree().CreateTimer(1f), "timeout");
+
+        // Set Scene
+        GetTree().ChangeSceneToFile("Scenes/MainMenu.tscn");
     }
 
     void RemoveTimerOverlay()
@@ -102,10 +119,12 @@ public partial class GameController : Node {
     }
 
     public void StartGameTimer() {
+        GD.Print("GameTimer - Start");
         Game_Timer = GetTree().CreateTimer(Game_TimeLimit);
         Game_Timer.Timeout += GameTimerTimeoutHandler;
     }
     void GameTimerTimeoutHandler() {
+        GD.Print("GameTimer - TIMEOUT");
         EmitSignal(SignalName.GameTimerTimeout);
     }
     public double GetGameTimer()
@@ -116,6 +135,7 @@ public partial class GameController : Node {
         return Game_Timer.TimeLeft;
     }
     public void StopGameTimer() {
+        GD.Print($"GameTimer - Stop - {Game_Timer}");
         if (Game_Timer != null)
         {
             Game_Timer.Timeout -= GameTimerTimeoutHandler;

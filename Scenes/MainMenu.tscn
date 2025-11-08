@@ -146,5 +146,5 @@ layout_mode = 2
 stream = ExtResource("3_8saeu")
 
 [connection signal="pressed" from="Title/Buttons/Button" to="." method="Menu_StartGame"]
-[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_StartGame"]
 [connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_QuitGame"]
+[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_StartGame"]
