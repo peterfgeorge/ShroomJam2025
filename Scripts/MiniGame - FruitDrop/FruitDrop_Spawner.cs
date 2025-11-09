@@ -6,8 +6,8 @@ public partial class FruitDrop_Spawner : Node2D
     [Export] public PackedScene FruitPrefab;
     [Export] public PackedScene BombPrefab;
     
-    [Export] float SpawnXScale = 300f;
-    [Export] float SpawnDelay = 0.35f;
+    [Export] float SpawnXScale = 250f;
+    [Export] float SpawnDelay = 0.2f;
     [Export] float SpawnBombChance = 0.3f;
     
     Area2D[] FruitPool;
@@ -15,6 +15,9 @@ public partial class FruitDrop_Spawner : Node2D
 
     public override void _Ready()
     {
+        // Update Config for Game Round
+        SpawnDelay -= GameController.Instance.GameRound * 0.02f;
+
         // Instantiate Pool for Spawning
         FruitPool = new Area2D[15];
         for (int i = 0; i < FruitPool.Length; i++)

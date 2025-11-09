@@ -5,13 +5,16 @@ public partial class PlayerController_FruitDrop : Area2D
 {
     [Export] float speed = 5;
 
-    [Export] int spawn_y_offset = 10;
-    [Export] int GameBoundary_L = 10;
-    [Export] int GameBoundary_R = 310;
+    [Export] int spawn_x_offset = 149;
+    [Export] int spawn_y_offset = 146;
 
-    [Export] int ScorePerCatch = 5;
+    [Export] int GameBoundary_L = 22;
+    [Export] int GameBoundary_R = 276;
+
+    [Export] float ScorePerCatch = 0.5f;
     [Export] int AllowedDrops = 2;
 
+    float PlayerOffset;
     int Catches = 0;
 
     // Game Score Calculation
@@ -21,7 +24,7 @@ public partial class PlayerController_FruitDrop : Area2D
         int score_time = (int)Mathf.Floor(GameController.Instance.Game_TimeLimit - GameController.Instance.GetGameTimer());
         
         // Catches score - number of catches
-        int score_catches = ScorePerCatch * Catches;
+        int score_catches = (int)Mathf.Floor(ScorePerCatch * Catches);
 
         return score_time + score_catches;
     }
@@ -86,9 +89,8 @@ public partial class PlayerController_FruitDrop : Area2D
     public override void _Ready()
     {
         // Set Player Position to Bottom Center
-        Vector2 screen = GetViewport().GetVisibleRect().Size;
-        float offset = ((CircleShape2D)GetChild<CollisionShape2D>(0).Shape).Radius;
-        Position = new Vector2(screen.X / 2, screen.Y - offset - spawn_y_offset);
+        PlayerOffset = ((CircleShape2D)GetChild<CollisionShape2D>(0).Shape).Radius;
+        Position = new Vector2(spawn_x_offset, spawn_y_offset);
 
         // Bind Collision Event Handler
         AreaEntered += Collision;
@@ -106,7 +108,7 @@ public partial class PlayerController_FruitDrop : Area2D
         Position += Vector2.Right * input_vector * speed;
 
         Position = new Vector2(
-            Mathf.Clamp(Position.X, GameBoundary_L, GameBoundary_R),
+            Mathf.Clamp(Position.X, GameBoundary_L + PlayerOffset, GameBoundary_R - PlayerOffset),
             Position.Y
         );
     }

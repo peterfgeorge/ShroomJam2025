@@ -10,8 +10,11 @@ public partial class FruitDrop_Fruit : Area2D
 
     public override void _Ready()
     {
-        // TODO: Select random sprite, if multiple options
+        // Update Config for Game Round
+        Speed_Vertical += GameController.Instance.GameRound * 0.1f;
+        Speed_Rotation += GameController.Instance.GameRound * 0.025f;
 
+        // Set Constant Rotation Speed
         Speed_Rotation_Offset = (0.5f - GD.Randf()) * Speed_Rotation;
     }
     public override void _PhysicsProcess(double delta)

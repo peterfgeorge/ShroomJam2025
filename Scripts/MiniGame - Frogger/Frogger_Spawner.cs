@@ -4,7 +4,7 @@ using System;
 public partial class Frogger_Spawner : Node2D
 {
     [Export] public PackedScene ObstaclePrefab;
-    [Export] float SpawnDelay = 0.8f;
+    [Export] float SpawnDelay = 1f;
 
     public bool TargetDirection_Right = true;
 
