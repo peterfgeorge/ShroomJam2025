@@ -4,7 +4,7 @@ using System;
 public partial class Frogger_Spawner : Node2D
 {
     [Export] public PackedScene ObstaclePrefab;
-    [Export] float SpawnDelay = 0.6f;
+    [Export] float SpawnDelay = 0.8f;
 
     public bool TargetDirection_Right = true;
 
@@ -14,7 +14,7 @@ public partial class Frogger_Spawner : Node2D
     public override void _Ready()
     {
         // Adjust Config for Game Round
-        SpawnDelay -= GameController.Instance.GameRound * 0.02f;
+        SpawnDelay -= GameController.Instance.GameRound * 0.05f;
 
         // Instantiate Pool for Obstacle Spawning
         ObstaclePool = new Node2D[5];
@@ -34,9 +34,6 @@ public partial class Frogger_Spawner : Node2D
 
     private async void SpawnLoop()
     {
-        // Wait for Random Offset
-        await ToSignal(GetTree().CreateTimer(GD.Randf() * SpawnDelay), "timeout");
-
         // Grab next object in object pool
         Node2D target = ObstaclePool[poolIndex++];
         if (poolIndex >= ObstaclePool.Length)
@@ -49,7 +46,7 @@ public partial class Frogger_Spawner : Node2D
         ((Area2D) target).Monitorable = true;
 
         // Wait for spawn delay
-        await ToSignal(GetTree().CreateTimer(SpawnDelay), "timeout");
+        await ToSignal(GetTree().CreateTimer((1 + GD.Randf()) * SpawnDelay), "timeout");
 
         // Recurse
         SpawnLoop();
