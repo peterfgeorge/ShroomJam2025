@@ -42,7 +42,6 @@ public partial class PlayerController_Frogger : Area2D
     {
         GameController.Instance.GameTimerTimeout -= Timeout;
         
-        GD.Print("Frogger Timeout");
         GameController.Instance.FailGame(0);
     }
 

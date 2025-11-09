@@ -31,9 +31,7 @@ public partial class Frogger_SpawnerController : Node2D
 
         // Randomize Lane Layout
         Array<bool> Spawn = new Array<bool> {true, true, true, false};
-        GD.Print(Spawn);
         Spawn.Shuffle();
-        GD.Print(Spawn);
 
         // Instantiate Lanes
         for (int i = 0; i < Spawn.Count; i++)
@@ -42,7 +40,6 @@ public partial class Frogger_SpawnerController : Node2D
             {
                 // Coin flip for spawner side
                 bool LeftSpawner = GD.Randf() < 0.5;
-                GD.Print(LeftSpawner);
 
                 // Instantiate Spawner
                 Node2D Spawner = FroggerSpawnerPrefab.Instantiate<Node2D>();

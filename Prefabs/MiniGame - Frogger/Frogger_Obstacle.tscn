@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4uibp443006g"]
+[gd_scene load_steps=6 format=3 uid="uid://b4uibp443006g"]
 
 [ext_resource type="Script" uid="uid://buwlcav13gwil" path="res://Scripts/MiniGame - Frogger/Frogger_Obstacle.cs" id="1_mg4ft"]
 [ext_resource type="Texture2D" uid="uid://1b5238evra2u" path="res://Art/Frogger/frogger_iceberg.png" id="2_8cclk"]
+[ext_resource type="Script" uid="uid://b6h1m3nsquknk" path="res://Scripts/Common/RandomizeSprite.cs" id="3_htwrg"]
+[ext_resource type="Texture2D" uid="uid://bkghsnyeicqws" path="res://Art/Frogger/frogger_buoy.png" id="4_b8itl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxaxn"]
 
@@ -13,3 +15,5 @@ shape = SubResource("CircleShape2D_kxaxn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8cclk")
+script = ExtResource("3_htwrg")
+Sprites = Array[Texture2D]([ExtResource("4_b8itl"), ExtResource("2_8cclk")])
