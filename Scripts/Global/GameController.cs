@@ -60,6 +60,7 @@ public partial class GameController : Node {
     public void FailGame(int minigame_score) {
         Game_Score += minigame_score;
         SaveData.Instance.SetHighValue("TOTAL_SCORE", Game_Score);
+        SaveData.Instance.SetValue("RECENT_SCORE", Game_Score);
 
         GD.Print("GameState - FailGame");
 

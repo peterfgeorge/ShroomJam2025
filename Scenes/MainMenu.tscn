@@ -5,9 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://b3jm4utpwdood" path="res://Audio/Music/CartoonIntro.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://druweqcx830bw" path="res://Art/title.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
-[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_xim88"]
+[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="6_xim88"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "scoreLabel", "logo", "credits", "title", "buttons")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "RecentScoreLabel", "HighScoreLabel", "logo", "credits", "title", "buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_tt5f1")
 player = NodePath("AudioStreamPlayer")
-scoreLabel = NodePath("MenuContainer/BottomPanel/HighScore/HighScore")
+RecentScoreLabel = NodePath("MenuContainer/BottomPanel/Scores/RecentScore/LastScore")
+HighScoreLabel = NodePath("MenuContainer/BottomPanel/Scores/HighScore/HighScore")
 logo = NodePath("LogoIntro")
 credits = NodePath("Credits")
 title = NodePath("MenuContainer")
@@ -150,16 +151,40 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="HighScore" type="HBoxContainer" parent="MenuContainer/BottomPanel"]
+[node name="Scores" type="Control" parent="MenuContainer/BottomPanel"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
+
+[node name="RecentScore" type="HBoxContainer" parent="MenuContainer/BottomPanel/Scores"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 0
+offset_top = -5.0
+offset_right = 71.0
+offset_bottom = 12.0
 mouse_filter = 2
 
-[node name="HighScoreLabel" type="Label" parent="MenuContainer/BottomPanel/HighScore"]
+[node name="HighScoreLabel" type="Label" parent="MenuContainer/BottomPanel/Scores/RecentScore"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Last Score:"
+
+[node name="LastScore" type="Label" parent="MenuContainer/BottomPanel/Scores/RecentScore"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="HighScore" type="HBoxContainer" parent="MenuContainer/BottomPanel/Scores"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 71.0
+offset_bottom = 27.0
+mouse_filter = 2
+
+[node name="HighScoreLabel" type="Label" parent="MenuContainer/BottomPanel/Scores/HighScore"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "High Score:"
 
-[node name="HighScore" type="Label" parent="MenuContainer/BottomPanel/HighScore"]
+[node name="HighScore" type="Label" parent="MenuContainer/BottomPanel/Scores/HighScore"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 
