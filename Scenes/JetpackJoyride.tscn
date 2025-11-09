@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5i1gymjrel6k"]
+
+[ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
+[ext_resource type="Script" uid="uid://bmx44ktecju8y" path="res://Scripts/JetpackJoyride/JJManager.cs" id="1_yovv4"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_is1c3"]
+[ext_resource type="Script" uid="uid://dd1rew1r018c8" path="res://Scripts/JetpackJoyride/DeathArea.cs" id="3_fdkdc"]
+[ext_resource type="PackedScene" uid="uid://nlkb0hfogq8q" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_ObstacleSpawner.tscn" id="3_nyuii"]
+[ext_resource type="PackedScene" uid="uid://c4spkn2ketaiv" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible.tscn" id="6_fyvph"]
+[ext_resource type="AudioStream" uid="uid://tncm2a504ot7" path="res://Audio/Music/superduck.mp3" id="7_nfie5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
+size = Vector2(25, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyuii"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yovv4"]
+size = Vector2(320, 20)
+
+[node name="JetpackJoyride" type="Node2D" node_paths=PackedStringArray("player", "spawner")]
+script = ExtResource("1_yovv4")
+player = NodePath("CharacterBody2D")
+spawner = NodePath("Spawner")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(30, 87)
+script = ExtResource("1_2opvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_is1c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0.5000038, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_is1c3")
+
+[node name="DeathArea" type="Area2D" parent="."]
+script = ExtResource("3_fdkdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(160, -8)
+shape = SubResource("RectangleShape2D_nyuii")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(160, 190)
+shape = SubResource("RectangleShape2D_yovv4")
+
+[node name="Spawner" parent="." instance=ExtResource("3_nyuii")]
+collectiblePrefab = ExtResource("6_fyvph")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nfie5")
+autoplay = true
+parameters/looping = true
