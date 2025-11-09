@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg71pmdgu5gc7"]
+
+[ext_resource type="Script" uid="uid://hlgbecapn65l" path="res://Scripts/MiniGame - FruitDrop/FruitDrop_Boundary.cs" id="1_mchtn"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="1_mmug8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2h2u"]
+size = Vector2(320, 4)
+
+[node name="MissCollider" type="Area2D" groups=["SceneBoundary"]]
+script = ExtResource("1_mchtn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n2h2u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.484375, 0.03125)
+texture = ExtResource("1_mmug8")

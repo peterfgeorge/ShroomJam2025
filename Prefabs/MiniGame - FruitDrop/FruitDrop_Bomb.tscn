@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fokd0tvkl66b"]
+
+[ext_resource type="Script" uid="uid://gcmdwnji1dr2" path="res://Scripts/MiniGame - FruitDrop/FruitDrop_Fruit.cs" id="1_v24dr"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_gf57q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2h2u"]
+
+[node name="Fruit" type="Area2D" groups=["FruitDrop_Bomb"]]
+script = ExtResource("1_v24dr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n2h2u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.20511743, 0.20511743, 0.20511743, 1)
+scale = Vector2(0.17986897, 0.17986897)
+texture = ExtResource("2_gf57q")

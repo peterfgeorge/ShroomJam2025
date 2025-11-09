@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://tmkd1s8vgg3r"]
+
+[ext_resource type="PackedScene" uid="uid://lry5g85j7npe" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Player.tscn" id="1_8167n"]
+[ext_resource type="PackedScene" uid="uid://b3nrmf75dkqdb" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Fruit.tscn" id="2_2kai3"]
+[ext_resource type="Script" uid="uid://ty2rmvkxvcwu" path="res://Scripts/MiniGame - FruitDrop/FruitDrop_Spawner.cs" id="2_rtvs4"]
+[ext_resource type="PackedScene" uid="uid://dg71pmdgu5gc7" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Boundary.tscn" id="3_2kai3"]
+[ext_resource type="PackedScene" uid="uid://fokd0tvkl66b" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Bomb.tscn" id="4_8ln04"]
+
+[node name="MiniGameFruitDrop" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8167n")]
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(160, -20)
+script = ExtResource("2_rtvs4")
+FruitPrefab = ExtResource("2_2kai3")
+BombPrefab = ExtResource("4_8ln04")
+
+[node name="MissCollider" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("3_2kai3")]
+position = Vector2(160, 180)
+Player = NodePath("../Player")

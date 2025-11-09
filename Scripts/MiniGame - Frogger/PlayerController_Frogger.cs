@@ -26,7 +26,7 @@ public partial class PlayerController_Frogger : Area2D
         // Win Game
         if (((Node) s).IsInGroup("Frogger_VictoryCollision"))
         {
-             GameController.Instance.PassGame(CalculateScore());
+            GameController.Instance.PassGame(CalculateScore());
         }
 
         // Fail Game

@@ -11,6 +11,8 @@ public partial class GameController : Node {
     public static readonly Array<String> MiniGamePaths = [
         "Scenes/MiniGame-Frogger.tscn",
         "Scenes/JetpackJoyride.tscn",
+        // "Scenes/MiniGame-WheresWaldo.tscn",
+        "Scenes/MiniGame-FruitDrop.tscn",
     ];
 
     // Timer overlay
