@@ -5,14 +5,14 @@ public partial class ObstacleSpawner : Node {
     [Export] public PackedScene obstaclePrefab;
     [Export] public PackedScene collectiblePrefab;
 
-    private const float SPAWN_DELAY_MIN = 0.5f;
-    private const float SPAWN_DELAY_MAX = 2f;
+    private const float SPAWN_DELAY_MIN = 0.2f;
+    private const float SPAWN_DELAY_MAX = 1f;
 
     private float obsSpawnDelay = 0f;
     private float collSpawnDelay = 0f;
     private float spawnTimer = 0f;
 
-    public bool enabled = false;
+    public bool enabled = true;
 
     RandomNumberGenerator rng = new RandomNumberGenerator();
 
@@ -59,6 +59,6 @@ public partial class ObstacleSpawner : Node {
     }
 
     private void ResetCollDelay() {
-        collSpawnDelay = rng.RandfRange(SPAWN_DELAY_MIN, SPAWN_DELAY_MAX);
+        collSpawnDelay = rng.RandfRange(SPAWN_DELAY_MIN * 4f, SPAWN_DELAY_MAX * 4f);
     }
 }
