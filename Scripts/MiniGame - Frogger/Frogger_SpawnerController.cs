@@ -6,10 +6,10 @@ public partial class Frogger_SpawnerController : Node2D
 {
     [Export] public int ScreenWidth = 320;
     [Export] public int ScreenHeight = 180;
-    [Export] public int MarginTop = 12;
-    [Export] public int MarginBottom = 12;
-    [Export] public int MarginLeft = 10;
-    [Export] public int MarginRight = 30;
+    [Export] public int MarginTop = 20;
+    [Export] public int MarginBottom = 20;
+    [Export] public int MarginLeft = 20;
+    [Export] public int MarginRight = 42;
 
     public int LaneHeight;
 
@@ -36,7 +36,7 @@ public partial class Frogger_SpawnerController : Node2D
         // Instantiate Lanes
         for (int i = 0; i < Spawn.Count; i++)
         {
-            if (Spawn[i])
+            if (Spawn[i] || GameController.Instance.GameRound > 2)
             {
                 // Coin flip for spawner side
                 bool LeftSpawner = GD.Randf() < 0.5;

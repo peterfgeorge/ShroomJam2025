@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=8 format=3 uid="uid://bps4wq720swg4"]
 
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
 [ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://besw1iduo48ya" path="res://Scripts/MiniGame - Frogger/Frogger_SpawnerController.cs" id="3_ro1pm"]
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
 [ext_resource type="AudioStream" uid="uid://cl18y0wu1d8nt" path="res://Audio/Music/steamboat.mp3" id="5_lkfas"]
+[ext_resource type="Texture2D" uid="uid://bdt1rog35ojvc" path="res://Art/CRTTV.png" id="7_o6ym6"]
 
 [node name="MiniGameFrogger" type="Control"]
 layout_mode = 3
@@ -34,9 +35,13 @@ position = Vector2(166, 168)
 LaneController = NodePath("../SpawnController")
 
 [node name="Finish" parent="." instance=ExtResource("3_ywige")]
-position = Vector2(160, 14)
+position = Vector2(160, 20)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lkfas")
 autoplay = true
 parameters/looping = true
+
+[node name="Crttv" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("7_o6ym6")

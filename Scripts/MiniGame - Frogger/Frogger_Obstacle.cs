@@ -7,6 +7,12 @@ public partial class Frogger_Obstacle : Area2D
 
     public bool TargetDirection_Right = true;
 
+    public override void _Ready()
+    {
+        // Adjust Config for Game Round
+        if (GameController.Instance.GameRound > 1)
+            speed++;
+    }
     public override void _PhysicsProcess(double delta)
     {
         // Fixed Movement Translation
