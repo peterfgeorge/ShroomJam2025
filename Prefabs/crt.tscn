@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddca041d5oog6"]
+[gd_scene load_steps=3 format=3 uid="uid://ddca041d5oog6"]
 
+[ext_resource type="Texture2D" uid="uid://bdt1rog35ojvc" path="res://Art/CRTTV.png" id="1_avc0u"]
 [ext_resource type="Script" uid="uid://bghaddibpt6f1" path="res://addons/crt/crt.gd" id="1_hhjv6"]
 
 [node name="CRT" type="CanvasLayer"]
+
+[node name="CRT" type="CanvasLayer" parent="."]
 layer = 0
 script = ExtResource("1_hhjv6")
 scan_line_amount = 0.5
@@ -10,3 +13,13 @@ warp_amount = 0.2
 roll_line_amount = 0.05
 roll_speed = 0.5
 metadata/_custom_type_script = "uid://bghaddibpt6f1"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_avc0u")
+metadata/_edit_use_anchors_ = true

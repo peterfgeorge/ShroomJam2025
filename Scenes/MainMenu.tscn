@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bndexae5c8h5q"]
+[gd_scene load_steps=7 format=3 uid="uid://bndexae5c8h5q"]
 
 [ext_resource type="Script" uid="uid://dl83vioeultkk" path="res://Scripts/MainMenu.cs" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://dik6yovol3ujc" path="res://Art/titleBackground.png" id="2_ghw46"]
 [ext_resource type="AudioStream" uid="uid://b3jm4utpwdood" path="res://Audio/Music/CartoonIntro.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://druweqcx830bw" path="res://Art/title.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
-[ext_resource type="Texture2D" uid="uid://bdt1rog35ojvc" path="res://Art/CRTTV.png" id="6_8um5k"]
 [ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_xim88"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "scoreLabel", "logo", "credits", "title", "buttons")]
@@ -127,7 +126,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 38.0
+offset_left = 20.0
 offset_top = 20.0
 offset_right = -42.0
 offset_bottom = -20.0
@@ -137,7 +136,7 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Title" type="TextureRect" parent="MenuContainer"]
-custom_minimum_size = Vector2(240, 110)
+custom_minimum_size = Vector2(200, 110)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -189,20 +188,6 @@ text = "Quit"
 stream = ExtResource("3_8saeu")
 
 [node name="CRT" parent="." instance=ExtResource("6_xim88")]
-process_mode = 4
-process_priority = -1
-process_physics_priority = -1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("6_8um5k")
 
 [connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Button" to="." method="Menu_StartGame"]
 [connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_QuitGame"]

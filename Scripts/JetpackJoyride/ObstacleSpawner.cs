@@ -28,7 +28,7 @@ public partial class ObstacleSpawner : Node {
 
             if (spawnTimer >= obsSpawnDelay) {
                 float x = GetViewport().GetVisibleRect().Size.X;
-                float y = rng.RandfRange(0, GetViewport().GetVisibleRect().Size.Y);
+                float y = rng.RandfRange(30, 150);
                 Vector2 spawnPos = new Vector2(x, y);
 
                 Node2D obstacle = obstaclePrefab.Instantiate<Node2D>();
@@ -41,7 +41,7 @@ public partial class ObstacleSpawner : Node {
 
             if (spawnTimer >= collSpawnDelay) {
                 float x = GetViewport().GetVisibleRect().Size.X;
-                float y = rng.RandfRange(0, GetViewport().GetVisibleRect().Size.Y);
+                float y = rng.RandfRange(30, 150);
                 Vector2 spawnPos = new Vector2(x, y);
 
                 Node2D obstacle = collectiblePrefab.Instantiate<Node2D>();
