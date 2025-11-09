@@ -10,7 +10,7 @@ public partial class GameController : Node {
     // Scene References
     public static readonly Array<String> MiniGamePaths = [
         "Scenes/MiniGame-Frogger.tscn",
-        "Scenes/JetpackJoyride.tscn",
+        "Scenes/MiniGame-JetpackJoyride.tscn",
         // "Scenes/MiniGame-WheresWaldo.tscn",
         "Scenes/MiniGame-FruitDrop.tscn",
     ];
