@@ -6,7 +6,7 @@ public partial class PlayerController_Frogger : Area2D
     [Export] Frogger_SpawnerController LaneController;
 
     int speed = 20;
-    [Export] float movement_delay = 0.3f;
+    [Export] float movement_delay = 0.25f;
     bool buffer = true;
     bool ready = true;
     
@@ -49,7 +49,7 @@ public partial class PlayerController_Frogger : Area2D
     {
         // Set Player Position to Bottom Center
         Position = new Vector2(
-            (LaneController.ScreenWidth - LaneController.MarginLeft - LaneController.MarginRight) / 2,
+            (LaneController.ScreenWidth + LaneController.MarginLeft - LaneController.MarginRight) / 2,
             (LaneController.MarginTop + (5*LaneController.LaneHeight) + (LaneController.LaneHeight/2))
         );
         speed = LaneController.LaneHeight;

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cgog86tgsv1h6" path="res://Scripts/TimerOverlay.cs" id="1_74tci"]
 
 [node name="Node2D" type="Control"]
+z_index = 5
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_74tci")
