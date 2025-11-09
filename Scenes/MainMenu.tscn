@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bndexae5c8h5q"]
+[gd_scene load_steps=8 format=3 uid="uid://bndexae5c8h5q"]
 
 [ext_resource type="Script" uid="uid://dl83vioeultkk" path="res://Scripts/MainMenu.cs" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://dik6yovol3ujc" path="res://Art/titleBackground.png" id="2_ghw46"]
 [ext_resource type="AudioStream" uid="uid://b3jm4utpwdood" path="res://Audio/Music/CartoonIntro.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://druweqcx830bw" path="res://Art/title.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
+[ext_resource type="Texture2D" uid="uid://bdt1rog35ojvc" path="res://Art/CRTTV.png" id="6_8um5k"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_xim88"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "scoreLabel", "logo", "credits", "title", "buttons")]
 layout_mode = 3
@@ -13,21 +15,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_tt5f1")
 player = NodePath("AudioStreamPlayer")
-scoreLabel = NodePath("Title/HBoxContainer/HighScore")
+scoreLabel = NodePath("MenuContainer/BottomPanel/HighScore/HighScore")
 logo = NodePath("LogoIntro")
 credits = NodePath("Credits")
-title = NodePath("Title")
-buttons = NodePath("Title/Buttons")
+title = NodePath("MenuContainer")
+buttons = NodePath("MenuContainer/BottomPanel/Buttons")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = -33.444458
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_ghw46")
 expand_mode = 1
 
@@ -39,22 +47,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = -82.5
-offset_right = 113.0
-offset_bottom = 82.5
+offset_left = -125.0
+offset_top = -72.0
+offset_right = 101.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="LogoIntro"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Game-Flavored Jam"
 horizontal_alignment = 1
 
 [node name="Logo" type="TextureRect" parent="LogoIntro"]
 clip_contents = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("5_df05h")
@@ -74,78 +84,126 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = -82.5
-offset_right = 113.0
-offset_bottom = 82.5
+offset_left = -121.0
+offset_top = -61.0
+offset_right = 105.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Credits"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "A Game By:"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Credits"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Christian Cook
-Jack Chandler
-&
-Peter George"
+text = "Christian Cook"
 horizontal_alignment = 1
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="Label3" type="Label" parent="Credits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Jack Chandler"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "&"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Credits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Peter George"
+horizontal_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 20.0
+offset_right = -42.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Title" type="TextureRect" parent="MenuContainer"]
+custom_minimum_size = Vector2(240, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("3_df05h")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="BottomPanel" type="HBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="HighScore" type="HBoxContainer" parent="MenuContainer/BottomPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HighScoreLabel" type="Label" parent="MenuContainer/BottomPanel/HighScore"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "High Score:"
+
+[node name="HighScore" type="Label" parent="MenuContainer/BottomPanel/HighScore"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="Control" type="Control" parent="MenuContainer/BottomPanel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Buttons" type="HBoxContainer" parent="MenuContainer/BottomPanel"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="MenuContainer/BottomPanel/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Start"
+
+[node name="Quit" type="Button" parent="MenuContainer/BottomPanel/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8saeu")
+
+[node name="CRT" parent="." instance=ExtResource("6_xim88")]
+process_mode = 4
+process_priority = -1
+process_physics_priority = -1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_df05h")
-expand_mode = 1
+mouse_filter = 2
+texture = ExtResource("6_8um5k")
 
-[node name="Buttons" type="HBoxContainer" parent="Title"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -29.0
-offset_right = 160.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="Button" type="Button" parent="Title/Buttons"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Start"
-
-[node name="Quit" type="Button" parent="Title/Buttons"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Quit"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Title"]
-layout_mode = 0
-offset_top = 143.0
-offset_right = 92.0
-offset_bottom = 183.0
-
-[node name="HighScoreLabel" type="Label" parent="Title/HBoxContainer"]
-layout_mode = 2
-text = "High Score:"
-
-[node name="HighScore" type="Label" parent="Title/HBoxContainer"]
-layout_mode = 2
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_8saeu")
-
-[connection signal="pressed" from="Title/Buttons/Button" to="." method="Menu_StartGame"]
-[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_QuitGame"]
-[connection signal="pressed" from="Title/Buttons/Quit" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Button" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_QuitGame"]
+[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_StartGame"]

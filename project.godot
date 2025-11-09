@@ -37,12 +37,16 @@ project/assembly_name="ShroomJam2025"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/crt/plugin.cfg")
 
 [global_group]
 
 FruitDrop_Fruit=""
 FruitDrop_Bomb=""
+
+[gui]
+
+theme/custom_font="uid://udnrchdmv3e2"
 
 [input]
 
