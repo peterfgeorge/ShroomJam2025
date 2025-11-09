@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm62ccjpxyrn6"]
 
 [ext_resource type="Script" uid="uid://chyy3rhlldsof" path="res://Scripts/MiniGame - Frogger/PlayerController_Frogger.cs" id="1_kscn4"]
-[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_kxxfy"]
+[ext_resource type="Texture2D" uid="uid://w3jm42n626hm" path="res://Art/Frogger/frogger_boat.png" id="2_kscn4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omxhy"]
+radius = 11.0
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_kscn4")
@@ -12,5 +13,5 @@ script = ExtResource("1_kscn4")
 shape = SubResource("CircleShape2D_omxhy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_kxxfy")
+position = Vector2(2, -4)
+texture = ExtResource("2_kscn4")
