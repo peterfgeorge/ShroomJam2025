@@ -28,7 +28,7 @@ public partial class MainMenu : Control {
 
     private async void PlayIntro() {
         title.Modulate = new Color(1, 1, 1, 0);
-        buttons.Hide();
+        buttons.Modulate = new Color(1, 1, 1, 0);
 
         await FadeController.Instance.FadeIn(logo, 2f);
         await ToSignal(GetTree().CreateTimer(2f), "timeout");
@@ -41,6 +41,6 @@ public partial class MainMenu : Control {
         await ToSignal(GetTree().CreateTimer(1f), "timeout");
 
         await FadeController.Instance.FadeIn(title, 2f);
-        buttons.Show();
+        buttons.Modulate = new Color(1, 1, 1, 1);
     }
 }

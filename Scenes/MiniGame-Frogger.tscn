@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
 [ext_resource type="PackedScene" uid="uid://b4uibp443006g" path="res://Prefabs/MiniGame - Frogger/Frogger_Obstacle.tscn" id="4_gl027"]
 [ext_resource type="AudioStream" uid="uid://cl18y0wu1d8nt" path="res://Audio/Music/steamboat.mp3" id="5_lkfas"]
-[ext_resource type="Texture2D" uid="uid://bdt1rog35ojvc" path="res://Art/CRTTV.png" id="7_o6ym6"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="7_o6ym6"]
 
 [node name="MiniGameFrogger" type="Control"]
 layout_mode = 3
@@ -44,6 +44,4 @@ stream = ExtResource("5_lkfas")
 autoplay = true
 parameters/looping = true
 
-[node name="Crttv" type="Sprite2D" parent="."]
-position = Vector2(160, 90)
-texture = ExtResource("7_o6ym6")
+[node name="CRT" parent="." instance=ExtResource("7_o6ym6")]
