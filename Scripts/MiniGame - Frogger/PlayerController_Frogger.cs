@@ -3,12 +3,12 @@ using System;
 
 public partial class PlayerController_Frogger : Area2D
 {
-    [Export] int speed  {get; set;} = 20;
-    [Export] float movement_delay {get; set;} = 0.25f;
-    [Export] bool buffer {get; set;} = true;
-    [Export] bool ready {get; set;} = true;
+    [Export] Frogger_SpawnerController LaneController;
 
-    [Export] float spawn_y_offset = 10;
+    int speed = 20;
+    [Export] float movement_delay = 0.3f;
+    bool buffer = true;
+    bool ready = true;
     
     Vector2 inputDirection;
 
@@ -49,9 +49,11 @@ public partial class PlayerController_Frogger : Area2D
     public override void _Ready()
     {
         // Set Player Position to Bottom Center
-        Vector2 screen = GetViewport().GetVisibleRect().Size;
-        float offset = ((CircleShape2D)GetChild<CollisionShape2D>(0).Shape).Radius;
-        Position = new Vector2(screen.X / 2, screen.Y - offset - spawn_y_offset);
+        Position = new Vector2(
+            (LaneController.ScreenWidth - LaneController.MarginLeft - LaneController.MarginRight) / 2,
+            (LaneController.MarginTop + (5*LaneController.LaneHeight) + (LaneController.LaneHeight/2))
+        );
+        speed = LaneController.LaneHeight;
 
         // Bind Collision Event Handler
         AreaEntered += Collision;

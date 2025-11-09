@@ -12,5 +12,4 @@ script = ExtResource("1_mg4ft")
 shape = SubResource("CircleShape2D_kxaxn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5707964
 texture = ExtResource("2_8cclk")

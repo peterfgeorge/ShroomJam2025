@@ -5,9 +5,11 @@ public partial class Frogger_Obstacle : Area2D
 {
     [Export] int speed {get; set;} = 2;
 
+    public bool TargetDirection_Right = true;
+
     public override void _PhysicsProcess(double delta)
     {
         // Fixed Movement Translation
-        Position += Vector2.Up * speed;
+        Position += speed * (TargetDirection_Right ? Vector2.Right : Vector2.Left);
     }
 }
