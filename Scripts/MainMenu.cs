@@ -3,7 +3,8 @@ using System;
 
 public partial class MainMenu : Control {
     [Export] AudioStreamPlayer player;
-    [Export] Label scoreLabel;
+    [Export] Label RecentScoreLabel;
+    [Export] Label HighScoreLabel;
 
     [Export] CanvasItem logo;
     [Export] CanvasItem credits;
@@ -11,7 +12,9 @@ public partial class MainMenu : Control {
     [Export] CanvasItem buttons;
 
     public override void _Ready() {
-        scoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
+        HighScoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
+        RecentScoreLabel.Text = SaveData.Instance.data["RECENT_SCORE"].ToString();
+        
         if (!GameController.Instance.gameStarted) {
             player.Play();
             PlayIntro();

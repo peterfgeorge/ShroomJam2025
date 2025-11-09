@@ -52,6 +52,8 @@ public partial class PlayerController_FruitDrop : Area2D
     }
     public void Miss(Area2D s)
     {
+        s.SetDeferred("monitorable", false);
+        
         // Bomb - No Penalty
         if (((Node) s).IsInGroup("FruitDrop_Bomb"))
         {

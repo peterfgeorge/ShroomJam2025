@@ -4,6 +4,7 @@ using System;
 enum SaveDataID 
 {
     TOTAL_SCORE,
+    RECENT_SCORE,
     FROGGER,
     JETPACK,
     WALDO
@@ -24,11 +25,18 @@ public partial class SaveData : Node
 
         // Load Data
         data = new Godot.Collections.Dictionary<string, int>();
+        foreach (String name in Enum.GetNames(typeof(SaveDataID)))
+        {
+            data[name] = 0;
+        }
+        GD.Print($"RECENT SCORE: {data["RECENT_SCORE"]}");
         Load();
+        GD.Print($"RECENT SCORE: {data["RECENT_SCORE"]}");
     }
 
     public void SetValue(String name, int value)
     {
+        GD.Print($"SetValue: {name}={value}");
         data[name] = value;
         Save();
     }
@@ -54,11 +62,6 @@ public partial class SaveData : Node
         // Check for Save File
         if (!FileAccess.FileExists(FilePath))
         {
-            // Set Defaults
-            foreach (String name in Enum.GetNames(typeof(SaveDataID)))
-            {
-                data[name] = 0;
-            }
             return;
         }
 
@@ -73,11 +76,6 @@ public partial class SaveData : Node
         {
             GD.Print($"JSON Parse Error: {json.GetErrorMessage()} in {jsonString} at line {json.GetErrorLine()}");
             
-            // Set Defaults
-            foreach (String name in Enum.GetNames(typeof(SaveDataID)))
-            {
-                data[name] = 0;
-            }
             return;
         }
 
@@ -95,6 +93,8 @@ public partial class SaveData : Node
         // Save Json as String
         String jsonString = Json.Stringify(data);
         saveFile.StoreLine(jsonString);
+
+        saveFile.Flush();
     }
 
 }
