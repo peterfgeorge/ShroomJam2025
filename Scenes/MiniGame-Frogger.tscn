@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=9 format=3 uid="uid://bps4wq720swg4"]
 
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
 [ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
 [ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
 [ext_resource type="Script" uid="uid://besw1iduo48ya" path="res://Scripts/MiniGame - Frogger/Frogger_SpawnerController.cs" id="3_ro1pm"]
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
+[ext_resource type="PackedScene" uid="uid://b4uibp443006g" path="res://Prefabs/MiniGame - Frogger/Frogger_Obstacle.tscn" id="4_gl027"]
 [ext_resource type="AudioStream" uid="uid://cl18y0wu1d8nt" path="res://Audio/Music/steamboat.mp3" id="5_lkfas"]
 [ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="7_o6ym6"]
 
@@ -29,6 +30,7 @@ stretch_mode = 2
 [node name="SpawnController" type="Node2D" parent="."]
 script = ExtResource("3_ro1pm")
 FroggerSpawnerPrefab = ExtResource("3_kxaxn")
+FroggerObstaclePrefab = ExtResource("4_gl027")
 
 [node name="Player" parent="." node_paths=PackedStringArray("LaneController") instance=ExtResource("1_kxaxn")]
 position = Vector2(166, 168)

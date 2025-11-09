@@ -5,8 +5,10 @@ public partial class PlayerController_Frogger : Area2D
 {
     [Export] Frogger_SpawnerController LaneController;
 
-    int speed = 20;
     [Export] float movement_delay = 0.25f;
+
+    float speed;
+
     bool buffer = true;
     bool ready = true;
     
