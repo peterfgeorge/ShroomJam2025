@@ -29,14 +29,11 @@ public partial class SaveData : Node
         {
             data[name] = 0;
         }
-        GD.Print($"RECENT SCORE: {data["RECENT_SCORE"]}");
         Load();
-        GD.Print($"RECENT SCORE: {data["RECENT_SCORE"]}");
     }
 
     public void SetValue(String name, int value)
     {
-        GD.Print($"SetValue: {name}={value}");
         data[name] = value;
         Save();
     }

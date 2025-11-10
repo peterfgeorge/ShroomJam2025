@@ -12,10 +12,15 @@ public partial class MainMenu : Control {
     [Export] CanvasItem buttons;
 
     public override void _Ready() {
+        // Update Score Labels
         HighScoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
         RecentScoreLabel.Text = SaveData.Instance.data["RECENT_SCORE"].ToString();
         
         if (!GameController.Instance.gameStarted) {
+            // Hide recent score - game not played yet
+            ((Control)RecentScoreLabel.GetParent()).Hide();
+
+            // Play Intro Sequence
             player.Play();
             PlayIntro();
         }
