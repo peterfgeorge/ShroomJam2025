@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tmkd1s8vgg3r"]
+[gd_scene load_steps=8 format=3 uid="uid://tmkd1s8vgg3r"]
 
 [ext_resource type="PackedScene" uid="uid://lry5g85j7npe" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Player.tscn" id="1_8167n"]
 [ext_resource type="PackedScene" uid="uid://b3nrmf75dkqdb" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Fruit.tscn" id="2_2kai3"]
@@ -6,8 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dg71pmdgu5gc7" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Boundary.tscn" id="3_2kai3"]
 [ext_resource type="PackedScene" uid="uid://fokd0tvkl66b" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Bomb.tscn" id="4_8ln04"]
 [ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="6_4tshu"]
+[ext_resource type="Texture2D" uid="uid://b6kl67ss44j44" path="res://Art/FruitDrop/DinoBackground.png" id="7_v06ru"]
 
 [node name="MiniGameFruitDrop" type="Node2D"]
+
+[node name="DinoBackground" type="Sprite2D" parent="."]
+position = Vector2(148.5, 90.5)
+scale = Vector2(1.0193799, 1.0357143)
+texture = ExtResource("7_v06ru")
 
 [node name="Player" parent="." instance=ExtResource("1_8167n")]
 
