@@ -11,17 +11,19 @@ public partial class MainMenu : Control {
     [Export] CanvasItem title;
     [Export] CanvasItem buttons;
 
+    [Export] PackedScene noise;
+    [Export] CanvasLayer crt;
+
     public override void _Ready() {
         // Update Score Labels
         HighScoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
         RecentScoreLabel.Text = SaveData.Instance.data["RECENT_SCORE"].ToString();
-        
+
         if (!GameController.Instance.gameStarted) {
             // Hide recent score - game not played yet
             ((Control)RecentScoreLabel.GetParent()).Hide();
 
             // Play Intro Sequence
-            player.Play();
             PlayIntro();
         }
     }
@@ -35,6 +37,20 @@ public partial class MainMenu : Control {
     }
 
     private async void PlayIntro() {
+        ColorRect cover1 = CreateCover();
+        ColorRect cover2 = CreateCover();
+        crt.AddChild(cover1);
+        AddChild(cover2);
+
+        await ToSignal(GetTree().CreateTimer(1f), "timeout");
+        await FadeController.Instance.FadeOut(cover1, 2f);
+        Node n = noise.Instantiate();
+        AddChild(n);
+        await ToSignal(GetTree().CreateTimer(1f), "timeout");
+        n.QueueFree();
+        cover2.Hide();
+
+        player.Play();
         title.Modulate = new Color(1, 1, 1, 0);
         buttons.Modulate = new Color(1, 1, 1, 0);
 
@@ -50,5 +66,14 @@ public partial class MainMenu : Control {
 
         await FadeController.Instance.FadeIn(title, 2f);
         buttons.Modulate = new Color(1, 1, 1, 1);
+        cover1.QueueFree();
+        cover2.QueueFree();
+    }
+
+    private ColorRect CreateCover() {
+        ColorRect rect = new();
+        rect.Color = new Color(0, 0, 0, 1);
+        rect.SetAnchorsPreset(LayoutPreset.FullRect);
+        return rect;
     }
 }

@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bndexae5c8h5q"]
+[gd_scene load_steps=8 format=3 uid="uid://bndexae5c8h5q"]
 
 [ext_resource type="Script" uid="uid://dl83vioeultkk" path="res://Scripts/MainMenu.cs" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://dik6yovol3ujc" path="res://Art/titleBackground.png" id="2_ghw46"]
+[ext_resource type="PackedScene" uid="uid://dykxxwif2uxlk" path="res://Scenes/noise.tscn" id="2_xim88"]
 [ext_resource type="AudioStream" uid="uid://b3jm4utpwdood" path="res://Audio/Music/CartoonIntro.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://druweqcx830bw" path="res://Art/title.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
-[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="6_xim88"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_xim88"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "RecentScoreLabel", "HighScoreLabel", "logo", "credits", "title", "buttons")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "RecentScoreLabel", "HighScoreLabel", "logo", "credits", "title", "buttons", "crt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,8 @@ logo = NodePath("LogoIntro")
 credits = NodePath("Credits")
 title = NodePath("MenuContainer")
 buttons = NodePath("MenuContainer/BottomPanel/Buttons")
+noise = ExtResource("2_xim88")
+crt = NodePath("CRT")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

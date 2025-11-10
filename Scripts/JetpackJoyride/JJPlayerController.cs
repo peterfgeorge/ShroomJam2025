@@ -2,8 +2,8 @@ using Godot;
 using System;
 
 public partial class JJPlayerController : CharacterBody2D {
-    [Export] private float thrust = 800f;
-    [Export] private float gravity = 400f;
+    [Export] private float thrust = 1200f;
+    [Export] private float gravity = 600f;
 
     public static int currentScore = 0;
 

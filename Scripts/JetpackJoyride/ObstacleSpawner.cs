@@ -6,7 +6,7 @@ public partial class ObstacleSpawner : Node {
     [Export] public PackedScene collectiblePrefab;
 
     private const float SPAWN_DELAY_MIN = 0.2f;
-    private const float SPAWN_DELAY_MAX = 1f;
+    private const float SPAWN_DELAY_MAX = 1.5f;
 
     private float obsSpawnDelay = 0f;
     private float collSpawnDelay = 0f;
@@ -59,6 +59,6 @@ public partial class ObstacleSpawner : Node {
     }
 
     private void ResetCollDelay() {
-        collSpawnDelay = rng.RandfRange(SPAWN_DELAY_MIN * 4f, SPAWN_DELAY_MAX * 4f);
+        collSpawnDelay = rng.RandfRange(SPAWN_DELAY_MIN * 2f, SPAWN_DELAY_MAX * 2f);
     }
 }

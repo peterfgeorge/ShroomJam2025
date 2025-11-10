@@ -2,11 +2,11 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
 resource_name = "LowPassFilter"
-cutoff_hz = 1718.0
+cutoff_hz = 1812.0
 
 [sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_g28q7"]
 resource_name = "HighPassFilter"
-cutoff_hz = 872.0
+cutoff_hz = 590.0
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
