@@ -7,10 +7,11 @@ public partial class JJPlayerController : CharacterBody2D {
 
     public static int currentScore = 0;
 
-    public bool enabled = false;
+    public bool enabled = true;
 
     public override void _Ready() {
         GameController.Instance.GameTimerTimeout += Timeout;
+        Velocity += Vector2.Up * thrust * 0.2f;
     }
 
     public override void _PhysicsProcess(double delta) {
