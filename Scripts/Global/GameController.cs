@@ -50,7 +50,6 @@ public partial class GameController : Node {
 
     // Game State - Progression
     public void PassGame(int minigame_score) {
-        GD.Print("GameState - PassGame");
         Game_Score += minigame_score;
 
         LoadNextMiniGame();
@@ -61,8 +60,6 @@ public partial class GameController : Node {
         Game_Score += minigame_score;
         SaveData.Instance.SetHighValue("TOTAL_SCORE", Game_Score);
         SaveData.Instance.SetValue("RECENT_SCORE", Game_Score);
-
-        GD.Print("GameState - FailGame");
 
         CallDeferred("GameOverScene");
     }
@@ -88,7 +85,6 @@ public partial class GameController : Node {
         SceneIndex++;
     }
     async void ChangeGameScene(String path) {
-        GD.Print("Change Scene");
         // Transition Scene
         GetTree().ChangeSceneToFile("res://Scenes/noise.tscn");
         await ToSignal(GetTree().CreateTimer(1f), "timeout");
@@ -107,7 +103,7 @@ public partial class GameController : Node {
 
         // Transition Scene
         GetTree().ChangeSceneToFile("res://Scenes/noise.tscn");
-        await ToSignal(GetTree().CreateTimer(1f), "timeout");
+        await ToSignal(GetTree().CreateTimer(2f), "timeout");
 
         // Set Scene
         GetTree().ChangeSceneToFile("Scenes/MainMenu.tscn");

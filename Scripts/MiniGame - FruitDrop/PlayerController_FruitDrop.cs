@@ -34,7 +34,6 @@ public partial class PlayerController_FruitDrop : Area2D
         // Bad Object - Fail Game
         if (((Node) s).IsInGroup("FruitDrop_Bomb"))
         {
-            GD.Print("FruitDrop - Bomb Collision");
             GameController.Instance.GameTimerTimeout -= Timeout;
 
             GameController.Instance.FailGame(CalculateScore());
@@ -43,7 +42,6 @@ public partial class PlayerController_FruitDrop : Area2D
         }
 
         // Increment Catch Count
-        GD.Print("FruitDrop - Fruit Collection");
         Catches++;
         
         // Remove Object
@@ -57,13 +55,10 @@ public partial class PlayerController_FruitDrop : Area2D
         // Bomb - No Penalty
         if (((Node) s).IsInGroup("FruitDrop_Bomb"))
         {
-            GD.Print("FruitDrop - Bomb Miss");
             return;
         }
 
         // Decrement Catch Count
-        GD.Print("FruitDrop - Fruit Miss");
-        GD.Print(s.Monitorable);
         Catches--;
 
         // Decrement lenience
