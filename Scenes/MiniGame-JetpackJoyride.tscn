@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dv3wp1kl3u0g7"]
+[gd_scene load_steps=22 format=3 uid="uid://dv3wp1kl3u0g7"]
 
 [ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
 [ext_resource type="Script" uid="uid://bmx44ktecju8y" path="res://Scripts/JetpackJoyride/JJManager.cs" id="1_yovv4"]
+[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/ControlsPopup.cs" id="2_kxcld"]
 [ext_resource type="Texture2D" uid="uid://bfg0jkcnm3xso" path="res://Art/JetpackJoyride/cityBackground-Sky.png" id="2_lisxh"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_yg63x"]
 [ext_resource type="Script" uid="uid://dd1rew1r018c8" path="res://Scripts/JetpackJoyride/DeathArea.cs" id="3_fdkdc"]
 [ext_resource type="PackedScene" uid="uid://nlkb0hfogq8q" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_ObstacleSpawner.tscn" id="3_nyuii"]
 [ext_resource type="Texture2D" uid="uid://nrd2o43euc78" path="res://Art/JetpackJoyride/cityBackground-Clouds.png" id="3_qgovu"]
@@ -11,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c4spkn2ketaiv" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible.tscn" id="6_fyvph"]
 [ext_resource type="Texture2D" uid="uid://eqk8oymnumo6" path="res://Art/JetpackJoyride/superDuck.png" id="7_mdn6d"]
 [ext_resource type="AudioStream" uid="uid://tncm2a504ot7" path="res://Audio/Music/superduck.mp3" id="7_nfie5"]
-[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
+[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
 size = Vector2(25, 10)
@@ -61,6 +63,47 @@ grow_vertical = 2
 script = ExtResource("1_yovv4")
 player = NodePath("CharacterBody2D")
 spawner = NodePath("Spawner")
+
+[node name="ControlsPopup" type="Control" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_kxcld")
+
+[node name="ArrowUp" type="Control" parent="ControlsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -130.0
+offset_right = 29.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ControlsPopup/ArrowUp"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 112.0
+offset_bottom = 112.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_yg63x")
+
+[node name="Label" type="Label" parent="ControlsPopup/ArrowUp"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 33.0
+offset_bottom = 12.0
+text = "W"
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
