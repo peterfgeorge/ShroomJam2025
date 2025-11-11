@@ -82,7 +82,16 @@ public partial class PlayerController_Frogger : Area2D
         {
             Vector2 input_vector = Input.GetVector("Left", "Right", "Up", "Down");
             if (input_vector != Vector2.Zero)
-                inputDirection = input_vector;
+            {
+                // Boundary check
+                Vector2 Projection = Position + input_vector * speed;
+                if (Projection.X < LaneController.ScreenWidth - LaneController.MarginRight &&
+                    Projection.X > LaneController.MarginLeft &&
+                    Projection.Y < LaneController.ScreenHeight - LaneController.MarginBottom &&
+                    Projection.Y > LaneController.MarginTop
+                )
+                    inputDirection = input_vector;
+            }
         }
 
         // On Input and after input delay
