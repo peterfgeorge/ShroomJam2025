@@ -1,10 +1,11 @@
 using Godot;
-using Godot.Collections;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class RandomizeAnimatedSprite : AnimatedSprite2D {
-    public override void _Ready() {
-        string[] animations = SpriteFrames.GetAnimationNames();
-        Play(animations[(int)(GD.Randi() % animations.Length)]);
+    public void Randomize(string exclude) {
+        List<string> animations = SpriteFrames.GetAnimationNames().ToList();
+        animations.Remove(exclude);
+        Play(animations[(int)(GD.Randi() % animations.Count)]);
     }
 }
