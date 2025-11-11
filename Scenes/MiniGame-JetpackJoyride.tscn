@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
 [ext_resource type="Script" uid="uid://bmx44ktecju8y" path="res://Scripts/JetpackJoyride/JJManager.cs" id="1_yovv4"]
-[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/ControlsPopup.cs" id="2_kxcld"]
+[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="2_kxcld"]
 [ext_resource type="Texture2D" uid="uid://bfg0jkcnm3xso" path="res://Art/JetpackJoyride/cityBackground-Sky.png" id="2_lisxh"]
 [ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_yg63x"]
 [ext_resource type="Script" uid="uid://dd1rew1r018c8" path="res://Scripts/JetpackJoyride/DeathArea.cs" id="3_fdkdc"]

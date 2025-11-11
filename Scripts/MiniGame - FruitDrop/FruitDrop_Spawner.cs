@@ -7,7 +7,7 @@ public partial class FruitDrop_Spawner : Node2D
     [Export] public PackedScene BombPrefab;
     
     [Export] float SpawnXScale = 250f;
-    [Export] float SpawnDelay = 0.2f;
+    [Export] float SpawnDelay = 0.25f;
     [Export] float SpawnBombChance = 0.3f;
     
     Area2D[] FruitPool;

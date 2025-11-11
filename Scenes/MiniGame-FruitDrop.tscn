@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="1_885jx"]
 [ext_resource type="PackedScene" uid="uid://lry5g85j7npe" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Player.tscn" id="1_8167n"]
-[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/ControlsPopup.cs" id="1_doyxh"]
+[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="1_doyxh"]
 [ext_resource type="PackedScene" uid="uid://b3nrmf75dkqdb" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Fruit.tscn" id="2_2kai3"]
 [ext_resource type="Script" uid="uid://ty2rmvkxvcwu" path="res://Scripts/MiniGame - FruitDrop/FruitDrop_Spawner.cs" id="2_rtvs4"]
 [ext_resource type="PackedScene" uid="uid://dg71pmdgu5gc7" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Boundary.tscn" id="3_2kai3"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
 [ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
-[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/ControlsPopup.cs" id="2_1oo7p"]
+[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="2_1oo7p"]
 [ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_445hp"]
 [ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
 [ext_resource type="Script" uid="uid://besw1iduo48ya" path="res://Scripts/MiniGame - Frogger/Frogger_SpawnerController.cs" id="3_ro1pm"]
