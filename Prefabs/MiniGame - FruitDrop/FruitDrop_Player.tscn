@@ -1,16 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://lry5g85j7npe"]
+[gd_scene load_steps=8 format=3 uid="uid://lry5g85j7npe"]
 
 [ext_resource type="Script" uid="uid://bt2w5e44x82fu" path="res://Scripts/MiniGame - FruitDrop/PlayerController_FruitDrop.cs" id="1_1871u"]
-[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_30d3s"]
+[ext_resource type="Texture2D" uid="uid://cjwe7p6dgb7n4" path="res://Art/FruitDrop/duckCaveMan.png" id="2_jj0br"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8167n"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jj0br"]
 
-[node name="Player" type="Area2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj0br"]
+atlas = ExtResource("2_jj0br")
+region = Rect2(0, 0, 30, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6blgu"]
+atlas = ExtResource("2_jj0br")
+region = Rect2(0, 0, 30, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot2ni"]
+atlas = ExtResource("2_jj0br")
+region = Rect2(30, 0, 30, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3wfp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj0br")
+}],
+"loop": true,
+"name": &"PlayerIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6blgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot2ni")
+}],
+"loop": true,
+"name": &"PlayerRun",
+"speed": 7.0
+}]
+
+[node name="Player" type="Area2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_1871u")
+anim = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8167n")
+position = Vector2(14, -7)
+shape = SubResource("CircleShape2D_jj0br")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.19247463, 0.19247463)
-texture = ExtResource("2_30d3s")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -9)
+sprite_frames = SubResource("SpriteFrames_e3wfp")
+animation = &"PlayerRun"
+autoplay = "PlayerIdle"
+frame_progress = 0.808501

@@ -98,6 +98,8 @@ scale = Vector2(1.0193799, 1.0357143)
 texture = ExtResource("7_v06ru")
 
 [node name="Player" parent="." instance=ExtResource("1_8167n")]
+position = Vector2(154, 149)
+speed = 2.5
 
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2(149, -20)
