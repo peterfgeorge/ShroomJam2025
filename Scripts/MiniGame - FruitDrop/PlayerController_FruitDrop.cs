@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerController_FruitDrop : Area2D
 {
-    [Export] float speed = 5;
+    [Export] float speed = 6;
 
     [Export] int spawn_x_offset = 149;
     [Export] int spawn_y_offset = 146;

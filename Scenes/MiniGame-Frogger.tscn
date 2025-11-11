@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=11 format=3 uid="uid://bps4wq720swg4"]
 
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
 [ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
+[ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="2_1oo7p"]
+[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_445hp"]
 [ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
 [ext_resource type="Script" uid="uid://besw1iduo48ya" path="res://Scripts/MiniGame - Frogger/Frogger_SpawnerController.cs" id="3_ro1pm"]
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
@@ -27,13 +29,150 @@ grow_vertical = 2
 texture = ExtResource("1_ywige")
 stretch_mode = 2
 
+[node name="ControlsPopup" type="Control" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1oo7p")
+
+[node name="ArrowLeft" type="Control" parent="ControlsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -90.0
+offset_right = -11.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ControlsPopup/ArrowLeft"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 144.0
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_445hp")
+
+[node name="Label" type="Label" parent="ControlsPopup/ArrowLeft"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 36.0
+offset_bottom = 11.0
+text = "A"
+
+[node name="ArrowRight" type="Control" parent="ControlsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -90.0
+offset_right = 69.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ControlsPopup/ArrowRight"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 144.0
+offset_bottom = 112.0
+rotation = 1.5707964
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_445hp")
+
+[node name="Label" type="Label" parent="ControlsPopup/ArrowRight"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 36.0
+offset_bottom = 11.0
+text = "D"
+
+[node name="ArrowUp" type="Control" parent="ControlsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -130.0
+offset_right = 29.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ControlsPopup/ArrowUp"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 112.0
+offset_bottom = 112.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_445hp")
+
+[node name="Label" type="Label" parent="ControlsPopup/ArrowUp"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 33.0
+offset_bottom = 12.0
+text = "W"
+
+[node name="ArrowDown" type="Control" parent="ControlsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -50.0
+offset_right = 29.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ControlsPopup/ArrowDown"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 144.0
+rotation = 3.1415927
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_445hp")
+
+[node name="Label" type="Label" parent="ControlsPopup/ArrowDown"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 36.0
+offset_bottom = 11.0
+text = "S"
+
 [node name="SpawnController" type="Node2D" parent="."]
 script = ExtResource("3_ro1pm")
 FroggerSpawnerPrefab = ExtResource("3_kxaxn")
 FroggerObstaclePrefab = ExtResource("4_gl027")
 
 [node name="Player" parent="." node_paths=PackedStringArray("LaneController") instance=ExtResource("1_kxaxn")]
-position = Vector2(166, 168)
+position = Vector2(149, 138)
 LaneController = NodePath("../SpawnController")
 
 [node name="Finish" parent="." instance=ExtResource("3_ywige")]

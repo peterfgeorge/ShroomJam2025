@@ -23,7 +23,7 @@ public partial class GameController : Node {
     public int Game_Score = 0;
     public int GameRound = 0;
     public float Game_TimeLimit = 20;
-    public float[] TimeLimitSchedule = { 20f, 15f, 10f, 8f, 7f, 6f, 5f, 4f, 3.5f, 3f, 1f };
+    public float[] TimeLimitSchedule = { 15f, 12f, 10f, 8f, 6f, 5f, 4f, 3.5f, 3f, 1f };
     public SceneTreeTimer Game_Timer;
     public bool gameStarted = false;
 

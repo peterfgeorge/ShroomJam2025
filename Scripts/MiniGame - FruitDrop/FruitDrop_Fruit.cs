@@ -4,7 +4,7 @@ using System;
 public partial class FruitDrop_Fruit : Area2D
 {
     [Export] float Speed_Rotation = 0.05f;
-    [Export] float Speed_Vertical = 1f;
+    [Export] float Speed_Vertical = 1.5f;
 
     float Speed_Rotation_Offset;
 
