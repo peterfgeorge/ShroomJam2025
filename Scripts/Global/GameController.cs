@@ -11,7 +11,7 @@ public partial class GameController : Node {
     public static readonly Array<String> MiniGamePaths = [
         "Scenes/MiniGame-Frogger.tscn",
         "Scenes/MiniGame-JetpackJoyride.tscn",
-        // "Scenes/MiniGame-WheresWaldo.tscn",
+        "Scenes/MiniGame-WheresWaldo.tscn",
         "Scenes/MiniGame-FruitDrop.tscn",
     ];
 
@@ -23,7 +23,7 @@ public partial class GameController : Node {
     public int Game_Score = 0;
     public int GameRound = 0;
     public float Game_TimeLimit = 20;
-    public float[] TimeLimitSchedule = {20f, 15f, 10f, 8f, 7f, 6f, 5f, 4f, 3.5f, 3f, 1f};
+    public float[] TimeLimitSchedule = { 20f, 15f, 10f, 8f, 7f, 6f, 5f, 4f, 3.5f, 3f, 1f };
     public SceneTreeTimer Game_Timer;
     public bool gameStarted = false;
 
@@ -66,7 +66,7 @@ public partial class GameController : Node {
 
         CallDeferred("GameOverScene");
     }
-    
+
     public void LoadNextMiniGame() {
         // Next Round
         if (SceneIndex >= MiniGamePaths.Count) {
@@ -100,8 +100,7 @@ public partial class GameController : Node {
         StartGameTimer();
         InjectTimerOverlay();
     }
-    async void GameOverScene()
-    {
+    async void GameOverScene() {
         // Remove Timer
         StopGameTimer();
         RemoveTimerOverlay();
@@ -114,14 +113,12 @@ public partial class GameController : Node {
         GetTree().ChangeSceneToFile("Scenes/MainMenu.tscn");
     }
 
-    void RemoveTimerOverlay()
-    {
+    void RemoveTimerOverlay() {
         // Timer overlay assumed to be only child
         if (GetChildCount() > 0)
             GetChild<Control>(0).QueueFree();
     }
-    void InjectTimerOverlay()
-    {
+    void InjectTimerOverlay() {
         // Inject timer overlay as child
         PackedScene TimerOverlayPrefab = ResourceLoader.Load<PackedScene>(TimerOverlayPath);
         Control TimerOverlay = TimerOverlayPrefab.Instantiate<Control>();
@@ -137,8 +134,7 @@ public partial class GameController : Node {
         GD.Print("GameTimer - TIMEOUT");
         EmitSignal(SignalName.GameTimerTimeout);
     }
-    public double GetGameTimer()
-    {
+    public double GetGameTimer() {
         if (Game_Timer == null)
             return 0;
 
@@ -146,8 +142,7 @@ public partial class GameController : Node {
     }
     public void StopGameTimer() {
         GD.Print($"GameTimer - Stop - {Game_Timer}");
-        if (Game_Timer != null)
-        {
+        if (Game_Timer != null) {
             Game_Timer.Timeout -= GameTimerTimeoutHandler;
             Game_Timer = null;
         }

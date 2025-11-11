@@ -1,18 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://7oaoyxu8x1ox"]
+[gd_scene load_steps=5 format=3 uid="uid://7oaoyxu8x1ox"]
 
 [ext_resource type="Script" uid="uid://boltdfe711d5b" path="res://Prefabs/MiniGame - WheresWaldo/WaldoNpc.cs" id="1_81fwi"]
+[ext_resource type="Script" uid="uid://djl58hm8sewdd" path="res://Scripts/Common/RandomizeAnimatedSprite.cs" id="2_1vcyk"]
+[ext_resource type="SpriteFrames" uid="uid://fqcbe70aomhs" path="res://Art/ScoobyDoo/WaldoNPCAnimations.tres" id="2_8m5bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77hvy"]
+size = Vector2(40, 42)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_81fwi"]
-
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_81fwi")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_77hvy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(10, 10)
-texture = SubResource("CanvasTexture_81fwi")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_8m5bv")
+animation = &"Freddy"
+script = ExtResource("2_1vcyk")

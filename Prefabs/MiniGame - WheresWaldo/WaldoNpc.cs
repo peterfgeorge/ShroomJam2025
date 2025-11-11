@@ -4,18 +4,17 @@ using System;
 public partial class WaldoNpc : Area2D {
     [Export] public float Speed = 100f;
     [Export] public float MoveDistance = 100f;
+    [Export] AnimatedSprite2D sprite;
 
     private Vector2 _startPos;
     private bool _movingRight = true;
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         _startPos = Position;
         InputEvent += OnInputEvent; // Detect clicks
     }
 
-    public override void _Process(double delta)
-    {
+    public override void _Process(double delta) {
         float moveAmount = (float)(Speed * delta);
         if (_movingRight)
             Position += new Vector2(moveAmount, 0);
@@ -26,13 +25,17 @@ public partial class WaldoNpc : Area2D {
             _movingRight = false;
         else if (Position.X < _startPos.X - MoveDistance)
             _movingRight = true;
+
+        sprite.FlipH = !_movingRight;
     }
 
-    private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
-    {
-        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
-        {
+    private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
+        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed) {
+            GD.Print("Click");
             QueueFree(); // Delete the object when clicked
+            if (sprite.Animation == "Scooby") {
+                GameController.Instance.PassGame((int)(GameController.Instance.Game_TimeLimit - GameController.Instance.GetGameTimer()));
+            }
         }
     }
 }
