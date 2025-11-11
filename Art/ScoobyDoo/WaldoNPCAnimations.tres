@@ -1,0 +1,105 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://fqcbe70aomhs"]
+
+[ext_resource type="Texture2D" uid="uid://c6qmb3m1y6fmq" path="res://Art/ScoobyDoo/duckphne.png" id="1_211nf"]
+[ext_resource type="Texture2D" uid="uid://dlcj6811ikr2g" path="res://Art/ScoobyDoo/duckFreddy.png" id="2_ccfrl"]
+[ext_resource type="Texture2D" uid="uid://b20j03ddvbra2" path="res://Art/ScoobyDoo/duckyDoo.png" id="3_amqgj"]
+[ext_resource type="Texture2D" uid="uid://dv4rq6v2j8due" path="res://Art/ScoobyDoo/duckShaggy.png" id="4_7epdd"]
+[ext_resource type="Texture2D" uid="uid://cgp23c0tds8vy" path="res://Art/ScoobyDoo/duckma.png" id="5_r5bjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxl6y"]
+atlas = ExtResource("1_211nf")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jos6n"]
+atlas = ExtResource("1_211nf")
+region = Rect2(14, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51jta"]
+atlas = ExtResource("2_ccfrl")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmr1j"]
+atlas = ExtResource("2_ccfrl")
+region = Rect2(14, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vrac"]
+atlas = ExtResource("3_amqgj")
+region = Rect2(0, 0, 14, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thhqi"]
+atlas = ExtResource("3_amqgj")
+region = Rect2(14, 0, 14, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsn0l"]
+atlas = ExtResource("4_7epdd")
+region = Rect2(0, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5khm"]
+atlas = ExtResource("4_7epdd")
+region = Rect2(14, 0, 14, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xen3"]
+atlas = ExtResource("5_r5bjg")
+region = Rect2(0, 0, 14, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne35c"]
+atlas = ExtResource("5_r5bjg")
+region = Rect2(14, 0, 14, 19)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxl6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jos6n")
+}],
+"loop": true,
+"name": &"Daphne",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51jta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmr1j")
+}],
+"loop": true,
+"name": &"Freddy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vrac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thhqi")
+}],
+"loop": true,
+"name": &"Scooby",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsn0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5khm")
+}],
+"loop": true,
+"name": &"Shaggy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xen3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne35c")
+}],
+"loop": true,
+"name": &"Velma",
+"speed": 5.0
+}]

@@ -101,16 +101,16 @@ theme_override_font_sizes/font_size = 10
 text = "A Game By:"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Credits"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Christian Cook"
-horizontal_alignment = 1
-
 [node name="Label3" type="Label" parent="Credits"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Jack Chandler"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Christian Cook"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="Credits"]
@@ -218,5 +218,5 @@ stream = ExtResource("3_8saeu")
 [node name="CRT" parent="." instance=ExtResource("6_xim88")]
 
 [connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Button" to="." method="Menu_StartGame"]
-[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_QuitGame"]
 [connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_QuitGame"]
