@@ -101,6 +101,15 @@ public partial class GameController : Node {
         StopGameTimer();
         RemoveTimerOverlay();
 
+        GetTree().Paused = true;
+        AudioStreamPlayer player = GetTree().CurrentScene.GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        player.Stop();
+        player.Stream = GD.Load<AudioStream>("res://Audio/SFX/trombone_wah.wav");
+        player.VolumeDb = 0;
+        player.Play();
+        await ToSignal(GetTree().CreateTimer(4f), "timeout");
+        GetTree().Paused = false;
+
         // Transition Scene
         GetTree().ChangeSceneToFile("res://Scenes/noise.tscn");
         await ToSignal(GetTree().CreateTimer(2f), "timeout");

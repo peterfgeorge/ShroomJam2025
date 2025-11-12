@@ -139,8 +139,7 @@ position = Vector2(162, -19)
 script = ExtResource("12_hojdk")
 EggPrefab = ExtResource("4_8ln04")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_axv03")
 volume_db = 8.582
 autoplay = true
-parameters/looping = true

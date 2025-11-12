@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://hj001n85mm8g" path="res://Art/ScoobyDoo/scoobyDooBackground.png" id="3_oia3e"]
 [ext_resource type="SpriteFrames" uid="uid://fqcbe70aomhs" path="res://Art/ScoobyDoo/WaldoNPCAnimations.tres" id="3_swak2"]
 [ext_resource type="AudioStream" uid="uid://dahw6pkxf3p4a" path="res://Audio/Music/scoobyduck.mp3" id="3_tpaqc"]
-[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="4_cuqhb"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="4_cuqhb"]
 [ext_resource type="Texture2D" uid="uid://dqi0nlkia7k8y" path="res://Art/ScoobyDoo/gravesScoobyDoo2.png" id="7_jasom"]
 [ext_resource type="Texture2D" uid="uid://cwgfxwiga7xc2" path="res://Art/ScoobyDoo/gravesScoobyDoo3.png" id="8_35ieg"]
 [ext_resource type="Texture2D" uid="uid://dd26q30aghmdt" path="res://Art/ScoobyDoo/gravesScoobyDoo.png" id="9_a1yaq"]
@@ -44,7 +44,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_oia3e")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_tpaqc")
 volume_db = 8.582
 autoplay = true

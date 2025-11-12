@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c4spkn2ketaiv" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible.tscn" id="6_fyvph"]
 [ext_resource type="Texture2D" uid="uid://eqk8oymnumo6" path="res://Art/JetpackJoyride/superDuck.png" id="7_mdn6d"]
 [ext_resource type="AudioStream" uid="uid://tncm2a504ot7" path="res://Audio/Music/superduck.mp3" id="7_nfie5"]
-[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
 size = Vector2(25, 10)
@@ -165,7 +165,7 @@ shape = SubResource("RectangleShape2D_yovv4")
 [node name="Spawner" parent="." instance=ExtResource("3_nyuii")]
 collectiblePrefab = ExtResource("6_fyvph")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_nfie5")
 autoplay = true
 parameters/looping = true
