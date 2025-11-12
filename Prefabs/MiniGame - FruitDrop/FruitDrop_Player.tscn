@@ -44,7 +44,8 @@ script = ExtResource("1_1871u")
 anim = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14, -7)
+position = Vector2(7.999999, -7)
+scale = Vector2(1.4399989, 0.22988346)
 shape = SubResource("CircleShape2D_jj0br")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
