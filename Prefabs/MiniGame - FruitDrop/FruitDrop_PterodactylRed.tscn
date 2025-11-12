@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfwnq8gyunsne"]
+[gd_scene load_steps=7 format=3 uid="uid://dfwnq8gyunsne"]
 
 [ext_resource type="Script" uid="uid://tt55yc7gkyq6" path="res://Prefabs/MiniGame - FruitDrop/Pterodactyl.cs" id="1_mvl1r"]
 [ext_resource type="Texture2D" uid="uid://wr5uvjtkte63" path="res://Art/FruitDrop/pterodactyl.png" id="2_mvl1r"]
@@ -25,6 +25,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvl1r"]
+size = Vector2(23, 53)
+
 [node name="Pterodactyl" type="Area2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_mvl1r")
 speed = 75.0
@@ -34,3 +37,7 @@ anim = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_bpw28")
 animation = &"PterodactylRedFly"
 autoplay = "PterodactylRedFly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -7.5)
+shape = SubResource("RectangleShape2D_mvl1r")

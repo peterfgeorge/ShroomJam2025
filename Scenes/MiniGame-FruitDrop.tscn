@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3nrmf75dkqdb" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Fruit.tscn" id="2_2kai3"]
 [ext_resource type="PackedScene" uid="uid://dg71pmdgu5gc7" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Boundary.tscn" id="3_2kai3"]
 [ext_resource type="PackedScene" uid="uid://fokd0tvkl66b" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Bomb.tscn" id="4_8ln04"]
-[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_4tshu"]
+[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="6_4tshu"]
 [ext_resource type="Texture2D" uid="uid://b6kl67ss44j44" path="res://Art/FruitDrop/DinoBackground.png" id="7_v06ru"]
 [ext_resource type="PackedScene" uid="uid://dfwnq8gyunsne" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_PterodactylRed.tscn" id="9_hojdk"]
 [ext_resource type="PackedScene" uid="uid://sa2lxeuis780" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_PterodactylBlue.tscn" id="10_j8gk7"]

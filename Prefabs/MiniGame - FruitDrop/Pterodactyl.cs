@@ -10,6 +10,8 @@ public partial class Pterodactyl : Area2D
     private float dropCooldown = 2f;
     private float dropTimer = 0f;
 
+    public CollisionShape2D CollisionShape => GetNode<CollisionShape2D>("CollisionShape2D");
+
     public void Initialize(Vector2 dir)
     {
         direction = dir;
@@ -17,8 +19,7 @@ public partial class Pterodactyl : Area2D
         dropTimer = GD.Randf() * 2f;
     }
 
-    public override void _Process(double delta) 
-    {
+    public override void _Process(double delta) {
         if (!IsInsideTree()) return;
 
         // Move
