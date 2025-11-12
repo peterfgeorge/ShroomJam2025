@@ -28,6 +28,7 @@ public partial class MainMenu : Control {
         if (!GameController.Instance.gameStarted) {
             // Hide recent score - game not played yet
             ((Control)RecentScoreLabel.GetParent()).Hide();
+            titleImage.Texture = GD.Load<Texture2D>("res://Art/title.png");
 
             // Play Intro Sequence
             PlayIntro();
