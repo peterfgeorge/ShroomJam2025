@@ -31,11 +31,17 @@ public partial class MainMenu : Control {
 
             // Play Intro Sequence
             PlayIntro();
+            GetTree().CreateTimer(23f).Timeout += Wink;
             player.Finished += PlayIntroLoop;
         } else {
             PlayIntroLoop();
         }
     }
+
+    private void Wink() {
+        titleImage.Texture = GD.Load<Texture2D>("res://Art/title_wink.png");
+    }
+
 
     public void Menu_StartGame() {
         GameController.Instance.StartGame();
