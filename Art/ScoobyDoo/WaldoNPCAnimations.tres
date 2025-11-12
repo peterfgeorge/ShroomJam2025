@@ -51,12 +51,28 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sxl6y")
+}],
+"loop": true,
+"name": &"DaphneIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxl6y")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jos6n")
 }],
 "loop": true,
-"name": &"Daphne",
+"name": &"DaphneWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51jta")
+}],
+"loop": true,
+"name": &"FreddyIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -67,7 +83,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_hmr1j")
 }],
 "loop": true,
-"name": &"Freddy",
+"name": &"FreddyWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vrac")
+}],
+"loop": true,
+"name": &"ScoobyIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -78,7 +102,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_thhqi")
 }],
 "loop": true,
-"name": &"Scooby",
+"name": &"ScoobyWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsn0l")
+}],
+"loop": true,
+"name": &"ShaggyIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -89,7 +121,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_l5khm")
 }],
 "loop": true,
-"name": &"Shaggy",
+"name": &"ShaggyWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xen3")
+}],
+"loop": true,
+"name": &"VelmaIdle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -100,6 +140,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_ne35c")
 }],
 "loop": true,
-"name": &"Velma",
+"name": &"VelmaWalk",
 "speed": 5.0
 }]

@@ -21,44 +21,59 @@ public partial class MiniGameWheresWaldo : Control {
     public override void _Ready() {
         GameController.Instance.GameTimerTimeout += Timeout;
         SpawnObjects();
-        display.Texture = sprites.GetFrameTexture(currentWaldo, 0);
+        display.Texture = sprites.GetFrameTexture(currentWaldo + "Idle", 0);
     }
 
-    private void SpawnObjects() {
+    private void SpawnObjects()
+    {
+        var ysort = GetNode<Node2D>("YSort");
         currentWaldo = characters.PickRandom();
 
         var screenSize = GetViewportRect().Size;
+        float minY = 70;
+        float maxY = screenSize.Y - 30;
 
+        // Spawn main Waldo
         WaldoNpc waldo = MovingObjectScene.Instantiate<WaldoNpc>();
         waldo.SetSprite(currentWaldo);
 
-        // Random position on screen
         float x1 = (float)GD.RandRange(50, screenSize.X - 50);
-        float y1 = (float)GD.RandRange(70, screenSize.Y - 30);
+        float y1 = (float)GD.RandRange(minY, maxY);
         waldo.Position = new Vector2(x1, y1);
 
-        // Random speed and range variation
-        waldo.Speed = (float)GD.RandRange(60, 150);
+        // Calculate depth scaling based on Y position
+        float ratio1 = Mathf.InverseLerp(minY, maxY, y1);
+        float scale1 = Mathf.Lerp(0.6f, 1.0f, ratio1);
+        float speedMultiplier1 = Mathf.Lerp(0.5f, 1.0f, ratio1);
+
+        waldo.Scale = new Vector2(scale1, scale1);
+        waldo.Speed = (float)(GD.RandRange(60, 150) * speedMultiplier1);
         waldo.MoveDistance = (float)GD.RandRange(50, 100);
 
-        AddChild(waldo);
+        ysort.AddChild(waldo);
 
+        // Spawn other objects
         for (int i = 0; i < ObjectCount; i++) {
             WaldoNpc obj = MovingObjectScene.Instantiate<WaldoNpc>();
             obj.RandomizeSprite(currentWaldo);
+            obj.TryFlip(false);
 
-            // Random position on screen
             float x = (float)GD.RandRange(50, screenSize.X - 50);
-            float y = (float)GD.RandRange(70, screenSize.Y - 30);
+            float y = (float)GD.RandRange(minY, maxY);
             obj.Position = new Vector2(x, y);
 
-            // Random speed and range variation
-            obj.Speed = (float)GD.RandRange(60, 150);
+            float ratio = Mathf.InverseLerp(minY, maxY, y);
+            float scale = Mathf.Lerp(0.6f, 1.0f, ratio);
+            float speedMultiplier = Mathf.Lerp(0.5f, 1.0f, ratio);
+
+            obj.Scale = new Vector2(scale, scale);
+            obj.Speed = (float)(GD.RandRange(60, 150) * speedMultiplier);
             obj.MoveDistance = (float)GD.RandRange(50, 200);
 
-            AddChild(obj);
+            ysort.AddChild(obj);
         }
     }
+
 
     private void Timeout() {
         GameController.Instance.FailGame(0);

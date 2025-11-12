@@ -22,8 +22,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.9999998
+offset_top = -4.9999995
+offset_right = -3.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.05, 1.05)
 mouse_filter = 2
 script = ExtResource("1_7bpfn")
 MovingObjectScene = ExtResource("2_qjff8")
@@ -64,80 +69,104 @@ offset_bottom = 66.0
 grow_horizontal = 0
 stretch_mode = 2
 
-[node name="GravesScoobyDoo2" type="Sprite2D" parent="."]
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="GravesScoobyDoo2" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(58, 115)
 texture = ExtResource("7_jasom")
 
-[node name="GravesScoobyDoo3" type="Sprite2D" parent="."]
+[node name="GravesScoobyDoo3" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(58.5, 103)
 texture = ExtResource("8_35ieg")
 
-[node name="GravesScoobyDoo" type="Sprite2D" parent="."]
+[node name="GravesScoobyDoo" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(58.5, 128)
 texture = ExtResource("9_a1yaq")
 
-[node name="Bush5" type="Sprite2D" parent="."]
+[node name="Bush5" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(109.5, 139.5)
 texture = ExtResource("10_35ieg")
 
-[node name="Bush4" type="Sprite2D" parent="."]
+[node name="Bush4" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(179, 121)
 texture = ExtResource("11_a1yaq")
 
-[node name="Bush6" type="Sprite2D" parent="."]
+[node name="Bush6" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(271, 108)
 texture = ExtResource("11_a1yaq")
 
-[node name="Bush3" type="Sprite2D" parent="."]
+[node name="Bush3" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(179.5, 94.5)
 texture = ExtResource("12_32qm0")
 
-[node name="Bush2" type="Sprite2D" parent="."]
+[node name="Bush2" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(114.5, 93)
 texture = ExtResource("13_5fa4u")
 
-[node name="Bush7" type="Sprite2D" parent="."]
+[node name="Bush7" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(72.5, 86)
 texture = ExtResource("13_5fa4u")
 
-[node name="Bush1" type="Sprite2D" parent="."]
+[node name="Bush1" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(75.5, 74.5)
 texture = ExtResource("14_nqlev")
 
-[node name="Bush8" type="Sprite2D" parent="."]
+[node name="Bush8" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(106.5, 78.5)
 texture = ExtResource("14_nqlev")
 
-[node name="Bush9" type="Sprite2D" parent="."]
+[node name="Bush9" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(148.5, 78.5)
 texture = ExtResource("14_nqlev")
 
-[node name="Bush10" type="Sprite2D" parent="."]
+[node name="Bush10" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(166.5, 82.5)
 texture = ExtResource("14_nqlev")
 
-[node name="Bush12" type="Sprite2D" parent="."]
+[node name="Bush12" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(220.5, 79.5)
 texture = ExtResource("14_nqlev")
 
-[node name="Tree1" type="Sprite2D" parent="."]
+[node name="Tree1" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(35.5, 84)
 texture = ExtResource("15_a0aax")
 
-[node name="Tree2" type="Sprite2D" parent="."]
+[node name="Tree2" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(201.5, 85)
-scale = Vector2(-1, 1)
+rotation = 3.1415927
+scale = Vector2(1, -1)
 texture = ExtResource("15_a0aax")
 
-[node name="Tree3" type="Sprite2D" parent="."]
+[node name="Tree3" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(223.5, 81)
-scale = Vector2(-1, 1)
+rotation = 3.1415927
+scale = Vector2(1, -1)
 texture = ExtResource("15_a0aax")
 
-[node name="Tree4" type="Sprite2D" parent="."]
+[node name="Tree4" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(237, 112)
 texture = ExtResource("16_rjvmd")
 
-[node name="Bush11" type="Sprite2D" parent="."]
+[node name="Bush11" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
 position = Vector2(252.5, 86.5)
 texture = ExtResource("14_nqlev")

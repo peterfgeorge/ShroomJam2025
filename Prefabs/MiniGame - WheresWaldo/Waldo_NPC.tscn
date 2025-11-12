@@ -17,6 +17,7 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_77hvy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = ExtResource("2_8m5bv")
-animation = &"Freddy"
+animation = &"DaphneIdle"
 script = ExtResource("2_1vcyk")
