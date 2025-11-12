@@ -1,17 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjmxxfoyv0eix"]
 
 [ext_resource type="Script" uid="uid://bmhgwfpy2q33h" path="res://Scripts/JetpackJoyride/JJObstacle.cs" id="1_wm6qm"]
-[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_74bol"]
+[ext_resource type="Texture2D" uid="uid://baygrovpcc0ca" path="res://Art/JetpackJoyride/superDuckVillian.png" id="2_wm6qm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kxaxn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm6qm"]
+size = Vector2(16, 10)
 
 [node name="Obstacle" type="Area2D"]
 script = ExtResource("1_wm6qm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_kxaxn")
+shape = SubResource("RectangleShape2D_wm6qm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_74bol")
+texture = ExtResource("2_wm6qm")

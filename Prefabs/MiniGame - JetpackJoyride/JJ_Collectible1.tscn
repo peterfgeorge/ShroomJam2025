@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4spkn2ketaiv"]
+
+[ext_resource type="Script" uid="uid://bu1qpqg13hfb7" path="res://Scripts/JetpackJoyride/JJCollectible.cs" id="1_arhvf"]
+[ext_resource type="Texture2D" uid="uid://c8nn58230sxjx" path="res://Art/JetpackJoyride/superDuckBaby2.png" id="2_4qmfu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqueg"]
+radius = 5.0
+
+[node name="Collectible" type="Area2D"]
+script = ExtResource("1_arhvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pqueg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4qmfu")
