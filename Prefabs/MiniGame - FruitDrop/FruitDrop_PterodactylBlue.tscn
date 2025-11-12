@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://sa2lxeuis780"]
+
+[ext_resource type="Script" uid="uid://tt55yc7gkyq6" path="res://Prefabs/MiniGame - FruitDrop/Pterodactyl.cs" id="1_ipvi7"]
+[ext_resource type="Texture2D" uid="uid://bjajunao1fdf6" path="res://Art/FruitDrop/pterodactylBlue.png" id="2_shxug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umc7t"]
+atlas = ExtResource("2_shxug")
+region = Rect2(0, 0, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwjem"]
+atlas = ExtResource("2_shxug")
+region = Rect2(28, 0, 28, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_we650"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umc7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwjem")
+}],
+"loop": true,
+"name": &"PterodactylBlueFly",
+"speed": 3.0
+}]
+
+[node name="Pterodactyl" type="Area2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_ipvi7")
+speed = 75.0
+anim = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_we650")
+animation = &"PterodactylBlueFly"
+autoplay = "PterodactylBlueFly"
+frame_progress = 0.8331551

@@ -105,13 +105,16 @@ public partial class PlayerController_FruitDrop : Area2D
         float input_vector = Input.GetAxis("Left", "Right");
         Position += Vector2.Right * input_vector * speed;
 
-        GD.Print(input_vector);
+        //GD.Print(input_vector);
+        Vector2 scale = Scale;
 
         if (input_vector < 0) {
-            anim.FlipH = true;
+            scale.X = -Mathf.Abs(scale.X); // flip left
+        Scale = scale;
             anim.Play("PlayerRun");
         } else if (input_vector > 0) {
-            anim.FlipH = false;
+            scale.X = Mathf.Abs(scale.X); // flip right
+            Scale = scale;
             anim.Play("PlayerRun");
         } else {
             anim.Play("PlayerIdle");
@@ -122,5 +125,4 @@ public partial class PlayerController_FruitDrop : Area2D
             Position.Y
         );
     }
-
 }

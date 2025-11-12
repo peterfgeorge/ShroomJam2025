@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://tmkd1s8vgg3r"]
+[gd_scene load_steps=13 format=3 uid="uid://tmkd1s8vgg3r"]
 
 [ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="1_885jx"]
 [ext_resource type="PackedScene" uid="uid://lry5g85j7npe" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Player.tscn" id="1_8167n"]
 [ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="1_doyxh"]
 [ext_resource type="PackedScene" uid="uid://b3nrmf75dkqdb" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Fruit.tscn" id="2_2kai3"]
-[ext_resource type="Script" uid="uid://ty2rmvkxvcwu" path="res://Scripts/MiniGame - FruitDrop/FruitDrop_Spawner.cs" id="2_rtvs4"]
 [ext_resource type="PackedScene" uid="uid://dg71pmdgu5gc7" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Boundary.tscn" id="3_2kai3"]
 [ext_resource type="PackedScene" uid="uid://fokd0tvkl66b" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Bomb.tscn" id="4_8ln04"]
 [ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="6_4tshu"]
 [ext_resource type="Texture2D" uid="uid://b6kl67ss44j44" path="res://Art/FruitDrop/DinoBackground.png" id="7_v06ru"]
+[ext_resource type="PackedScene" uid="uid://dfwnq8gyunsne" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_PterodactylRed.tscn" id="9_hojdk"]
+[ext_resource type="PackedScene" uid="uid://sa2lxeuis780" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_PterodactylBlue.tscn" id="10_j8gk7"]
+[ext_resource type="Script" uid="uid://bvye54oenclbv" path="res://Scenes/PterodactylSpawner.cs" id="11_q6jk5"]
+[ext_resource type="Script" uid="uid://bbblpf4khpcie" path="res://Scenes/EggPool.cs" id="12_hojdk"]
 
 [node name="MiniGameFruitDrop" type="Control"]
 layout_mode = 3
@@ -101,14 +104,36 @@ texture = ExtResource("7_v06ru")
 position = Vector2(154, 149)
 speed = 2.5
 
-[node name="Spawner" type="Node2D" parent="."]
-position = Vector2(149, -20)
-script = ExtResource("2_rtvs4")
-FruitPrefab = ExtResource("2_2kai3")
-BombPrefab = ExtResource("4_8ln04")
-
 [node name="MissCollider" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("3_2kai3")]
 position = Vector2(160, 180)
 Player = NodePath("../Player")
 
 [node name="CRT" parent="." instance=ExtResource("6_4tshu")]
+
+[node name="PterodactylSpawner" type="Node2D" parent="." node_paths=PackedStringArray("eggPool")]
+script = ExtResource("11_q6jk5")
+PterodactylScene = ExtResource("10_j8gk7")
+MinHeight = 60.0
+MaxHeight = 30.0
+eggPool = NodePath("../EggPool")
+
+[node name="Timer" type="Timer" parent="PterodactylSpawner"]
+
+[node name="EvilPterodactylSpawner" type="Node2D" parent="." node_paths=PackedStringArray("eggPool")]
+script = ExtResource("11_q6jk5")
+PterodactylScene = ExtResource("9_hojdk")
+MinHeight = 60.0
+MaxHeight = 30.0
+eggPool = NodePath("../EvilEggPool")
+
+[node name="Timer" type="Timer" parent="EvilPterodactylSpawner"]
+
+[node name="EggPool" type="Node2D" parent="."]
+position = Vector2(149, -20)
+script = ExtResource("12_hojdk")
+EggPrefab = ExtResource("2_2kai3")
+
+[node name="EvilEggPool" type="Node2D" parent="."]
+position = Vector2(162, -19)
+script = ExtResource("12_hojdk")
+EggPrefab = ExtResource("4_8ln04")

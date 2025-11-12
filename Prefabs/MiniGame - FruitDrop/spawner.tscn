@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvxfbbksg8ocj"]
+
+[ext_resource type="Script" uid="uid://ty2rmvkxvcwu" path="res://Scripts/MiniGame - FruitDrop/FruitDrop_Spawner.cs" id="1_gkh54"]
+[ext_resource type="PackedScene" uid="uid://b3nrmf75dkqdb" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Fruit.tscn" id="2_a8br3"]
+[ext_resource type="PackedScene" uid="uid://fokd0tvkl66b" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Bomb.tscn" id="3_qfkcm"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_gkh54")
+FruitPrefab = ExtResource("2_a8br3")
+BombPrefab = ExtResource("3_qfkcm")
