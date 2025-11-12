@@ -1,11 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt20gjyk3xhvv"]
+[gd_scene load_steps=17 format=3 uid="uid://bt20gjyk3xhvv"]
 
 [ext_resource type="Script" uid="uid://cydly1cirs8ff" path="res://Scenes/MiniGameWheresWaldo.cs" id="1_7bpfn"]
 [ext_resource type="PackedScene" uid="uid://7oaoyxu8x1ox" path="res://Prefabs/MiniGame - WheresWaldo/Waldo_NPC.tscn" id="2_qjff8"]
 [ext_resource type="Texture2D" uid="uid://hj001n85mm8g" path="res://Art/ScoobyDoo/scoobyDooBackground.png" id="3_oia3e"]
 [ext_resource type="SpriteFrames" uid="uid://fqcbe70aomhs" path="res://Art/ScoobyDoo/WaldoNPCAnimations.tres" id="3_swak2"]
 [ext_resource type="AudioStream" uid="uid://dahw6pkxf3p4a" path="res://Audio/Music/scoobyduck.mp3" id="3_tpaqc"]
-[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="4_cuqhb"]
+[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="4_cuqhb"]
+[ext_resource type="Texture2D" uid="uid://dqi0nlkia7k8y" path="res://Art/ScoobyDoo/gravesScoobyDoo2.png" id="7_jasom"]
+[ext_resource type="Texture2D" uid="uid://cwgfxwiga7xc2" path="res://Art/ScoobyDoo/gravesScoobyDoo3.png" id="8_35ieg"]
+[ext_resource type="Texture2D" uid="uid://dd26q30aghmdt" path="res://Art/ScoobyDoo/gravesScoobyDoo.png" id="9_a1yaq"]
+[ext_resource type="Texture2D" uid="uid://d4mx35mxtpnp8" path="res://Art/ScoobyDoo/bush5.png" id="10_35ieg"]
+[ext_resource type="Texture2D" uid="uid://c1wdyrt6dbkg8" path="res://Art/ScoobyDoo/bush4.png" id="11_a1yaq"]
+[ext_resource type="Texture2D" uid="uid://c8c4roon6w8vq" path="res://Art/ScoobyDoo/bush3.png" id="12_32qm0"]
+[ext_resource type="Texture2D" uid="uid://dr5602pb3jy5m" path="res://Art/ScoobyDoo/bush2.png" id="13_5fa4u"]
+[ext_resource type="Texture2D" uid="uid://cs2ywea32kjo0" path="res://Art/ScoobyDoo/bush1.png" id="14_nqlev"]
+[ext_resource type="Texture2D" uid="uid://b6kcdv1k6bi08" path="res://Art/ScoobyDoo/tree1.png" id="15_a0aax"]
+[ext_resource type="Texture2D" uid="uid://dj7w0px7k772p" path="res://Art/ScoobyDoo/tree2.png" id="16_rjvmd"]
 
 [node name="MiniGameWheresWaldo" type="Control" node_paths=PackedStringArray("display")]
 layout_mode = 3
@@ -25,6 +35,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -42.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -49,3 +63,81 @@ offset_right = -46.0
 offset_bottom = 66.0
 grow_horizontal = 0
 stretch_mode = 2
+
+[node name="GravesScoobyDoo2" type="Sprite2D" parent="."]
+position = Vector2(58, 115)
+texture = ExtResource("7_jasom")
+
+[node name="GravesScoobyDoo3" type="Sprite2D" parent="."]
+position = Vector2(58.5, 103)
+texture = ExtResource("8_35ieg")
+
+[node name="GravesScoobyDoo" type="Sprite2D" parent="."]
+position = Vector2(58.5, 128)
+texture = ExtResource("9_a1yaq")
+
+[node name="Bush5" type="Sprite2D" parent="."]
+position = Vector2(109.5, 139.5)
+texture = ExtResource("10_35ieg")
+
+[node name="Bush4" type="Sprite2D" parent="."]
+position = Vector2(179, 121)
+texture = ExtResource("11_a1yaq")
+
+[node name="Bush6" type="Sprite2D" parent="."]
+position = Vector2(271, 108)
+texture = ExtResource("11_a1yaq")
+
+[node name="Bush3" type="Sprite2D" parent="."]
+position = Vector2(179.5, 94.5)
+texture = ExtResource("12_32qm0")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(114.5, 93)
+texture = ExtResource("13_5fa4u")
+
+[node name="Bush7" type="Sprite2D" parent="."]
+position = Vector2(72.5, 86)
+texture = ExtResource("13_5fa4u")
+
+[node name="Bush1" type="Sprite2D" parent="."]
+position = Vector2(75.5, 74.5)
+texture = ExtResource("14_nqlev")
+
+[node name="Bush8" type="Sprite2D" parent="."]
+position = Vector2(106.5, 78.5)
+texture = ExtResource("14_nqlev")
+
+[node name="Bush9" type="Sprite2D" parent="."]
+position = Vector2(148.5, 78.5)
+texture = ExtResource("14_nqlev")
+
+[node name="Bush10" type="Sprite2D" parent="."]
+position = Vector2(166.5, 82.5)
+texture = ExtResource("14_nqlev")
+
+[node name="Bush12" type="Sprite2D" parent="."]
+position = Vector2(220.5, 79.5)
+texture = ExtResource("14_nqlev")
+
+[node name="Tree1" type="Sprite2D" parent="."]
+position = Vector2(35.5, 84)
+texture = ExtResource("15_a0aax")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(201.5, 85)
+scale = Vector2(-1, 1)
+texture = ExtResource("15_a0aax")
+
+[node name="Tree3" type="Sprite2D" parent="."]
+position = Vector2(223.5, 81)
+scale = Vector2(-1, 1)
+texture = ExtResource("15_a0aax")
+
+[node name="Tree4" type="Sprite2D" parent="."]
+position = Vector2(237, 112)
+texture = ExtResource("16_rjvmd")
+
+[node name="Bush11" type="Sprite2D" parent="."]
+position = Vector2(252.5, 86.5)
+texture = ExtResource("14_nqlev")
