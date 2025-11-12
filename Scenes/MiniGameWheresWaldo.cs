@@ -24,8 +24,9 @@ public partial class MiniGameWheresWaldo : Control {
         display.Texture = sprites.GetFrameTexture(currentWaldo + "Idle", 0);
     }
 
-    private void SpawnObjects() 
+    private void SpawnObjects()
     {
+        var ysort = GetNode<Node2D>("YSort");
         currentWaldo = characters.PickRandom();
 
         var screenSize = GetViewportRect().Size;
@@ -49,7 +50,7 @@ public partial class MiniGameWheresWaldo : Control {
         waldo.Speed = (float)(GD.RandRange(60, 150) * speedMultiplier1);
         waldo.MoveDistance = (float)GD.RandRange(50, 100);
 
-        AddChild(waldo);
+        ysort.AddChild(waldo);
 
         // Spawn other objects
         for (int i = 0; i < ObjectCount; i++) {
@@ -69,7 +70,7 @@ public partial class MiniGameWheresWaldo : Control {
             obj.Speed = (float)(GD.RandRange(60, 150) * speedMultiplier);
             obj.MoveDistance = (float)GD.RandRange(50, 200);
 
-            AddChild(obj);
+            ysort.AddChild(obj);
         }
     }
 
