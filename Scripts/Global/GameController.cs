@@ -23,7 +23,7 @@ public partial class GameController : Node {
     public int Game_Score = 0;
     public int GameRound = 0;
     public float Game_TimeLimit = 20;
-    public float[] TimeLimitSchedule = { 15f, 12f, 10f, 8f, 6f, 5f, 4f, 3.5f, 3f, 1f };
+    public float[] TimeLimitSchedule = { 15f, 14f, 13f, 12f, 11f, 10f, 9f, 8f, 7.5f};
     public SceneTreeTimer Game_Timer;
     public bool gameStarted = false;
 
@@ -38,7 +38,7 @@ public partial class GameController : Node {
         // Reset Game State
         SceneIndex = 0;
         Game_Score = 0;
-        GameRound = 0;
+        GameRound = 8;
         Game_TimeLimit = TimeLimitSchedule[0];
 
         // Create Game Permutation
@@ -70,7 +70,7 @@ public partial class GameController : Node {
             SceneIndex = 0;
             GameRound++;
 
-            Game_TimeLimit = TimeLimitSchedule[GameRound];
+            Game_TimeLimit = TimeLimitSchedule[Mathf.Clamp(GameRound, 0, TimeLimitSchedule.Length-1)];
         }
 
         // Remove Timer
