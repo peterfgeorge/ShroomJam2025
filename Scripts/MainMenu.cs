@@ -13,11 +13,17 @@ public partial class MainMenu : Control {
 
     [Export] PackedScene noise;
     [Export] CanvasLayer crt;
+    [Export] TextureRect titleImage;
 
     public override void _Ready() {
         // Update Score Labels
         HighScoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
         RecentScoreLabel.Text = SaveData.Instance.data["RECENT_SCORE"].ToString();
+
+        if (SaveData.Instance.data["TOTAL_SCORE"] >= 500) {
+            titleImage.Texture = GD.Load<Texture2D>("res://Art/title_old.png");
+            titleImage.CustomMinimumSize = new Vector2(200, titleImage.CustomMinimumSize.Y);
+        }
 
         if (!GameController.Instance.gameStarted) {
             // Hide recent score - game not played yet
