@@ -9,6 +9,7 @@ public partial class Pterodactyl : Area2D
     [Export] public EggPool eggPool;
     private float dropCooldown = 2f;
     private float dropTimer = 0f;
+    public bool Active { get; private set; } = false;
 
     public CollisionShape2D CollisionShape => GetNode<CollisionShape2D>("CollisionShape2D");
 
@@ -39,14 +40,28 @@ public partial class Pterodactyl : Area2D
 
         // Hide offscreen
         if (Position.X < -100 || Position.X > GetViewportRect().Size.X + 100)
-            Visible = false;
+            Deactivate();
     }
-    
-    private void DropEgg()
-    {
-        if (eggPool != null)
-        {
+
+    private void DropEgg() {
+        if (eggPool != null && Active) {
             eggPool.SpawnEgg(GlobalPosition);
         }
+    }
+    
+    
+    public void Activate(Vector2 startPosition)
+    {
+        Position = startPosition;
+        Visible = true;
+        Monitoring = true; // enables Area2D collision checks
+        Active = true;
+    }
+
+    public void Deactivate()
+    {
+        Visible = false;
+        Monitoring = false; // disables Area2D collision checks
+        Active = false;
     }
 }

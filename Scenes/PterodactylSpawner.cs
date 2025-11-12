@@ -24,14 +24,16 @@ public partial class PterodactylSpawner : Node2D
         spawnTimer.Timeout += OnSpawnTimerTimeout;
 
         // Create object pool
-        for (int i = 0; i < PoolSize; i++)
-        {
+        for (int i = 0; i < PoolSize; i++) {
             Area2D pterodactyl = (Area2D)PterodactylScene.Instantiate();
             pterodactyl.Visible = false;
             AddChild(pterodactyl);
             pteroPool.Add(pterodactyl);
         }
-
+        if(!Name.ToString().Contains("Evil")) {
+            SpawnPterodactyl();
+        }
+        
         SetRandomSpawnTime();
     }
 
@@ -64,12 +66,12 @@ public partial class PterodactylSpawner : Node2D
         float y = (float)(MinHeight + random.NextDouble() * (MaxHeight - MinHeight));
 
         ptero.Position = new Vector2(x, y);
-        ptero.Visible = true;
+        ptero.Activate(ptero.Position);
 
         if (IsOverlapping(ptero))
         {
-            GD.Print("Skipped spawn — overlapping another ptero");
-            ptero.Visible = false;
+            // GD.Print("Skipped spawn — overlapping another ptero");
+            ptero.Deactivate();
             return;
         }
 

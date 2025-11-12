@@ -9,13 +9,13 @@
 atlas = ExtResource("2_jj0br")
 region = Rect2(0, 0, 30, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6blgu"]
-atlas = ExtResource("2_jj0br")
-region = Rect2(0, 0, 30, 18)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot2ni"]
 atlas = ExtResource("2_jj0br")
 region = Rect2(30, 0, 30, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6blgu"]
+atlas = ExtResource("2_jj0br")
+region = Rect2(0, 0, 30, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e3wfp"]
 animations = [{
@@ -29,10 +29,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6blgu")
+"texture": SubResource("AtlasTexture_ot2ni")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ot2ni")
+"texture": SubResource("AtlasTexture_6blgu")
 }],
 "loop": true,
 "name": &"PlayerRun",

@@ -27,6 +27,21 @@ public partial class EggPool : Node2D
 
     public Area2D SpawnEgg(Vector2 spawnPosition)
     {
+        foreach (var eggNode in pool) {
+            // Cast to your custom egg type (if you have one)
+            if (eggNode.Visible) {
+                // Check if Y is below 57
+                if (eggNode.Position.Y < 57) {
+                    // Check horizontal distance
+                    float distanceX = MathF.Abs(eggNode.Position.X - spawnPosition.X);
+                    if (distanceX > 75f) {
+                        GD.Print("Skipped spawn — too far from another active egg below Y=57");
+                        return null; // cancel spawn
+                    }
+                }
+            }
+        }
+        
         FruitDrop_Fruit egg = GetInactiveEgg() as FruitDrop_Fruit;
         if (egg == null)
             return null;

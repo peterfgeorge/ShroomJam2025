@@ -45,7 +45,7 @@ public partial class FruitDrop_Fruit : Area2D
         }
 
         // Hide when offscreen
-        if (Position.Y > GetViewportRect().Size.Y + 100)
+        if (Position.Y > 166f)
             Visible = false;
     }
     
