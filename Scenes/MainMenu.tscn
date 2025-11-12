@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b3jm4utpwdood" path="res://Audio/Music/CartoonIntro.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://druweqcx830bw" path="res://Art/title.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
-[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="6_xim88"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_xim88"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "RecentScoreLabel", "HighScoreLabel", "logo", "credits", "title", "buttons", "crt")]
 layout_mode = 3

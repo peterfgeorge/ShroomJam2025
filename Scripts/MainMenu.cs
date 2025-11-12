@@ -25,6 +25,9 @@ public partial class MainMenu : Control {
 
             // Play Intro Sequence
             PlayIntro();
+            player.Finished += PlayIntroLoop;
+        } else {
+            PlayIntroLoop();
         }
     }
 
@@ -68,6 +71,12 @@ public partial class MainMenu : Control {
         buttons.Modulate = new Color(1, 1, 1, 1);
         cover1.QueueFree();
         cover2.QueueFree();
+    }
+
+    private void PlayIntroLoop() {
+        player.Finished -= PlayIntroLoop;
+        player.Stream = GD.Load<AudioStream>("res://Audio/Music/CartoonIntroLoop.mp3");
+        player.Play();
     }
 
     private ColorRect CreateCover() {
