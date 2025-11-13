@@ -14,13 +14,20 @@ public partial class MainMenu : Control {
     [Export] PackedScene noise;
     [Export] CanvasLayer crt;
     [Export] TextureRect titleImage;
+    [Export] Control achievementScreen;
+    [Export] TextureRect score100;
+    [Export] TextureRect score200;
+    [Export] TextureRect score300;
+    [Export] TextureRect score400;
 
     public override void _Ready() {
         // Update Score Labels
         HighScoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
         RecentScoreLabel.Text = SaveData.Instance.data["RECENT_SCORE"].ToString();
 
-        if (SaveData.Instance.data["TOTAL_SCORE"] >= 300) {
+        PopulateAchievements();
+
+        if (SaveData.Instance.data["TOTAL_SCORE"] >= 400) {
             titleImage.Texture = GD.Load<Texture2D>("res://Art/title_old.png");
             titleImage.CustomMinimumSize = new Vector2(200, titleImage.CustomMinimumSize.Y);
         }
@@ -28,14 +35,17 @@ public partial class MainMenu : Control {
         if (!GameController.Instance.gameStarted) {
             // Hide recent score - game not played yet
             ((Control)RecentScoreLabel.GetParent()).Hide();
-            titleImage.Texture = GD.Load<Texture2D>("res://Art/title.png");
+
+            if (SaveData.Instance.data["TOTAL_SCORE"] < 400) {
+                titleImage.Texture = GD.Load<Texture2D>("res://Art/title.png");
+                GetTree().CreateTimer(23f).Timeout += Wink;
+            }
 
             // Play Intro Sequence
             PlayIntro();
-            GetTree().CreateTimer(23f).Timeout += Wink;
             player.Finished += PlayIntroLoop;
         } else {
-            PlayIntroLoop();
+            PlayIntroLoopNoSignal();
         }
     }
 
@@ -86,8 +96,42 @@ public partial class MainMenu : Control {
         cover2.QueueFree();
     }
 
+    private void ShowAchievements() {
+        achievementScreen.Show();
+        title.Hide();
+    }
+
+    private void HideAchievements() {
+        achievementScreen.Hide();
+        title.Show();
+    }
+
+    private void PopulateAchievements() {
+        if (SaveData.Instance.data["TOTAL_SCORE"] < 400) {
+            GD.Print("Scoreless");
+            score400.Modulate = new Color(1, 1, 1, 0.5f);
+        }
+
+        if (SaveData.Instance.data["TOTAL_SCORE"] < 300) {
+            score300.Modulate = new Color(1, 1, 1, 0.5f);
+        }
+
+        if (SaveData.Instance.data["TOTAL_SCORE"] < 200) {
+            score200.Modulate = new Color(1, 1, 1, 0.5f);
+        }
+
+        if (SaveData.Instance.data["TOTAL_SCORE"] < 100) {
+            score100.Modulate = new Color(1, 1, 1, 0.5f);
+        }
+    }
+
     private void PlayIntroLoop() {
         player.Finished -= PlayIntroLoop;
+        player.Stream = GD.Load<AudioStream>("res://Audio/Music/CartoonIntroLoop.mp3");
+        player.Play();
+    }
+
+    private void PlayIntroLoopNoSignal() {
         player.Stream = GD.Load<AudioStream>("res://Audio/Music/CartoonIntroLoop.mp3");
         player.Play();
     }

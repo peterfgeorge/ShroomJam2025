@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bndexae5c8h5q"]
+[gd_scene load_steps=12 format=3 uid="uid://bndexae5c8h5q"]
 
 [ext_resource type="Script" uid="uid://dl83vioeultkk" path="res://Scripts/MainMenu.cs" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://dik6yovol3ujc" path="res://Art/titleBackground.png" id="2_ghw46"]
@@ -6,9 +6,13 @@
 [ext_resource type="AudioStream" uid="uid://b3jm4utpwdood" path="res://Audio/Music/CartoonIntro.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dgm6ah1ke7n4r" path="res://Art/jam.png" id="5_df05h"]
 [ext_resource type="Texture2D" uid="uid://coycednygjt8r" path="res://Art/title_wink.png" id="5_xim88"]
+[ext_resource type="Texture2D" uid="uid://b34deptwlkyho" path="res://Art/Achievments/medalBronze.png" id="6_cmrfp"]
 [ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="6_xim88"]
+[ext_resource type="Texture2D" uid="uid://buwe5wk2vbacd" path="res://Art/Achievments/medalSilver.png" id="7_loo7a"]
+[ext_resource type="Texture2D" uid="uid://5utht5lw4mfn" path="res://Art/Achievments/medalGold.png" id="8_if7li"]
+[ext_resource type="Texture2D" uid="uid://qupr0fdmujct" path="res://Art/Achievments/platinumMedal.png" id="9_if7li"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "RecentScoreLabel", "HighScoreLabel", "logo", "credits", "title", "buttons", "crt", "titleImage")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("player", "RecentScoreLabel", "HighScoreLabel", "logo", "credits", "title", "buttons", "crt", "titleImage", "achievementScreen", "score100", "score200", "score300", "score400")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +31,11 @@ buttons = NodePath("MenuContainer/BottomPanel/Buttons")
 noise = ExtResource("2_xim88")
 crt = NodePath("CRT")
 titleImage = NodePath("MenuContainer/Title")
+achievementScreen = NodePath("AchievementsContainer")
+score100 = NodePath("AchievementsContainer/Achievements/Score100/TextureRect")
+score200 = NodePath("AchievementsContainer/Achievements/Score200/TextureRect")
+score300 = NodePath("AchievementsContainer/Achievements/Score300/TextureRect")
+score400 = NodePath("AchievementsContainer/Achievements/Score400/TextureRect")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -202,21 +211,121 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="MenuContainer/BottomPanel/Buttons"]
+[node name="Start" type="Button" parent="MenuContainer/BottomPanel/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Start"
+
+[node name="Achievements" type="Button" parent="MenuContainer/BottomPanel/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Medals"
 
 [node name="Quit" type="Button" parent="MenuContainer/BottomPanel/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Quit"
 
+[node name="AchievementsContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Achievements" type="VBoxContainer" parent="AchievementsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Score100" type="HBoxContainer" parent="AchievementsContainer/Achievements"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AchievementsContainer/Achievements/Score100"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_cmrfp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="AchievementsContainer/Achievements/Score100"]
+layout_mode = 2
+text = "Score 100"
+
+[node name="Score200" type="HBoxContainer" parent="AchievementsContainer/Achievements"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AchievementsContainer/Achievements/Score200"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("7_loo7a")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="AchievementsContainer/Achievements/Score200"]
+layout_mode = 2
+text = "Score 200"
+
+[node name="Score300" type="HBoxContainer" parent="AchievementsContainer/Achievements"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AchievementsContainer/Achievements/Score300"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("8_if7li")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="AchievementsContainer/Achievements/Score300"]
+layout_mode = 2
+text = "Score 300"
+
+[node name="Score400" type="HBoxContainer" parent="AchievementsContainer/Achievements"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AchievementsContainer/Achievements/Score400"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("9_if7li")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="AchievementsContainer/Achievements/Score400"]
+layout_mode = 2
+text = "Score 400 "
+
+[node name="Label2" type="Label" parent="AchievementsContainer/Achievements"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "(Quacked Out)"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="AchievementsContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="AchievementsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "To Main
+Menu"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8saeu")
 
 [node name="CRT" parent="." instance=ExtResource("6_xim88")]
 
-[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Button" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Start" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Achievements" to="." method="ShowAchievements"]
 [connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_QuitGame"]
 [connection signal="pressed" from="MenuContainer/BottomPanel/Buttons/Quit" to="." method="Menu_StartGame"]
+[connection signal="pressed" from="AchievementsContainer/Button" to="." method="HideAchievements"]
