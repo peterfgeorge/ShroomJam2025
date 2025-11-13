@@ -28,6 +28,7 @@ public partial class Frogger_SpawnerController : Node2D
     {
         // Calculate Allotment for each lane
         LaneHeight = (ScreenHeight - MarginTop - MarginBottom) / 6;
+        // GD.Print($"Frogger Spawner Controller - Lane Height: {LaneHeight}");
         float CurrentLaneY = MarginTop + LaneHeight + LaneHeight / 2;
 
         // Randomize Lane Layout
@@ -50,10 +51,12 @@ public partial class Frogger_SpawnerController : Node2D
                 // Adjust X position for side and margin
                 // Adjust Y position for current lane
                 AddChild(Spawner);
-                Spawner.Position = new Vector2(
+                Spawner.GlobalPosition = new Vector2(
                     LeftSpawner ? -MarginRight : ScreenWidth + MarginLeft,
                     CurrentLaneY
                 );
+
+                // MAKE MOVE METHOD TO GET THE RESPECTIVE WAVE BACKGROUND PIECE AND MOVE IT WITH A LOOP IN THE SAME DIRECTION AS THE SPAWNER
             }
             // Static
             else

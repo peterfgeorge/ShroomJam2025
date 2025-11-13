@@ -28,6 +28,7 @@ public partial class PlayerController_Frogger : Area2D
         // Win Game
         if (((Node) s).IsInGroup("Frogger_VictoryCollision"))
         {
+            // GD.Print("Frogger - Player Reached Goal!");
             GameController.Instance.PassGame(CalculateScore());
         }
 
@@ -50,10 +51,11 @@ public partial class PlayerController_Frogger : Area2D
     public override void _Ready()
     {
         // Set Player Position to Bottom Center
-        Position = new Vector2(
-            (LaneController.ScreenWidth + LaneController.MarginLeft - LaneController.MarginRight) / 2,
-            (LaneController.MarginTop + (5*LaneController.LaneHeight) + (LaneController.LaneHeight/2))
-        );
+        // Position = new Vector2(
+        //     (LaneController.ScreenWidth + LaneController.MarginLeft - LaneController.MarginRight) / 2,
+        //     LaneController.MarginTop + (5*LaneController.LaneHeight) + (LaneController.LaneHeight/2)
+        // );
+        GlobalPosition = new Vector2(149, 146.5f);
         speed = LaneController.LaneHeight;
 
         // Bind Collision Event Handler
@@ -83,26 +85,33 @@ public partial class PlayerController_Frogger : Area2D
             Vector2 input_vector = Input.GetVector("Left", "Right", "Up", "Down");
             if (input_vector != Vector2.Zero)
             {
-                // Boundary check
-                Vector2 Projection = Position + input_vector * speed;
-                if (Projection.X < LaneController.ScreenWidth - LaneController.MarginRight &&
-                    Projection.X > LaneController.MarginLeft &&
-                    Projection.Y < LaneController.ScreenHeight - LaneController.MarginBottom &&
-                    Projection.Y > LaneController.MarginTop
-                )
+                Vector2 Projection = GlobalPosition + input_vector * speed;
+
+                bool withinX = Projection.X < LaneController.ScreenWidth - LaneController.MarginRight &&
+                            Projection.X > LaneController.MarginLeft;
+                bool withinY = Projection.Y < LaneController.ScreenHeight - LaneController.MarginBottom &&
+                            Projection.Y > LaneController.MarginTop;
+
+                // Detailed debug output
+                if (withinX && withinY)
+                {
                     inputDirection = input_vector;
+                }
             }
         }
 
         // On Input and after input delay
         if (inputDirection != Vector2.Zero && ready)
         {
+            if(speed == 0)
+                speed = LaneController.LaneHeight;
+            //GD.Print($"Moving Player by {inputDirection * speed}");
             // Force monodirection movement, preference for vertical
             if (inputDirection.Y != 0)
                 inputDirection.X = 0;
 
             // Manual Position Update
-            Position += inputDirection * speed;
+            GlobalPosition += inputDirection * speed;
             inputDirection = Vector2.Zero;
             
             // Disable movement and buffer

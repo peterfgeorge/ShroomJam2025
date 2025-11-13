@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
 [ext_resource type="PackedScene" uid="uid://b4uibp443006g" path="res://Prefabs/MiniGame - Frogger/Frogger_Obstacle.tscn" id="4_gl027"]
 [ext_resource type="AudioStream" uid="uid://cl18y0wu1d8nt" path="res://Audio/Music/steamboat.mp3" id="5_lkfas"]
-[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="7_o6ym6"]
+[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="7_o6ym6"]
+[ext_resource type="Script" uid="uid://bf5ntxi8c44wl" path="res://Prefabs/MiniGame - Frogger/PlayerSprite.cs" id="9_yfoyb"]
+[ext_resource type="Texture2D" uid="uid://cevh42cdfbpbm" path="res://Art/Frogger/waterBackground-DarkWater-export.png" id="10_yegwj"]
+[ext_resource type="Texture2D" uid="uid://bbg7g3223ncto" path="res://Art/Frogger/waterBackground-LightWater.png" id="12_yfoyb"]
 
 [node name="MiniGameFrogger" type="Control"]
 layout_mode = 3
@@ -259,21 +262,151 @@ offset_right = 36.0
 offset_bottom = 11.0
 text = "S"
 
-[node name="SpawnController" type="Node2D" parent="."]
-script = ExtResource("3_ro1pm")
-FroggerSpawnerPrefab = ExtResource("3_kxaxn")
-FroggerObstaclePrefab = ExtResource("4_gl027")
-
-[node name="Player" parent="." node_paths=PackedStringArray("LaneController") instance=ExtResource("1_kxaxn")]
-position = Vector2(149, 138)
-LaneController = NodePath("../SpawnController")
-
-[node name="Finish" parent="." instance=ExtResource("3_ywige")]
-position = Vector2(160, 20)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lkfas")
 autoplay = true
 parameters/looping = true
 
 [node name="CRT" parent="." instance=ExtResource("7_o6ym6")]
+
+[node name="Finish" parent="." instance=ExtResource("3_ywige")]
+y_sort_enabled = true
+position = Vector2(160, 20)
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(148, 134)
+
+[node name="Player" parent="YSort" node_paths=PackedStringArray("LaneController") instance=ExtResource("1_kxaxn")]
+y_sort_enabled = true
+position = Vector2(2, 13)
+LaneController = NodePath("../SpawnController")
+
+[node name="SpawnController" type="Node2D" parent="YSort"]
+y_sort_enabled = true
+position = Vector2(-148, -134)
+script = ExtResource("3_ro1pm")
+FroggerSpawnerPrefab = ExtResource("3_kxaxn")
+FroggerObstaclePrefab = ExtResource("4_gl027")
+
+[node name="Waves1" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundLightWater4" type="Sprite2D" parent="YSort/Waves1"]
+y_sort_enabled = true
+position = Vector2(1, -174)
+texture = ExtResource("12_yfoyb")
+
+[node name="WaterBackgroundLightWater5" type="Sprite2D" parent="YSort/Waves1"]
+y_sort_enabled = true
+position = Vector2(259, -174)
+texture = ExtResource("12_yfoyb")
+
+[node name="WaterBackgroundLightWater9" type="Sprite2D" parent="YSort/Waves1"]
+y_sort_enabled = true
+position = Vector2(-256, -174)
+texture = ExtResource("12_yfoyb")
+
+[node name="Waves2" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundDarkWaterExport3" type="Sprite2D" parent="YSort/Waves2"]
+y_sort_enabled = true
+position = Vector2(1, -140)
+texture = ExtResource("10_yegwj")
+
+[node name="WaterBackgroundDarkWaterExport7" type="Sprite2D" parent="YSort/Waves2"]
+y_sort_enabled = true
+position = Vector2(-256, -140)
+texture = ExtResource("10_yegwj")
+
+[node name="WaterBackgroundDarkWaterExport4" type="Sprite2D" parent="YSort/Waves2"]
+y_sort_enabled = true
+position = Vector2(259, -140)
+texture = ExtResource("10_yegwj")
+
+[node name="Waves3" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundLightWater3" type="Sprite2D" parent="YSort/Waves3"]
+y_sort_enabled = true
+position = Vector2(1, -115)
+texture = ExtResource("12_yfoyb")
+
+[node name="WaterBackgroundLightWater6" type="Sprite2D" parent="YSort/Waves3"]
+y_sort_enabled = true
+position = Vector2(259, -115)
+texture = ExtResource("12_yfoyb")
+
+[node name="WaterBackgroundLightWater10" type="Sprite2D" parent="YSort/Waves3"]
+y_sort_enabled = true
+position = Vector2(-256, -115)
+texture = ExtResource("12_yfoyb")
+
+[node name="Waves4" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundDarkWaterExport2" type="Sprite2D" parent="YSort/Waves4"]
+y_sort_enabled = true
+position = Vector2(1, -90)
+texture = ExtResource("10_yegwj")
+
+[node name="WaterBackgroundDarkWaterExport5" type="Sprite2D" parent="YSort/Waves4"]
+y_sort_enabled = true
+position = Vector2(259, -90)
+texture = ExtResource("10_yegwj")
+
+[node name="WaterBackgroundDarkWaterExport8" type="Sprite2D" parent="YSort/Waves4"]
+y_sort_enabled = true
+position = Vector2(-256, -90)
+texture = ExtResource("10_yegwj")
+
+[node name="Waves5" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundLightWater2" type="Sprite2D" parent="YSort/Waves5"]
+y_sort_enabled = true
+position = Vector2(1, -65)
+texture = ExtResource("12_yfoyb")
+
+[node name="WaterBackgroundLightWater7" type="Sprite2D" parent="YSort/Waves5"]
+y_sort_enabled = true
+position = Vector2(259, -65)
+texture = ExtResource("12_yfoyb")
+
+[node name="WaterBackgroundLightWater11" type="Sprite2D" parent="YSort/Waves5"]
+y_sort_enabled = true
+position = Vector2(-256, -65)
+texture = ExtResource("12_yfoyb")
+
+[node name="Waves6" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundDarkWaterExport" type="Sprite2D" parent="YSort/Waves6"]
+y_sort_enabled = true
+position = Vector2(1, -40)
+texture = ExtResource("10_yegwj")
+
+[node name="WaterBackgroundDarkWaterExport6" type="Sprite2D" parent="YSort/Waves6"]
+y_sort_enabled = true
+position = Vector2(259, -40)
+texture = ExtResource("10_yegwj")
+
+[node name="WaterBackgroundDarkWaterExport9" type="Sprite2D" parent="YSort/Waves6"]
+y_sort_enabled = true
+position = Vector2(-256, -40)
+texture = ExtResource("10_yegwj")
+
+[node name="Waves7" type="Node2D" parent="YSort"]
+
+[node name="WaterBackgroundLightWater" type="Sprite2D" parent="YSort/Waves7"]
+y_sort_enabled = true
+position = Vector2(1, -15)
+texture = ExtResource("12_yfoyb")
+script = ExtResource("9_yfoyb")
+
+[node name="WaterBackgroundLightWater8" type="Sprite2D" parent="YSort/Waves7"]
+y_sort_enabled = true
+position = Vector2(259, -15)
+texture = ExtResource("12_yfoyb")
+script = ExtResource("9_yfoyb")
+
+[node name="WaterBackgroundLightWater12" type="Sprite2D" parent="YSort/Waves7"]
+y_sort_enabled = true
+position = Vector2(-256, -15)
+texture = ExtResource("12_yfoyb")
+script = ExtResource("9_yfoyb")
