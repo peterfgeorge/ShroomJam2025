@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=18 format=3 uid="uid://bps4wq720swg4"]
 
 [ext_resource type="Texture2D" uid="uid://dte8rranbyqk4" path="res://Art/Frogger/waterBackground.png" id="1_1oo7p"]
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://bf5ntxi8c44wl" path="res://Prefabs/MiniGame - Frogger/PlayerSprite.cs" id="9_yfoyb"]
 [ext_resource type="Texture2D" uid="uid://cevh42cdfbpbm" path="res://Art/Frogger/waterBackground-DarkWater-export.png" id="10_yegwj"]
 [ext_resource type="Texture2D" uid="uid://bbg7g3223ncto" path="res://Art/Frogger/waterBackground-LightWater.png" id="12_yfoyb"]
+[ext_resource type="Script" uid="uid://ctugpvll4f6hh" path="res://Scenes/Waves.cs" id="15_ahqgn"]
+[ext_resource type="Texture2D" uid="uid://da37otb0176xf" path="res://Art/Frogger/froggerFlag.png" id="17_glr0y"]
 
 [node name="MiniGameFrogger" type="Control"]
 layout_mode = 3
@@ -271,6 +273,7 @@ parameters/looping = true
 [node name="CRT" parent="." instance=ExtResource("7_o6ym6")]
 
 [node name="Finish" parent="." instance=ExtResource("3_ywige")]
+z_index = 160
 y_sort_enabled = true
 position = Vector2(160, 20)
 
@@ -290,131 +293,152 @@ script = ExtResource("3_ro1pm")
 FroggerSpawnerPrefab = ExtResource("3_kxaxn")
 FroggerObstaclePrefab = ExtResource("4_gl027")
 
-[node name="Waves1" type="Node2D" parent="YSort"]
+[node name="Waves5" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundLightWater4" type="Sprite2D" parent="YSort/Waves1"]
+[node name="WaterBackgroundLightWater4" type="Sprite2D" parent="YSort/Waves5"]
 y_sort_enabled = true
 position = Vector2(1, -174)
 texture = ExtResource("12_yfoyb")
 
-[node name="WaterBackgroundLightWater5" type="Sprite2D" parent="YSort/Waves1"]
+[node name="WaterBackgroundLightWater5" type="Sprite2D" parent="YSort/Waves5"]
 y_sort_enabled = true
 position = Vector2(259, -174)
 texture = ExtResource("12_yfoyb")
 
-[node name="WaterBackgroundLightWater9" type="Sprite2D" parent="YSort/Waves1"]
+[node name="WaterBackgroundLightWater9" type="Sprite2D" parent="YSort/Waves5"]
 y_sort_enabled = true
 position = Vector2(-256, -174)
 texture = ExtResource("12_yfoyb")
 
-[node name="Waves2" type="Node2D" parent="YSort"]
+[node name="Waves6" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundDarkWaterExport3" type="Sprite2D" parent="YSort/Waves2"]
+[node name="WaterBackgroundDarkWaterExport3" type="Sprite2D" parent="YSort/Waves6"]
 y_sort_enabled = true
 position = Vector2(1, -140)
 texture = ExtResource("10_yegwj")
+script = ExtResource("9_yfoyb")
 
-[node name="WaterBackgroundDarkWaterExport7" type="Sprite2D" parent="YSort/Waves2"]
+[node name="WaterBackgroundDarkWaterExport7" type="Sprite2D" parent="YSort/Waves6"]
 y_sort_enabled = true
 position = Vector2(-256, -140)
 texture = ExtResource("10_yegwj")
 
-[node name="WaterBackgroundDarkWaterExport4" type="Sprite2D" parent="YSort/Waves2"]
+[node name="WaterBackgroundDarkWaterExport4" type="Sprite2D" parent="YSort/Waves6"]
 y_sort_enabled = true
 position = Vector2(259, -140)
 texture = ExtResource("10_yegwj")
 
-[node name="Waves3" type="Node2D" parent="YSort"]
+[node name="Waves0" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundLightWater3" type="Sprite2D" parent="YSort/Waves3"]
+[node name="WaterBackgroundLightWater3" type="Sprite2D" parent="YSort/Waves0"]
 y_sort_enabled = true
 position = Vector2(1, -115)
 texture = ExtResource("12_yfoyb")
 
-[node name="WaterBackgroundLightWater6" type="Sprite2D" parent="YSort/Waves3"]
+[node name="WaterBackgroundLightWater6" type="Sprite2D" parent="YSort/Waves0"]
 y_sort_enabled = true
 position = Vector2(259, -115)
 texture = ExtResource("12_yfoyb")
 
-[node name="WaterBackgroundLightWater10" type="Sprite2D" parent="YSort/Waves3"]
+[node name="WaterBackgroundLightWater10" type="Sprite2D" parent="YSort/Waves0"]
 y_sort_enabled = true
 position = Vector2(-256, -115)
 texture = ExtResource("12_yfoyb")
 
-[node name="Waves4" type="Node2D" parent="YSort"]
+[node name="Waves1" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundDarkWaterExport2" type="Sprite2D" parent="YSort/Waves4"]
+[node name="WaterBackgroundDarkWaterExport2" type="Sprite2D" parent="YSort/Waves1"]
 y_sort_enabled = true
 position = Vector2(1, -90)
 texture = ExtResource("10_yegwj")
 
-[node name="WaterBackgroundDarkWaterExport5" type="Sprite2D" parent="YSort/Waves4"]
+[node name="WaterBackgroundDarkWaterExport5" type="Sprite2D" parent="YSort/Waves1"]
 y_sort_enabled = true
 position = Vector2(259, -90)
 texture = ExtResource("10_yegwj")
 
-[node name="WaterBackgroundDarkWaterExport8" type="Sprite2D" parent="YSort/Waves4"]
+[node name="WaterBackgroundDarkWaterExport8" type="Sprite2D" parent="YSort/Waves1"]
 y_sort_enabled = true
 position = Vector2(-256, -90)
 texture = ExtResource("10_yegwj")
 
-[node name="Waves5" type="Node2D" parent="YSort"]
+[node name="Waves2" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundLightWater2" type="Sprite2D" parent="YSort/Waves5"]
+[node name="WaterBackgroundLightWater2" type="Sprite2D" parent="YSort/Waves2"]
 y_sort_enabled = true
 position = Vector2(1, -65)
 texture = ExtResource("12_yfoyb")
 
-[node name="WaterBackgroundLightWater7" type="Sprite2D" parent="YSort/Waves5"]
+[node name="WaterBackgroundLightWater7" type="Sprite2D" parent="YSort/Waves2"]
 y_sort_enabled = true
 position = Vector2(259, -65)
 texture = ExtResource("12_yfoyb")
 
-[node name="WaterBackgroundLightWater11" type="Sprite2D" parent="YSort/Waves5"]
+[node name="WaterBackgroundLightWater11" type="Sprite2D" parent="YSort/Waves2"]
 y_sort_enabled = true
 position = Vector2(-256, -65)
 texture = ExtResource("12_yfoyb")
 
-[node name="Waves6" type="Node2D" parent="YSort"]
+[node name="Waves3" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundDarkWaterExport" type="Sprite2D" parent="YSort/Waves6"]
+[node name="WaterBackgroundDarkWaterExport" type="Sprite2D" parent="YSort/Waves3"]
 y_sort_enabled = true
 position = Vector2(1, -40)
 texture = ExtResource("10_yegwj")
 
-[node name="WaterBackgroundDarkWaterExport6" type="Sprite2D" parent="YSort/Waves6"]
+[node name="WaterBackgroundDarkWaterExport6" type="Sprite2D" parent="YSort/Waves3"]
 y_sort_enabled = true
 position = Vector2(259, -40)
 texture = ExtResource("10_yegwj")
 
-[node name="WaterBackgroundDarkWaterExport9" type="Sprite2D" parent="YSort/Waves6"]
+[node name="WaterBackgroundDarkWaterExport9" type="Sprite2D" parent="YSort/Waves3"]
 y_sort_enabled = true
 position = Vector2(-256, -40)
 texture = ExtResource("10_yegwj")
 
-[node name="Waves7" type="Node2D" parent="YSort"]
+[node name="Waves4" type="Node2D" parent="YSort"]
 y_sort_enabled = true
+script = ExtResource("15_ahqgn")
 
-[node name="WaterBackgroundLightWater" type="Sprite2D" parent="YSort/Waves7"]
+[node name="WaterBackgroundLightWater" type="Sprite2D" parent="YSort/Waves4"]
 y_sort_enabled = true
 position = Vector2(1, -15)
 texture = ExtResource("12_yfoyb")
 script = ExtResource("9_yfoyb")
 
-[node name="WaterBackgroundLightWater8" type="Sprite2D" parent="YSort/Waves7"]
+[node name="WaterBackgroundLightWater8" type="Sprite2D" parent="YSort/Waves4"]
 y_sort_enabled = true
 position = Vector2(259, -15)
 texture = ExtResource("12_yfoyb")
 script = ExtResource("9_yfoyb")
 
-[node name="WaterBackgroundLightWater12" type="Sprite2D" parent="YSort/Waves7"]
+[node name="WaterBackgroundLightWater12" type="Sprite2D" parent="YSort/Waves4"]
 y_sort_enabled = true
 position = Vector2(-256, -15)
 texture = ExtResource("12_yfoyb")
 script = ExtResource("9_yfoyb")
+
+[node name="FroggerFlag" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
+position = Vector2(-115, -101)
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("17_glr0y")
+
+[node name="FroggerFlag2" type="Sprite2D" parent="YSort"]
+y_sort_enabled = true
+position = Vector2(116, -101)
+rotation = 3.1415927
+scale = Vector2(0.755, -0.755)
+texture = ExtResource("17_glr0y")

@@ -57,6 +57,19 @@ public partial class Frogger_SpawnerController : Node2D
                 );
 
                 // MAKE MOVE METHOD TO GET THE RESPECTIVE WAVE BACKGROUND PIECE AND MOVE IT WITH A LOOP IN THE SAME DIRECTION AS THE SPAWNER
+                string waveName = $"../Waves{i}";
+                Node2D waveNode = GetNodeOrNull<Node2D>(waveName);
+
+                GD.Print($"Setting direction for wave node: {waveName}, the direction is {(LeftSpawner ? "Right" : "Left")}");
+
+                if (waveNode is Waves wavesScript)
+                {
+                    wavesScript.Direction = LeftSpawner ? 1 : -1;
+                }
+                else
+                {
+                    GD.PushWarning($"Could not find wave node '{waveName}' or it has no Waves script attached.");
+                }
             }
             // Static
             else
@@ -75,9 +88,11 @@ public partial class Frogger_SpawnerController : Node2D
                         AddChild(Obstacle);
                         float centerX = (ScreenWidth + MarginLeft - MarginRight) / 2;
                         Obstacle.GlobalPosition = new Vector2(
-                            centerX + (j-StaticLocations.Count/2) * LaneHeight,
+                            centerX + (j - StaticLocations.Count / 2) * LaneHeight,
                             CurrentLaneY
                         );
+                        Sprite2D spriteNode = Obstacle.GetNodeOrNull<Sprite2D>("Sprite2D");
+                        spriteNode.SetScript(ResourceLoader.Load<CSharpScript>("res://Prefabs/MiniGame - Frogger/PlayerSprite.cs"));
                     }
 
                     CurrentGridX += LaneHeight;

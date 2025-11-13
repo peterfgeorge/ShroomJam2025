@@ -4,14 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://w3jm42n626hm" path="res://Art/Frogger/frogger_boat.png" id="2_kscn4"]
 [ext_resource type="Script" uid="uid://bf5ntxi8c44wl" path="res://Prefabs/MiniGame - Frogger/PlayerSprite.cs" id="3_kxxfy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_omxhy"]
-radius = 11.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kxxfy"]
+radius = 7.0
+height = 22.0
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_kscn4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_omxhy")
+shape = SubResource("CapsuleShape2D_kxxfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -4)
