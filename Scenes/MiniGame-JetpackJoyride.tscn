@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d1py8ex0p4g4m" path="res://Art/JetpackJoyride/cityBackground-FrontBuildings.png" id="5_yg63x"]
 [ext_resource type="Texture2D" uid="uid://eqk8oymnumo6" path="res://Art/JetpackJoyride/superDuck.png" id="7_mdn6d"]
 [ext_resource type="AudioStream" uid="uid://tncm2a504ot7" path="res://Audio/Music/superduck.mp3" id="7_nfie5"]
-[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
+[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
 [ext_resource type="PackedScene" uid="uid://c4spkn2ketaiv" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible1.tscn" id="13_jdo0u"]
 [ext_resource type="PackedScene" uid="uid://cxe8n42mx087" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible2.tscn" id="14_irhut"]
 [ext_resource type="PackedScene" uid="uid://dx45w3mvy2cj7" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible3.tscn" id="15_nxjiy"]

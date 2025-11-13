@@ -68,7 +68,7 @@ public partial class GameController : Node {
         if (SceneIndex >= MiniGamePaths.Count) {
             SceneIndex = 0;
             GameRound++;
-
+            GD.Print("Current GameRound: " + GameRound);
             Game_TimeLimit = TimeLimitSchedule[Mathf.Clamp(GameRound, 0, TimeLimitSchedule.Length - 1)];
         }
 

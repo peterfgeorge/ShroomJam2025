@@ -4,9 +4,12 @@ using System;
 
 public partial class MiniGameWheresWaldo : Control {
     [Export] public PackedScene MovingObjectScene;
-    [Export] public int ObjectCount = 50;
+    [Export] public int[] ObjectCount = [35,50,65,80,90];
     [Export] SpriteFrames sprites;
     [Export] TextureRect display;
+
+    private GameController gameController => GameController.Instance;
+    private int index;
 
     public static readonly Array<string> characters = [
        "Daphne",
@@ -20,6 +23,8 @@ public partial class MiniGameWheresWaldo : Control {
 
     public override void _Ready() {
         GameController.Instance.GameTimerTimeout += Timeout;
+        int round = gameController != null ? gameController.GameRound : 0;
+        index = Mathf.Clamp(round, 0, ObjectCount.Length - 1);
         SpawnObjects();
         display.Texture = sprites.GetFrameTexture(currentWaldo + "Idle", 0);
     }
@@ -52,7 +57,7 @@ public partial class MiniGameWheresWaldo : Control {
         ysort.AddChild(waldo);
 
         // Spawn other objects
-        for (int i = 0; i < ObjectCount; i++) {
+        for (int i = 0; i < ObjectCount[index]; i++) {
             WaldoNpc obj = MovingObjectScene.Instantiate<WaldoNpc>();
             obj.RandomizeSprite(currentWaldo);
             obj.TryFlip(false);

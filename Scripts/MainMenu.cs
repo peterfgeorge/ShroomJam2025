@@ -20,7 +20,7 @@ public partial class MainMenu : Control {
         HighScoreLabel.Text = SaveData.Instance.data["TOTAL_SCORE"].ToString();
         RecentScoreLabel.Text = SaveData.Instance.data["RECENT_SCORE"].ToString();
 
-        if (SaveData.Instance.data["TOTAL_SCORE"] >= 500) {
+        if (SaveData.Instance.data["TOTAL_SCORE"] >= 300) {
             titleImage.Texture = GD.Load<Texture2D>("res://Art/title_old.png");
             titleImage.CustomMinimumSize = new Vector2(200, titleImage.CustomMinimumSize.Y);
         }

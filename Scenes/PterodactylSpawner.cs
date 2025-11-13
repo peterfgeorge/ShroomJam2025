@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public partial class PterodactylSpawner : Node2D
 {
     [Export] public PackedScene PterodactylScene;
-    [Export] public int PoolSize = 10;
+    [Export] public int PoolSize = 20;
 
-    [Export] public float MinSpawnInterval = 1.5f;
-    [Export] public float MaxSpawnInterval = 3.5f;
+    [Export] public float[] MinSpawnInterval = [1.5f, 1.25f, 1f, 0.75f, 0.5f];
+    [Export] public float[] MaxSpawnInterval = [3.5f, 3f, 2.5f, 2f, 1.5f];
 
     [Export] public float MinHeight = 50f;
     [Export] public float MaxHeight = 200f;
@@ -17,6 +17,8 @@ public partial class PterodactylSpawner : Node2D
     private List<Area2D> pteroPool = new();
     private Timer spawnTimer;
     private Random random = new();
+
+    private GameController gameController => GameController.Instance;
 
     public override void _Ready()
     {
@@ -39,7 +41,14 @@ public partial class PterodactylSpawner : Node2D
 
     private void SetRandomSpawnTime()
     {
-        spawnTimer.WaitTime = (float)(MinSpawnInterval + random.NextDouble() * (MaxSpawnInterval - MinSpawnInterval));
+        int round = gameController != null ? gameController.GameRound : 0;
+
+        int index = Mathf.Clamp(round, 0, MinSpawnInterval.Length - 1);
+
+        float min = MinSpawnInterval[index];
+        float max = MaxSpawnInterval[index];
+
+        spawnTimer.WaitTime = (float)(min + random.NextDouble() * (max - min));
         spawnTimer.Start();
     }
 
