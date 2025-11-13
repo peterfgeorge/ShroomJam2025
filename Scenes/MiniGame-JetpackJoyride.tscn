@@ -1,22 +1,19 @@
-[gd_scene load_steps=25 format=3 uid="uid://dv3wp1kl3u0g7"]
+[gd_scene load_steps=22 format=3 uid="uid://dv3wp1kl3u0g7"]
 
 [ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
 [ext_resource type="Script" uid="uid://bmx44ktecju8y" path="res://Scripts/JetpackJoyride/JJManager.cs" id="1_yovv4"]
 [ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="2_kxcld"]
 [ext_resource type="Texture2D" uid="uid://bfg0jkcnm3xso" path="res://Art/JetpackJoyride/cityBackground-Sky.png" id="2_lisxh"]
-[ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_yg63x"]
 [ext_resource type="Script" uid="uid://dd1rew1r018c8" path="res://Scripts/JetpackJoyride/DeathArea.cs" id="3_fdkdc"]
+[ext_resource type="Texture2D" uid="uid://ba5f5wuqvfs7f" path="res://Art/arrow_up.png" id="3_kxcld"]
 [ext_resource type="PackedScene" uid="uid://nlkb0hfogq8q" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_ObstacleSpawner.tscn" id="3_nyuii"]
 [ext_resource type="Texture2D" uid="uid://nrd2o43euc78" path="res://Art/JetpackJoyride/cityBackground-Clouds.png" id="3_qgovu"]
 [ext_resource type="Texture2D" uid="uid://cktt0a4twskba" path="res://Art/JetpackJoyride/cityBackground-BackBuildings.png" id="4_mdn6d"]
 [ext_resource type="Script" uid="uid://bervd43j4t50c" path="res://Scripts/Common/BackgroundParallax.cs" id="5_kbwgi"]
 [ext_resource type="Texture2D" uid="uid://d1py8ex0p4g4m" path="res://Art/JetpackJoyride/cityBackground-FrontBuildings.png" id="5_yg63x"]
-[ext_resource type="PackedScene" uid="uid://c4spkn2ketaiv" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible1.tscn" id="6_fyvph"]
 [ext_resource type="Texture2D" uid="uid://eqk8oymnumo6" path="res://Art/JetpackJoyride/superDuck.png" id="7_mdn6d"]
 [ext_resource type="AudioStream" uid="uid://tncm2a504ot7" path="res://Audio/Music/superduck.mp3" id="7_nfie5"]
-[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
-[ext_resource type="PackedScene" uid="uid://cxe8n42mx087" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible2.tscn" id="14_jdo0u"]
-[ext_resource type="PackedScene" uid="uid://dx45w3mvy2cj7" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible3.tscn" id="15_irhut"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
 size = Vector2(19, 10)
@@ -92,20 +89,24 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="ControlsPopup/ArrowUp"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 0
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 112.0
 offset_bottom = 112.0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_yg63x")
+texture = ExtResource("3_kxcld")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="ControlsPopup/ArrowUp"]
 layout_mode = 0
-offset_left = -7.0
-offset_top = -5.0
-offset_right = 33.0
-offset_bottom = 12.0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 35.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "W"
 
 [node name="Background" type="TextureRect" parent="."]
@@ -127,7 +128,7 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_kbwgi")
-ManagedNodes = [NodePath("Clouds"), NodePath("Clouds2"), NodePath("Clouds3")]
+ManagedNodes = []
 ParallaxSpeedX = -0.25
 ParallaxOffsetX = 20.0
 ParallaxOffsetY = 23.0
@@ -170,7 +171,7 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_kbwgi")
-ManagedNodes = [NodePath("Clouds3"), NodePath("Clouds4")]
+ManagedNodes = []
 ParallaxSpeedX = -0.35
 ParallaxOffsetX = 20.0
 ParallaxOffsetY = 23.0
@@ -199,7 +200,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_kbwgi")
-ManagedNodes = [NodePath("Buildings"), NodePath("Buildings2")]
+ManagedNodes = []
 ParallaxSpeedX = -0.3
 ParallaxOffsetX = 20.0
 ParallaxOffsetY = 23.0
@@ -228,7 +229,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_kbwgi")
-ManagedNodes = [NodePath("Buildings2"), NodePath("Buildings3")]
+ManagedNodes = []
 ParallaxSpeedX = -0.45
 ParallaxOffsetX = 20.0
 ParallaxOffsetY = 23.0
@@ -274,7 +275,6 @@ position = Vector2(160, 190)
 shape = SubResource("RectangleShape2D_yovv4")
 
 [node name="Spawner" parent="." instance=ExtResource("3_nyuii")]
-collectiblePrefabs = [ExtResource("6_fyvph"), ExtResource("14_jdo0u"), ExtResource("15_irhut")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_nfie5")

@@ -2,29 +2,23 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class ControlsPopup : Control
-{
-    public override void _Ready()
-    {
-        if (GameController.Instance.GameRound > 0)
-        {
-            this.Hide();
-        }
-        else
-        {
-            PopupFadeController();
-        }
-    }
+public partial class ControlsPopup : Control {
+	public override void _Ready() {
+		if (GameController.Instance.GameRound > 0) {
+			this.Hide();
+		} else {
+			PopupFadeController();
+		}
+	}
 
-    public async void PopupFadeController()
-    {
-        await FadeIn(this, 0.25f);
-        await ToSignal(GetTree().CreateTimer(1f), "timeout");
-        await FadeOut(this, 1.25f);
-        await FadeIn(this, 0.25f);
-        await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
-        await FadeOut(this, 0.25f);
-    }
+	public async void PopupFadeController() {
+		await FadeIn(this, 0.5f);
+		await ToSignal(GetTree().CreateTimer(1.5f), "timeout");
+		await FadeOut(this, 0.5f);
+		await FadeIn(this, 0.5f);
+		await ToSignal(GetTree().CreateTimer(1.5f), "timeout");
+		await FadeOut(this, 0.5f);
+	}
 
 	public async Task FadeOut(CanvasItem canvas, float duration = 1f) {
 		double counter = 0;

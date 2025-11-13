@@ -1,8 +1,7 @@
 using Godot;
 using System;
 
-public partial class FruitDrop_Fruit : Area2D
-{
+public partial class FruitDrop_Fruit : Area2D {
     [Export] float MaxSpeed_Vertical = 1.5f;
     [Export] float AccelerationTime = 2f; // seconds to reach max speed
     [Export] float PopUpSpeed = 50f;       // initial upward velocity (pixels/sec)
@@ -14,14 +13,20 @@ public partial class FruitDrop_Fruit : Area2D
     float accelerationRate = 0f;
     float Speed_Rotation_Offset;
 
-    public override void _Ready()
-    {
+    private AudioStreamPlayer player;
+
+    public override void _Ready() {
         MaxSpeed_Vertical += GameController.Instance.GameRound * 0.1f;
         accelerationRate = MaxSpeed_Vertical / AccelerationTime;
 
         // Start pop-up
         popUpTimer = 0f;
         isPopping = true;
+
+        player = new();
+        player.Stream = GD.Load<AudioStream>("res://Audio/SFX/pop.mp3");
+        player.VolumeDb = -12;
+        AddChild(player);
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -48,9 +53,9 @@ public partial class FruitDrop_Fruit : Area2D
         if (Position.Y > 166f)
             Visible = false;
     }
-    
-    public void ResetFruit(Vector2 spawnPosition)
-    {
+
+    public void ResetFruit(Vector2 spawnPosition) {
+        player.Play();
         GlobalPosition = spawnPosition;
 
         // Reactivate pop-up

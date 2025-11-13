@@ -104,7 +104,7 @@ public partial class GameController : Node {
         GetTree().Paused = true;
         AudioStreamPlayer player = GetTree().CurrentScene.GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         player.Stop();
-        player.Stream = GD.Load<AudioStream>("res://Audio/SFX/trombone_wah.wav");
+        player.Stream = GD.Load<AudioStream>("res://Audio/SFX/trombone_wah.mp3");
         player.VolumeDb = 0;
         player.Play();
         await ToSignal(GetTree().CreateTimer(4f), "timeout");

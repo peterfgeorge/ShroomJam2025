@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/steamboat.mp3-06ec8cbd14ba39142e96f864ae19646
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

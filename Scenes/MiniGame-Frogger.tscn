@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bps4wq720swg4"]
+[gd_scene load_steps=13 format=3 uid="uid://bps4wq720swg4"]
 
+[ext_resource type="Texture2D" uid="uid://dte8rranbyqk4" path="res://Art/Frogger/waterBackground.png" id="1_1oo7p"]
 [ext_resource type="PackedScene" uid="uid://dm62ccjpxyrn6" path="res://Prefabs/MiniGame - Frogger/Frogger_Player.tscn" id="1_kxaxn"]
-[ext_resource type="Texture2D" uid="uid://bedjmgtm0jskq" path="res://Art/Frogger/frogger_background.png" id="1_ywige"]
 [ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="2_1oo7p"]
 [ext_resource type="Texture2D" uid="uid://bvt6nwgxattxa" path="res://icon.svg" id="2_445hp"]
+[ext_resource type="Texture2D" uid="uid://ba5f5wuqvfs7f" path="res://Art/arrow_up.png" id="2_yegwj"]
 [ext_resource type="PackedScene" uid="uid://8hb8wknlgpae" path="res://Prefabs/MiniGame - Frogger/Frogger_ObstacleSpawner.tscn" id="3_kxaxn"]
 [ext_resource type="Script" uid="uid://besw1iduo48ya" path="res://Scripts/MiniGame - Frogger/Frogger_SpawnerController.cs" id="3_ro1pm"]
+[ext_resource type="Texture2D" uid="uid://ruxmf3hdkcej" path="res://Art/arrow_right.png" id="3_yfoyb"]
 [ext_resource type="PackedScene" uid="uid://dso70nvwh6184" path="res://Prefabs/MiniGame - Frogger/Frogger_Finish.tscn" id="3_ywige"]
 [ext_resource type="PackedScene" uid="uid://b4uibp443006g" path="res://Prefabs/MiniGame - Frogger/Frogger_Obstacle.tscn" id="4_gl027"]
 [ext_resource type="AudioStream" uid="uid://cl18y0wu1d8nt" path="res://Audio/Music/steamboat.mp3" id="5_lkfas"]
-[ext_resource type="PackedScene" path="res://Prefabs/crt.tscn" id="7_o6ym6"]
+[ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="7_o6ym6"]
 
 [node name="MiniGameFrogger" type="Control"]
 layout_mode = 3
@@ -24,12 +26,104 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = -40.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ywige")
-stretch_mode = 2
+texture = ExtResource("1_1oo7p")
+expand_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -64.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+script = ExtResource("2_1oo7p")
+
+[node name="Control" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_yegwj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 25.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "W"
+
+[node name="Control2" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("3_yfoyb")
+expand_mode = 1
+flip_h = true
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 27.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "A"
+
+[node name="TextureRect3" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_yegwj")
+expand_mode = 1
+flip_v = true
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect3"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 27.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "S"
+
+[node name="TextureRect4" type="TextureRect" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("3_yfoyb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect4"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 26.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "D"
 
 [node name="ControlsPopup" type="Control" parent="."]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -59,9 +153,8 @@ offset_left = -16.0
 offset_top = 16.0
 offset_right = 112.0
 offset_bottom = 144.0
-rotation = -1.5707964
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_445hp")
+texture = ExtResource("3_yfoyb")
 
 [node name="Label" type="Label" parent="ControlsPopup/ArrowLeft"]
 layout_mode = 0
