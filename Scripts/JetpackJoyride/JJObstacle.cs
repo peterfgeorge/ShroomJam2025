@@ -9,13 +9,14 @@ public partial class JJObstacle : DeathArea
     {
         // Connect Area2D signal to detect collisions with collectibles
         AreaEntered += OnAreaEntered;
+
+        BodyEntered += OnCharacterCollision;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         Position += Vector2.Left * speed * (float)delta;
 
-        // Optional: destroy if it moves off screen
         if (Position.X < -10f)
         {
             QueueFree();
@@ -24,7 +25,6 @@ public partial class JJObstacle : DeathArea
 
     private void OnAreaEntered(Area2D area)
     {
-        // Only destroy itself if it collided with a collectible
         if (area is JJCollectible)
         {
             QueueFree();
@@ -33,7 +33,6 @@ public partial class JJObstacle : DeathArea
 
     public void CheckOverlapOnSpawn()
     {
-        // Optional: check immediately after spawning if overlapping any collectible
         var overlappingAreas = GetOverlappingAreas();
         foreach (var area in overlappingAreas)
         {
@@ -43,5 +42,18 @@ public partial class JJObstacle : DeathArea
                 return;
             }
         }
+    }
+
+    private async void OnCharacterCollision(Node2D body) {
+        BodyEntered -= OnCharacterCollision;
+
+        GetTree().Paused = true;
+        AudioStreamPlayer player = new();
+        player.Stream = GD.Load<AudioStream>("res://Audio/SFX/crash.mp3");
+        GetTree().CurrentScene.AddChild(player);
+        player.Play();
+        await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+
+        GameController.Instance.FailGame(JJPlayerController.currentScore + (int)(GameController.Instance.Game_TimeLimit - GameController.Instance.GetGameTimer()));
     }
 }

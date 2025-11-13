@@ -6,8 +6,10 @@ public partial class ObstacleSpawner : Node2D {
     [Export] public PackedScene obstaclePrefab;
     [Export] public PackedScene[] collectiblePrefabs = Array.Empty<PackedScene>();
 
-    private const float SPAWN_DELAY_MIN = 0.2f;
-    private const float SPAWN_DELAY_MAX = 1f;
+    [Export] float spawn_delay_collectible_min = 0.2f;
+    [Export] float spawn_delay_collectible_max = 2.5f;
+    [Export] float spawn_delay_obstacle_min = 0.1f;
+    [Export] float[] spawn_delay_obstacle_max = [2.5f, 2.0f, 1.5f, 1.0f, 0.5f];
 
     private float obsTimer = 0f;
     private float collTimer = 0f;
@@ -19,7 +21,13 @@ public partial class ObstacleSpawner : Node2D {
 
     private RandomNumberGenerator rng = new RandomNumberGenerator();
 
+    private GameController gameController => GameController.Instance;
+    int index;
+
     public override void _Ready() {
+        int round = gameController != null ? gameController.GameRound : 0;
+
+        index = Mathf.Clamp(round, 0, spawn_delay_obstacle_max.Length - 1);
         ResetSpawnDelay();
         ResetCollDelay();
     }
@@ -109,10 +117,10 @@ public partial class ObstacleSpawner : Node2D {
     }
 
     private void ResetSpawnDelay() {
-        obsSpawnDelay = rng.RandfRange(SPAWN_DELAY_MIN, SPAWN_DELAY_MAX);
+        obsSpawnDelay = rng.RandfRange(spawn_delay_collectible_min, spawn_delay_collectible_max);
     }
 
     private void ResetCollDelay() {
-        collSpawnDelay = rng.RandfRange(SPAWN_DELAY_MIN, SPAWN_DELAY_MAX);
+        collSpawnDelay = rng.RandfRange(spawn_delay_obstacle_min, spawn_delay_obstacle_max[index]);
     }
 }
