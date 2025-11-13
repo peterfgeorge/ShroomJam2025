@@ -12,6 +12,8 @@ public partial class WaldoNpc : Area2D {
     private bool _isPaused = false;
     private float _pauseTimer = 0f;
 
+    public AudioStreamPlayer sfx;
+
     public override void _Ready() {
         _startPos = Position;
         InputEvent += OnInputEvent; // Detect clicks
@@ -29,8 +31,7 @@ public partial class WaldoNpc : Area2D {
                 currentAnim = currentAnim.Trim();
                 string newAnim = currentAnim + "Walk";
                 _anim.Play(newAnim);
-            }
-            else
+            } else
                 return; // Don’t move while paused
         }
 
@@ -47,19 +48,15 @@ public partial class WaldoNpc : Area2D {
 
         sprite.FlipH = !_movingRight;
     }
-    
-    public void TryFlip(bool newDirection)
-    {
+
+    public void TryFlip(bool newDirection) {
         // Only flip if direction is changing
-        if (_movingRight != newDirection)
-        {
+        if (_movingRight != newDirection) {
             _movingRight = newDirection;
 
             // 40% chance to pause for 2 seconds
-            if (GD.Randf() < 0.4f)
-            {
-                if(_anim == null)
-                {
+            if (GD.Randf() < 0.4f) {
+                if (_anim == null) {
                     _anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
                 }
                 _isPaused = true;
@@ -79,7 +76,9 @@ public partial class WaldoNpc : Area2D {
 
     private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed) {
-            GD.Print("Click");
+            sfx = GetTree().CurrentScene.GetNode<AudioStreamPlayer>("SFX");
+            sfx.Play();
+
             QueueFree(); // Delete the object when clicked
             if (sprite.Animation.ToString().Contains(MiniGameWheresWaldo.currentWaldo)) {
                 GameController.Instance.PassGame((int)(GameController.Instance.Game_TimeLimit - GameController.Instance.GetGameTimer()));
@@ -88,7 +87,7 @@ public partial class WaldoNpc : Area2D {
     }
 
     public void SetSprite(string animName) {
-        sprite.Play(animName+"Walk");
+        sprite.Play(animName + "Walk");
     }
 
     public void RandomizeSprite(string exclude) {

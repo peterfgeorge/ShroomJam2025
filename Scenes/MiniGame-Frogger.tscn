@@ -38,7 +38,8 @@ grow_vertical = 2
 texture = ExtResource("1_1oo7p")
 expand_mode = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Controls" type="GridContainer" parent="."]
+z_index = 4096
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,16 +54,16 @@ grow_vertical = 2
 columns = 3
 script = ExtResource("2_1oo7p")
 
-[node name="Control" type="Control" parent="GridContainer"]
+[node name="Control" type="Control" parent="Controls"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="Controls"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("2_yegwj")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="GridContainer/TextureRect"]
+[node name="Label" type="Label" parent="Controls/TextureRect"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 14.0
@@ -72,17 +73,17 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "W"
 
-[node name="Control2" type="Control" parent="GridContainer"]
+[node name="Control2" type="Control" parent="Controls"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="GridContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Controls"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("3_yfoyb")
 expand_mode = 1
 flip_h = true
 
-[node name="Label" type="Label" parent="GridContainer/TextureRect2"]
+[node name="Label" type="Label" parent="Controls/TextureRect2"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 11.0
@@ -92,14 +93,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "A"
 
-[node name="TextureRect3" type="TextureRect" parent="GridContainer"]
+[node name="TextureRect3" type="TextureRect" parent="Controls"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("2_yegwj")
 expand_mode = 1
 flip_v = true
 
-[node name="Label" type="Label" parent="GridContainer/TextureRect3"]
+[node name="Label" type="Label" parent="Controls/TextureRect3"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 10.0
@@ -109,13 +110,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "S"
 
-[node name="TextureRect4" type="TextureRect" parent="GridContainer"]
+[node name="TextureRect4" type="TextureRect" parent="Controls"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("3_yfoyb")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="GridContainer/TextureRect4"]
+[node name="Label" type="Label" parent="Controls/TextureRect4"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 11.0

@@ -24,8 +24,7 @@ public partial class MiniGameWheresWaldo : Control {
         display.Texture = sprites.GetFrameTexture(currentWaldo + "Idle", 0);
     }
 
-    private void SpawnObjects()
-    {
+    private void SpawnObjects() {
         var ysort = GetNode<Node2D>("YSort");
         currentWaldo = characters.PickRandom();
 

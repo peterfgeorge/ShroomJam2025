@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bt20gjyk3xhvv"]
+[gd_scene load_steps=20 format=3 uid="uid://bt20gjyk3xhvv"]
 
 [ext_resource type="Script" uid="uid://cydly1cirs8ff" path="res://Scenes/MiniGameWheresWaldo.cs" id="1_7bpfn"]
 [ext_resource type="PackedScene" uid="uid://7oaoyxu8x1ox" path="res://Prefabs/MiniGame - WheresWaldo/Waldo_NPC.tscn" id="2_qjff8"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://fqcbe70aomhs" path="res://Art/ScoobyDoo/WaldoNPCAnimations.tres" id="3_swak2"]
 [ext_resource type="AudioStream" uid="uid://dahw6pkxf3p4a" path="res://Audio/Music/scoobyduck.mp3" id="3_tpaqc"]
 [ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="4_cuqhb"]
+[ext_resource type="AudioStream" uid="uid://b4pso7cj4wkuc" path="res://Audio/SFX/pop.mp3" id="6_30m0n"]
 [ext_resource type="Texture2D" uid="uid://dcp1gudn0wkl6" path="res://Art/pointer.png" id="7_d8s4f"]
 [ext_resource type="Texture2D" uid="uid://dqi0nlkia7k8y" path="res://Art/ScoobyDoo/gravesScoobyDoo2.png" id="7_jasom"]
 [ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="8_30m0n"]
@@ -192,3 +193,7 @@ texture = ExtResource("16_rjvmd")
 y_sort_enabled = true
 position = Vector2(252.5, 86.5)
 texture = ExtResource("14_nqlev")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_30m0n")
+volume_db = -12.0

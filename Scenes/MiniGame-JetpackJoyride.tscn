@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dv3wp1kl3u0g7"]
+[gd_scene load_steps=26 format=3 uid="uid://dv3wp1kl3u0g7"]
 
 [ext_resource type="Script" uid="uid://bu071ifg83vui" path="res://Scripts/JetpackJoyride/JJPlayerController.cs" id="1_2opvt"]
 [ext_resource type="Script" uid="uid://bmx44ktecju8y" path="res://Scripts/JetpackJoyride/JJManager.cs" id="1_yovv4"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://eqk8oymnumo6" path="res://Art/JetpackJoyride/superDuck.png" id="7_mdn6d"]
 [ext_resource type="AudioStream" uid="uid://tncm2a504ot7" path="res://Audio/Music/superduck.mp3" id="7_nfie5"]
 [ext_resource type="PackedScene" uid="uid://ddca041d5oog6" path="res://Prefabs/crt.tscn" id="8_2e7dk"]
+[ext_resource type="PackedScene" uid="uid://c4spkn2ketaiv" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible1.tscn" id="13_jdo0u"]
+[ext_resource type="PackedScene" uid="uid://cxe8n42mx087" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible2.tscn" id="14_irhut"]
+[ext_resource type="PackedScene" uid="uid://dx45w3mvy2cj7" path="res://Prefabs/MiniGame - JetpackJoyride/JJ_Collectible3.tscn" id="15_nxjiy"]
+[ext_resource type="AudioStream" uid="uid://y03bxswyxgjd" path="res://Audio/SFX/coin.mp3" id="18_irhut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is1c3"]
 size = Vector2(19, 10)
@@ -275,6 +279,7 @@ position = Vector2(160, 190)
 shape = SubResource("RectangleShape2D_yovv4")
 
 [node name="Spawner" parent="." instance=ExtResource("3_nyuii")]
+collectiblePrefabs = [ExtResource("13_jdo0u"), ExtResource("14_irhut"), ExtResource("15_nxjiy")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_nfie5")
@@ -282,3 +287,6 @@ autoplay = true
 parameters/looping = true
 
 [node name="CRT" parent="." instance=ExtResource("8_2e7dk")]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_irhut")

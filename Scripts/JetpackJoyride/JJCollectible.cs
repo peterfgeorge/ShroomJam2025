@@ -17,8 +17,15 @@ public partial class JJCollectible : Area2D {
         }
     }
 
-    private void OnCharacterCollision(Node2D body) {
+    private async void OnCharacterCollision(Node2D body) {
+        BodyEntered -= OnCharacterCollision;
+
         JJPlayerController.currentScore += value;
+        Modulate = new Color(0, 0, 0, 0);
+
+        AudioStreamPlayer sfx = GetTree().CurrentScene.GetNode<AudioStreamPlayer>("SFX");
+        sfx.Play();
+
         QueueFree();
     }
 }
