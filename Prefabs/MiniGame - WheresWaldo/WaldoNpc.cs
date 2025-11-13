@@ -65,7 +65,7 @@ public partial class WaldoNpc : Area2D {
                 _isPaused = true;
                 _pauseTimer = (float)GD.RandRange(1.5, 3);
 
-                GD.Print("_anim exists: " + (_anim != null));
+                // GD.Print("_anim exists: " + (_anim != null));
                 // plays idle animation while character is paused
                 // this is called here bc it has to wait until the random character anim is chosen
                 string currentAnim = _anim.Animation;

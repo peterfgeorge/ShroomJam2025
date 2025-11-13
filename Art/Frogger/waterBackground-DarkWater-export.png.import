@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbg7g3223ncto"
-path="res://.godot/imported/waterBackground-LightWater.png-f0853cd152ce7d4cf7d2ebcf73a4a94c.ctex"
+uid="uid://cevh42cdfbpbm"
+path="res://.godot/imported/waterBackground-DarkWater-export.png-b47cfa4ab843ac2a2005978bbddf04b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Frogger/waterBackground-LightWater.png"
-dest_files=["res://.godot/imported/waterBackground-LightWater.png-f0853cd152ce7d4cf7d2ebcf73a4a94c.ctex"]
+source_file="res://Art/Frogger/waterBackground-DarkWater-export.png"
+dest_files=["res://.godot/imported/waterBackground-DarkWater-export.png-b47cfa4ab843ac2a2005978bbddf04b4.ctex"]
 
 [params]
 
