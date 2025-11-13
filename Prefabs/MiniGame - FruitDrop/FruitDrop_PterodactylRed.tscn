@@ -28,7 +28,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvl1r"]
 size = Vector2(23, 53)
 
-[node name="Pterodactyl" type="Area2D" node_paths=PackedStringArray("anim")]
+[node name="PterodactylRed" type="Area2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_mvl1r")
 speed = 75.0
 anim = NodePath("AnimatedSprite2D")

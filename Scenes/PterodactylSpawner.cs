@@ -89,6 +89,7 @@ public partial class PterodactylSpawner : Node2D
 
         // Call existing initialization method
         ptero.Initialize(spawnLeft ? Vector2.Right : Vector2.Left);
+        ptero.Name = PterodactylScene.ResourcePath;
     }
 
     private Area2D GetInactivePterodactyl() {

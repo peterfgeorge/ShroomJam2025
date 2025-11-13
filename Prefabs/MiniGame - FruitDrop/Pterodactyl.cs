@@ -7,9 +7,11 @@ public partial class Pterodactyl : Area2D
     [Export] float speed = 200f;
     [Export] AnimatedSprite2D anim;
     [Export] public EggPool eggPool;
-    private float dropCooldown = 2f;
+    private float[] dropCooldown = [2f, 1.6f, 1.35f, 1.1f, .8f];
     private float dropTimer = 0f;
     public bool Active { get; private set; } = false;
+    private GameController gameController => GameController.Instance;
+    private int index;
 
     public CollisionShape2D CollisionShape => GetNode<CollisionShape2D>("CollisionShape2D");
 
@@ -17,7 +19,13 @@ public partial class Pterodactyl : Area2D
     {
         direction = dir;
         Scale = new Vector2(dir == Vector2.Left ? 1 : -1, 1);
-        dropTimer = GD.Randf() * 2f;
+        if(!Name.ToString().Contains("Red")) {
+            dropTimer = GD.Randf() * 2f;
+        } else {
+            int round = gameController != null ? gameController.GameRound : 0;
+            int index = Mathf.Clamp(round, 0, dropCooldown.Length - 1);
+            dropTimer = GD.Randf() * dropCooldown[index];
+        }
     }
 
     public override void _Process(double delta) {
@@ -34,7 +42,12 @@ public partial class Pterodactyl : Area2D
             dropTimer -= (float)delta;
             if (dropTimer <= 0f) {
                 DropEgg();
-                dropTimer = 2f + GD.Randf() * 2f; // random 2–4 sec cooldown
+                if(!Name.ToString().Contains("Red")) {
+                    dropTimer = 2f + GD.Randf() * 2f; // random 2–4 sec cooldown
+                } else {
+                    GD.Print("Dropping egg from evil ptero");
+                    dropTimer = .5f + GD.Randf() * dropCooldown[index];
+                }
             }
         }
 

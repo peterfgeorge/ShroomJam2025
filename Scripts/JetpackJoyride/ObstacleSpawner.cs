@@ -43,14 +43,14 @@ public partial class ObstacleSpawner : Node2D {
         if (obsTimer >= obsSpawnDelay) {
             SpawnObstacle();
             obsTimer = 0f;
-            ResetSpawnDelay();
+            ResetCollDelay();
         }
 
         // Spawn collectibles independently
         if (collTimer >= collSpawnDelay) {
             SpawnCollectible();
             collTimer = 0f;
-            ResetCollDelay();
+            ResetSpawnDelay();
         }
     }
 
