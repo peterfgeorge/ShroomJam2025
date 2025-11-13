@@ -112,7 +112,7 @@ speed = 2.5
 eggSprites = [NodePath("../EggUI/Egg"), NodePath("../EggUI/Egg2"), NodePath("../EggUI/Egg3")]
 
 [node name="MissCollider" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("3_2kai3")]
-position = Vector2(160, 151)
+position = Vector2(160, 150)
 Player = NodePath("../Player")
 
 [node name="CRT" parent="." instance=ExtResource("6_4tshu")]

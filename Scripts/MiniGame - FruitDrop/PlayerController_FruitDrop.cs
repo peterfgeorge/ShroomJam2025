@@ -51,6 +51,7 @@ public partial class PlayerController_FruitDrop : Area2D
         // Remove Object
         s.Hide();
         s.SetDeferred("monitorable", false);
+        s.SetDeferred("monitoring", false);
     }
     public void Miss(Area2D s)
     {

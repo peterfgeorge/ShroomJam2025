@@ -10,7 +10,7 @@ public partial class Frogger_Obstacle : Area2D {
 
     public override void _Ready() {
         // Adjust Config for Game Round
-        speed += GameController.Instance.GameRound * 0.8f;
+        speed += GameController.Instance.GameRound * 1.5f;
     }
     public override void _PhysicsProcess(double delta) {
         if (Static)

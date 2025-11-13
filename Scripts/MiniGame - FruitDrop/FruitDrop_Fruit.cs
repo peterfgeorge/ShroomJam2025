@@ -14,7 +14,6 @@ public partial class FruitDrop_Fruit : Area2D {
     float Speed_Rotation_Offset;
 
     private AudioStreamPlayer player;
-    private AudioStreamPlayer splatPlayer;
 
     public override void _Ready() {
         MaxSpeed_Vertical += GameController.Instance.GameRound * 0.1f;
@@ -28,11 +27,6 @@ public partial class FruitDrop_Fruit : Area2D {
         player.Stream = GD.Load<AudioStream>("res://Audio/SFX/pop.mp3");
         player.VolumeDb = -12;
         AddChild(player);
-
-        // splatPlayer = new();
-        // splatPlayer.Stream = GD.Load<AudioStream>("res://Audio/SFX/splat.mp3");
-        // splatPlayer.VolumeDb = -2;
-        // AddChild(splatPlayer);
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -58,13 +52,9 @@ public partial class FruitDrop_Fruit : Area2D {
         // Hide when offscreen
         if (Position.Y > 166f) {
             Visible = false;
-
-            // Node parentNode = GetParent(); // get the parent
-            // if (parentNode != null && !parentNode.Name.ToString().Contains("Evil"))
-            // {
-            //     splatPlayer.Play();
-            // }
-        } 
+            SetDeferred("monitorable", false);
+            SetDeferred("monitoring", false);
+        }
     }
 
     public void ResetFruit(Vector2 spawnPosition) {
