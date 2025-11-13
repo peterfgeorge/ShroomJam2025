@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tmkd1s8vgg3r"]
+[gd_scene load_steps=15 format=3 uid="uid://tmkd1s8vgg3r"]
 
 [ext_resource type="PackedScene" uid="uid://lry5g85j7npe" path="res://Prefabs/MiniGame - FruitDrop/FruitDrop_Player.tscn" id="1_8167n"]
 [ext_resource type="Script" uid="uid://nvafxlopebq3" path="res://Scripts/Common/ControlsPopup.cs" id="1_doyxh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bvye54oenclbv" path="res://Scenes/PterodactylSpawner.cs" id="11_q6jk5"]
 [ext_resource type="Script" uid="uid://bbblpf4khpcie" path="res://Scenes/EggPool.cs" id="12_hojdk"]
 [ext_resource type="AudioStream" uid="uid://cshkdeophx1a3" path="res://Audio/Music/duckstones.mp3" id="13_axv03"]
+[ext_resource type="Texture2D" uid="uid://bf5t6ytait36g" path="res://Art/FruitDrop/egg.png" id="14_75y67"]
 
 [node name="MiniGameFruitDrop" type="Control"]
 layout_mode = 3
@@ -105,12 +106,13 @@ position = Vector2(148.5, 90.5)
 scale = Vector2(1.0193799, 1.0357143)
 texture = ExtResource("7_v06ru")
 
-[node name="Player" parent="." instance=ExtResource("1_8167n")]
+[node name="Player" parent="." node_paths=PackedStringArray("eggSprites") instance=ExtResource("1_8167n")]
 position = Vector2(154, 149)
 speed = 2.5
+eggSprites = [NodePath("../EggUI/Egg"), NodePath("../EggUI/Egg2"), NodePath("../EggUI/Egg3")]
 
 [node name="MissCollider" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("3_2kai3")]
-position = Vector2(160, 180)
+position = Vector2(160, 151)
 Player = NodePath("../Player")
 
 [node name="CRT" parent="." instance=ExtResource("6_4tshu")]
@@ -151,3 +153,17 @@ EggPrefab = ExtResource("4_8ln04")
 stream = ExtResource("13_axv03")
 volume_db = 8.582
 autoplay = true
+
+[node name="EggUI" type="Node2D" parent="."]
+
+[node name="Egg" type="Sprite2D" parent="EggUI"]
+position = Vector2(36, 155)
+texture = ExtResource("14_75y67")
+
+[node name="Egg2" type="Sprite2D" parent="EggUI"]
+position = Vector2(46, 155)
+texture = ExtResource("14_75y67")
+
+[node name="Egg3" type="Sprite2D" parent="EggUI"]
+position = Vector2(56, 155)
+texture = ExtResource("14_75y67")

@@ -14,9 +14,12 @@ public partial class PlayerController_FruitDrop : Area2D
     [Export] float ScorePerCatch = 0.5f;
     [Export] int AllowedDrops = 2;
     [Export] AnimatedSprite2D anim;
+    [Export] Sprite2D[] eggSprites;
 
     float PlayerOffset;
     int Catches = 0;
+
+    private AudioStreamPlayer player;
 
     // Game Score Calculation
     public int CalculateScore()
@@ -61,11 +64,12 @@ public partial class PlayerController_FruitDrop : Area2D
 
         // Decrement Catch Count
         Catches--;
-
+        eggSprites[AllowedDrops].Visible = false;
         // Decrement lenience
         if (AllowedDrops > 0)
         {
             AllowedDrops--;
+            player.Play();
             return;
         }
 
@@ -98,6 +102,12 @@ public partial class PlayerController_FruitDrop : Area2D
 
         // Set Initial Game State
         Catches = 0;
+
+        //Audio Player splat sfx
+        player = new();
+        player.Stream = GD.Load<AudioStream>("res://Audio/SFX/splat.mp3");
+        player.VolumeDb = -3;
+        AddChild(player);
     }
 
     public override void _PhysicsProcess(double delta)
