@@ -31,7 +31,8 @@ public partial class JJPlayerController : CharacterBody2D {
     }
 
     private void Timeout() {
-        GameController.Instance.PassGame(currentScore + (int)GameController.Instance.Game_TimeLimit);
+        float multiplier = (8 + GameController.Instance.GameRound) / 8f;
+        GameController.Instance.PassGame(currentScore + (int)(GameController.Instance.Game_TimeLimit * multiplier));
     }
 
     public override void _ExitTree() {

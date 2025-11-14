@@ -15,7 +15,8 @@ public partial class PlayerController_Frogger : Area2D {
 
     // Game Score Calculation
     public int CalculateScore() {
-        return (int)Math.Floor(GameController.Instance.GetGameTimer());
+        float multiplier = (8 + GameController.Instance.GameRound) / 8f;
+        return (int)Math.Floor(GameController.Instance.GetGameTimer() * multiplier);
     }
 
     // Collision Event Handler

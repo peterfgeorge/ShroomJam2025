@@ -2,11 +2,10 @@ using Godot;
 using System;
 
 public partial class JJCollectible : Area2D {
-    [Export] int value = 1;
+    [Export] int value = 2;
     [Export] int speed = 200;
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         AreaEntered += OnAreaEntered;
         BodyEntered += OnCharacterCollision;
         CallDeferred(nameof(CheckOverlapWithPhysics));
@@ -32,17 +31,14 @@ public partial class JJCollectible : Area2D {
         QueueFree();
     }
 
-    private void OnAreaEntered(Area2D area)
-    {
+    private void OnAreaEntered(Area2D area) {
         // Only destroy itself if it collided with an obstacle
-        if (area is JJObstacle)
-        {
+        if (area is JJObstacle) {
             QueueFree();
         }
     }
 
-    private void CheckOverlapWithPhysics()
-    {
+    private void CheckOverlapWithPhysics() {
         var space = GetWorld2D().DirectSpaceState;
 
         CollisionShape2D shapeNode = GetNode<CollisionShape2D>("CollisionShape2D");
@@ -57,20 +53,16 @@ public partial class JJCollectible : Area2D {
         };
 
         var result = space.IntersectShape(query, 1); // max 1 result
-        if (result.Count > 0)
-        {
+        if (result.Count > 0) {
             QueueFree();
         }
     }
 
-    public void CheckOverlapOnSpawn()
-    {
+    public void CheckOverlapOnSpawn() {
         // Optional: check immediately after spawning if overlapping any collectible
         var overlappingAreas = GetOverlappingAreas();
-        foreach (var area in overlappingAreas)
-        {
-            if (area is JJObstacle)
-            {
+        foreach (var area in overlappingAreas) {
+            if (area is JJObstacle) {
                 QueueFree();
                 return;
             }

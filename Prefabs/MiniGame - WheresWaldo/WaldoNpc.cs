@@ -81,7 +81,9 @@ public partial class WaldoNpc : Area2D {
 
             QueueFree(); // Delete the object when clicked
             if (sprite.Animation.ToString().Contains(MiniGameWheresWaldo.currentWaldo)) {
-                GameController.Instance.PassGame((int)(GameController.Instance.Game_TimeLimit - GameController.Instance.GetGameTimer()));
+                float timeRemaining = GameController.Instance.Game_TimeLimit - (float)GameController.Instance.GetGameTimer();
+                float multiplier = (8 + GameController.Instance.GameRound) / 8f;
+                GameController.Instance.PassGame((int)(timeRemaining * multiplier));
             }
         }
     }
